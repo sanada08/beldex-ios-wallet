@@ -6,11 +6,12 @@ import Foundation
 
 public enum CreateWalletStyle {
     case new(data: NewWallet)
+    case recovery(data: NewWallet, recover: RecoverWallet)
 }
 
 public struct NewWallet {
-    var name: String = ""
-    var pwd: String = ""
+    var name: String = "bdx"
+    var pwd: String = "bdx@123"
     var pwdTips: String?
     
     static var empty: NewWallet {

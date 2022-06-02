@@ -53,6 +53,17 @@ using namespace std;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
++ (BeldexWalletWrapper *)recoverWithSeed:(NSString *)seed
+                                    path:(NSString *)path
+                                password:(NSString *)password {
+    struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
+    string utf8Path = [path UTF8String];
+    string utf8Pwd = [password UTF8String];
+    string utf8Seed = [seed UTF8String];
+    Wallet::Wallet* beldex_wallet = walletManager->recoveryWallet(utf8Path, utf8Pwd, utf8Seed, netType, 0, 1);
+    return [self init_beldex_wallet:beldex_wallet];
+}
+
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
     
     if (!beldex_wallet) return NO;

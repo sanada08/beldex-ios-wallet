@@ -33,6 +33,9 @@
 + (BeldexWalletWrapper *)generateWithPath:(NSString *)path
                                  password:(NSString *)password
                                  language:(NSString *)language;
++ (BeldexWalletWrapper *)recoverWithSeed:(NSString *)seed
+                                    path:(NSString *)path
+                                password:(NSString *)password;
 - (BOOL)connectToDaemon:(NSString *)daemonAddress;
 
 - (NSString *)getSeedString:(NSString *)language;

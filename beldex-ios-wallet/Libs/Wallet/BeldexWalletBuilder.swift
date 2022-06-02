@@ -25,38 +25,41 @@ public struct BDXWalletBuilder {
     public func fromScratch() -> BDXWalletBuilder {
         var builder = self
         builder.mode = .fromScratch
-        print("---builder.mode----> \(builder.mode!)")
-        
         return builder
     }
     
+    public func fromSeed(_ seed: Seed) -> BDXWalletBuilder {
+        var builder = self
+        builder.mode = .fromSeed(seed: seed)
+        print("builder.mode ----> \(seed)")
+        return builder
+    }
 
     func generate() -> BDXWallet? {
         var wrapper: BeldexWalletWrapper?
         if let mode = self.mode {
             switch mode {
             case .fromScratch:
-                print("--mode--> ")
-                print("--mode--> \(mode)")
                 wrapper = self.createWalletFromScratch()
+            case .fromSeed(let seed):
+                print("------ inside case ----->")
+                wrapper = self.recoverWalletFromSeed(seed)
             }
         }
         guard let result = wrapper else {
-            print("----------resunt in wrapper---------")
             return nil
             
         }
-        print("----result--0--> \(result)")
         return BDXWallet(walletWrapper: result)
     }
     
     // MARK: - Methods (private)
 
     func createWalletFromScratch() -> BeldexWalletWrapper? {
-        print("-----pathWithFileNae-----> \(pathWithFileName())")
-        print("-----password----> \(password)")
-        print("----languate ----> \(language)")
         return BeldexWalletWrapper.generate(withPath: pathWithFileName(), password: password, language: language)
+    }
+    private func recoverWalletFromSeed(_ seed: Seed) -> BeldexWalletWrapper? {
+        return BeldexWalletWrapper.recover(withSeed: seed.sentence, path: pathWithFileName(), password: password)
     }
 
     private func pathWithFileName() -> String {
@@ -71,5 +74,6 @@ public struct BDXWalletBuilder {
 extension BDXWalletBuilder {
     private enum Mode {
         case fromScratch
+        case fromSeed(seed: Seed)
     }
 }

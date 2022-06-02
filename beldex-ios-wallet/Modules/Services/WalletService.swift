@@ -34,13 +34,33 @@ class WalletService {
                 print("result wallet . publicaddress ---->", wallet?.publicAddress)
                 print("result_wallet . seed ----->", wallet?.seed)
             case .recovery(let data, let recover):
+            print(":insdie recovery-------> \(recover) <><><> \(data)")
                 switch recover.from {
                 case .seed:
-                    if let seedStr = recover.seed, let seed = Seed.init(sentence: seedStr) {
+                    
+                let seedvaluedefault = UserDefaults.standard.string(forKey: "Key")
+                    print("-=-=-=-- \(seedvaluedefault!)")
+                    
+                    print("----data-----> \(data)")
+                    print("----recover-----> \(recover)")
+                    
+                    if let seedStr = seedvaluedefault, let seed = Seed.init(sentence: seedStr)
+                    {
+                        print("-------> seed ::: \(seed)")
                         result_wallet = BDXWalletBuilder(name: data.name, password: data.pwd).fromSeed(seed).generate()
+                        
+                        
+                        
+                        
+                        print("seedstr --->\(seedStr)")
+                        print("name --->\(result_wallet?.walletName)")
+                        print(" address----> \(result_wallet?.publicAddress)")
+                        print("recoverseed ----->\(result_wallet?.seed)")
                 }
+                case .keys:
+                    print("case Keys")
+                    
             }
-        
+        }
     }
-    
 }

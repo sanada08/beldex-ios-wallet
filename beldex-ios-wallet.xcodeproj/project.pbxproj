@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		040BCE622848942500C43958 /* BeldexWalletWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE612848942500C43958 /* BeldexWalletWrapper.mm */; };
 		040BCE6728489DAA00C43958 /* CreateWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE6628489DAA00C43958 /* CreateWalletViewController.swift */; };
-		040BCE6A28489E5700C43958 /* ImportWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE6928489E5700C43958 /* ImportWalletViewController.swift */; };
 		040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE6D2848A0AE00C43958 /* Wallet.swift */; };
 		040BCE712848A2B500C43958 /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE702848A2B500C43958 /* WalletService.swift */; };
 		040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE732848A3EA00C43958 /* BeldexWallet.swift */; };
@@ -18,6 +17,8 @@
 		044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FA2848B61A00A76C2E /* WelcomeVC.swift */; };
 		044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FE2848C61800A76C2E /* Date + Ext.swift */; };
 		044C63012848C7F300A76C2E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63002848C7F300A76C2E /* Keys.swift */; };
+		044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */; };
+		044C63062848D11C00A76C2E /* ImportWalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63052848D11B00A76C2E /* ImportWalletViewController2.swift */; };
 		0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748528488F7A00D2AF54 /* AppDelegate.swift */; };
 		0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748728488F7A00D2AF54 /* SceneDelegate.swift */; };
 		0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748928488F7A00D2AF54 /* ViewController.swift */; };
@@ -52,7 +53,6 @@
 		040BCE612848942500C43958 /* BeldexWalletWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BeldexWalletWrapper.mm; sourceTree = "<group>"; };
 		040BCE632848949600C43958 /* BeldexWalletWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeldexWalletWrapper.h; sourceTree = "<group>"; };
 		040BCE6628489DAA00C43958 /* CreateWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateWalletViewController.swift; sourceTree = "<group>"; };
-		040BCE6928489E5700C43958 /* ImportWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController.swift; sourceTree = "<group>"; };
 		040BCE6D2848A0AE00C43958 /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
 		040BCE702848A2B500C43958 /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		040BCE732848A3EA00C43958 /* BeldexWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeldexWallet.swift; sourceTree = "<group>"; };
@@ -61,6 +61,8 @@
 		044C62FA2848B61A00A76C2E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		044C62FE2848C61800A76C2E /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		044C63002848C7F300A76C2E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewModel.swift; sourceTree = "<group>"; };
+		044C63052848D11B00A76C2E /* ImportWalletViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController2.swift; sourceTree = "<group>"; };
 		0460748228488F7A00D2AF54 /* beldex-ios-wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beldex-ios-wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0460748528488F7A00D2AF54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0460748728488F7A00D2AF54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,8 +119,9 @@
 		040BCE6B28489E6500C43958 /* Add Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				044C63022848CE6200A76C2E /* ViewModels */,
 				040BCE6C2848A06100C43958 /* Models */,
-				040BCE6928489E5700C43958 /* ImportWalletViewController.swift */,
+				044C63052848D11B00A76C2E /* ImportWalletViewController2.swift */,
 				040BCE6628489DAA00C43958 /* CreateWalletViewController.swift */,
 				044C62FA2848B61A00A76C2E /* WelcomeVC.swift */,
 			);
@@ -166,6 +169,14 @@
 				044C62FE2848C61800A76C2E /* Date + Ext.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		044C63022848CE6200A76C2E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		0460747928488F7A00D2AF54 = {
@@ -394,7 +405,7 @@
 			files = (
 				040BCE762848A5E600C43958 /* BeldexWalletBuilder.swift in Sources */,
 				040BCE712848A2B500C43958 /* WalletService.swift in Sources */,
-				040BCE6A28489E5700C43958 /* ImportWalletViewController.swift in Sources */,
+				044C63062848D11C00A76C2E /* ImportWalletViewController2.swift in Sources */,
 				044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */,
 				040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */,
 				044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */,
@@ -405,6 +416,7 @@
 				040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */,
 				044C63012848C7F300A76C2E /* Keys.swift in Sources */,
 				0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */,
+				044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */,
 				044C62F92848B36700A76C2E /* Seed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

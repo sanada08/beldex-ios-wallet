@@ -11,7 +11,7 @@
         <!--Item 2-->
         <scene sceneID="pRj-xd-u6t">
             <objects>
-                <viewController storyboardIdentifier="ImportWalletViewController" id="iDU-jN-oQI" customClass="ImportWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportWalletViewController2" id="iDU-jN-oQI" customClass="ImportWalletViewController2" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lh6-xj-3Eb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
