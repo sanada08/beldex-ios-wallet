@@ -11,7 +11,7 @@
         <!--Item 2-->
         <scene sceneID="pRj-xd-u6t">
             <objects>
-                <viewController storyboardIdentifier="CreateWalletViewController" id="iDU-jN-oQI" customClass="CreateWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImportWalletViewController" id="iDU-jN-oQI" customClass="ImportWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lh6-xj-3Eb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -28,29 +28,57 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="BackActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="nfq-LM-MNT"/>
-                                    <action selector="BackActionWithSender:" destination="iDU-jN-oQI" eventType="touchUpInside" id="yno-DI-dSe"/>
+                                    <action selector="BackActionWithSender:" destination="iDU-jN-oQI" eventType="touchUpInside" id="9zB-z0-RsV"/>
                                     <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="j8T-Iy-tIa"/>
                                 </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-PJ-p7v">
+                                <rect key="frame" x="22" y="198" width="370" height="100"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="CNf-ss-Zhb"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD4-FH-bmr">
+                                <rect key="frame" x="22" y="331" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Nyr-6K-rGE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="E9B-Us-hFb"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
+                            <constraint firstItem="GD4-FH-bmr" firstAttribute="trailing" secondItem="aAd-PJ-p7v" secondAttribute="trailing" id="252-JS-Kl2"/>
                             <constraint firstItem="nMM-2I-RCc" firstAttribute="leading" secondItem="E9B-Us-hFb" secondAttribute="leading" constant="22" id="8qh-Gx-5oQ"/>
+                            <constraint firstItem="aAd-PJ-p7v" firstAttribute="leading" secondItem="E9B-Us-hFb" secondAttribute="leading" constant="22" id="Cvr-eT-1gh"/>
+                            <constraint firstItem="GD4-FH-bmr" firstAttribute="top" secondItem="aAd-PJ-p7v" secondAttribute="bottom" constant="33" id="GiB-fI-c1S"/>
+                            <constraint firstItem="E9B-Us-hFb" firstAttribute="trailing" secondItem="aAd-PJ-p7v" secondAttribute="trailing" constant="22" id="LtI-FZ-eWG"/>
+                            <constraint firstItem="aAd-PJ-p7v" firstAttribute="centerX" secondItem="lh6-xj-3Eb" secondAttribute="centerX" id="SKm-hh-vmM"/>
                             <constraint firstItem="nMM-2I-RCc" firstAttribute="top" secondItem="E9B-Us-hFb" secondAttribute="top" constant="44" id="lVL-Nd-Z4v"/>
+                            <constraint firstItem="aAd-PJ-p7v" firstAttribute="centerY" secondItem="lh6-xj-3Eb" secondAttribute="centerY" constant="-200" id="pCA-vM-OQ6"/>
+                            <constraint firstItem="GD4-FH-bmr" firstAttribute="leading" secondItem="aAd-PJ-p7v" secondAttribute="leading" id="z0H-e7-scI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="G27-tH-owb"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3P-hX-7sZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="232"/>
+            <point key="canvasLocation" x="486.95652173913049" y="231.69642857142856"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="Pb8-vL-vJh">
             <objects>
-                <viewController storyboardIdentifier="AddWalletViewController" id="bsD-CF-Jxy" customClass="AddWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreateWalletViewController" id="bsD-CF-Jxy" customClass="CreateWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mbt-cS-9yt">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -223,6 +251,9 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

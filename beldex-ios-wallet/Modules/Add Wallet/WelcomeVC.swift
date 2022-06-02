@@ -17,13 +17,13 @@ class WelcomeVC: UIViewController {
     
     
     @IBAction func createWalletAction(sender:UIButton){
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddWalletViewController") as! AddWalletViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateWalletViewController") as! CreateWalletViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
     @IBAction func restoreWalletAction(sender:UIButton){
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CreateWalletViewController") as! CreateWalletViewController
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImportWalletViewController") as! ImportWalletViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
