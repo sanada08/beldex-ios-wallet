@@ -16,6 +16,8 @@
 		040BCE762848A5E600C43958 /* BeldexWalletBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040BCE752848A5E600C43958 /* BeldexWalletBuilder.swift */; };
 		044C62F92848B36700A76C2E /* Seed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62F82848B36700A76C2E /* Seed.swift */; };
 		044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FA2848B61A00A76C2E /* WelcomeVC.swift */; };
+		044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FE2848C61800A76C2E /* Date + Ext.swift */; };
+		044C63012848C7F300A76C2E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63002848C7F300A76C2E /* Keys.swift */; };
 		0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748528488F7A00D2AF54 /* AppDelegate.swift */; };
 		0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748728488F7A00D2AF54 /* SceneDelegate.swift */; };
 		0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748928488F7A00D2AF54 /* ViewController.swift */; };
@@ -57,6 +59,8 @@
 		040BCE752848A5E600C43958 /* BeldexWalletBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeldexWalletBuilder.swift; sourceTree = "<group>"; };
 		044C62F82848B36700A76C2E /* Seed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seed.swift; sourceTree = "<group>"; };
 		044C62FA2848B61A00A76C2E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		044C62FE2848C61800A76C2E /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
+		044C63002848C7F300A76C2E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		0460748228488F7A00D2AF54 /* beldex-ios-wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beldex-ios-wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0460748528488F7A00D2AF54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0460748728488F7A00D2AF54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,8 +155,17 @@
 			isa = PBXGroup;
 			children = (
 				044C62F82848B36700A76C2E /* Seed.swift */,
+				044C63002848C7F300A76C2E /* Keys.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		044C62FD2848C60000A76C2E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				044C62FE2848C61800A76C2E /* Date + Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		0460747928488F7A00D2AF54 = {
@@ -178,6 +191,7 @@
 		0460748428488F7A00D2AF54 /* beldex-ios-wallet */ = {
 			isa = PBXGroup;
 			children = (
+				044C62FD2848C60000A76C2E /* Extension */,
 				040BCE6828489DB000C43958 /* Modules */,
 				046074BB2848925A00D2AF54 /* Resources */,
 				046074B52848918400D2AF54 /* Libs */,
@@ -383,11 +397,13 @@
 				040BCE6A28489E5700C43958 /* ImportWalletViewController.swift in Sources */,
 				044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */,
 				040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */,
+				044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */,
 				040BCE6728489DAA00C43958 /* CreateWalletViewController.swift in Sources */,
 				0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */,
 				0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */,
 				040BCE622848942500C43958 /* BeldexWalletWrapper.mm in Sources */,
 				040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */,
+				044C63012848C7F300A76C2E /* Keys.swift in Sources */,
 				0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */,
 				044C62F92848B36700A76C2E /* Seed.swift in Sources */,
 			);

@@ -2,7 +2,7 @@
 //  beldex_ios_walletTests.swift
 //  beldex-ios-walletTests
 //
-//  Created by Mac on 6/2/22.
+//  Created by sanada yukimura on 6/2/22.
 //
 
 import XCTest

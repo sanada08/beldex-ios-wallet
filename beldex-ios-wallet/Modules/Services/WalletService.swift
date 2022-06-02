@@ -27,15 +27,20 @@ class WalletService {
                 print("----data-----> \(data)")
                 
                 result_wallet = BDXWalletBuilder(name: data.name, password: data.pwd).fromScratch().generate()
-            
-                
-                
                 print("----result_wallet-----::::::> \(result_wallet)")
+                
+                let wallet = result_wallet
+                print("result wallet . walletnae ---->", wallet?.walletName)
+                print("result wallet . publicaddress ---->", wallet?.publicAddress)
+                print("result_wallet . seed ----->", wallet?.seed)
+            case .recovery(let data, let recover):
+                switch recover.from {
+                case .seed:
+                    if let seedStr = recover.seed, let seed = Seed.init(sentence: seedStr) {
+                        result_wallet = BDXWalletBuilder(name: data.name, password: data.pwd).fromSeed(seed).generate()
+                }
             }
-        let wallet = result_wallet
-        print("result wallet . walletnae ---->", wallet?.walletName)
-        print("result wallet . publicaddress ---->", wallet?.publicAddress)
-        print("result_wallet . seed ----->", wallet?.seed)
+        
     }
     
 }
