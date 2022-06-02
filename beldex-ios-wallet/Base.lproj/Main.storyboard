@@ -1,24 +1,239 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vj9-EV-ieF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Item 2-->
+        <scene sceneID="pRj-xd-u6t">
+            <objects>
+                <viewController storyboardIdentifier="CreateWalletViewController" id="iDU-jN-oQI" customClass="CreateWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lh6-xj-3Eb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMM-2I-RCc">
+                                <rect key="frame" x="22" y="88" width="44" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="8aL-oP-N1F"/>
+                                    <constraint firstAttribute="height" constant="22" id="nje-tn-sa2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="nfq-LM-MNT"/>
+                                    <action selector="BackActionWithSender:" destination="iDU-jN-oQI" eventType="touchUpInside" id="yno-DI-dSe"/>
+                                    <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="j8T-Iy-tIa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E9B-Us-hFb"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                        <constraints>
+                            <constraint firstItem="nMM-2I-RCc" firstAttribute="leading" secondItem="E9B-Us-hFb" secondAttribute="leading" constant="22" id="8qh-Gx-5oQ"/>
+                            <constraint firstItem="nMM-2I-RCc" firstAttribute="top" secondItem="E9B-Us-hFb" secondAttribute="top" constant="44" id="lVL-Nd-Z4v"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="G27-tH-owb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x3P-hX-7sZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="487" y="232"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="Pb8-vL-vJh">
+            <objects>
+                <viewController storyboardIdentifier="AddWalletViewController" id="bsD-CF-Jxy" customClass="AddWalletViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mbt-cS-9yt">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gI-ZU-n76">
+                                <rect key="frame" x="22" y="428" width="370" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="9Nl-W6-qXa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7zi-Wg-fdU">
+                                <rect key="frame" x="22" y="498" width="370" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="KyY-c8-vi2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pVv-FA-qK1">
+                                <rect key="frame" x="22" y="571" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="1sw-V1-tYc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createWalletActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="cQ1-fW-RtW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UiC-TW-g9h">
+                                <rect key="frame" x="22" y="88" width="44" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="0mT-5F-rlB"/>
+                                    <constraint firstAttribute="width" constant="44" id="iUC-l7-pEX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="pz6-k8-TdM"/>
+                                    <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="J5l-vf-ImV"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="EmZ-Sl-2fp"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="pVv-FA-qK1" firstAttribute="leading" secondItem="EmZ-Sl-2fp" secondAttribute="leading" constant="22" id="Cpx-Gp-KbA"/>
+                            <constraint firstItem="EmZ-Sl-2fp" firstAttribute="trailing" secondItem="4gI-ZU-n76" secondAttribute="trailing" constant="22" id="J8Z-4Y-8kj"/>
+                            <constraint firstItem="7zi-Wg-fdU" firstAttribute="top" secondItem="4gI-ZU-n76" secondAttribute="bottom" constant="30" id="JA7-Cp-5vh"/>
+                            <constraint firstItem="UiC-TW-g9h" firstAttribute="top" secondItem="EmZ-Sl-2fp" secondAttribute="top" constant="44" id="LBO-5G-Q3e"/>
+                            <constraint firstItem="7zi-Wg-fdU" firstAttribute="leading" secondItem="4gI-ZU-n76" secondAttribute="leading" id="hjS-rW-bNx"/>
+                            <constraint firstItem="pVv-FA-qK1" firstAttribute="top" secondItem="7zi-Wg-fdU" secondAttribute="bottom" constant="33" id="kWw-JO-sEi"/>
+                            <constraint firstItem="7zi-Wg-fdU" firstAttribute="trailing" secondItem="4gI-ZU-n76" secondAttribute="trailing" id="lu7-Ft-GEh"/>
+                            <constraint firstItem="UiC-TW-g9h" firstAttribute="leading" secondItem="Mbt-cS-9yt" secondAttribute="leading" constant="22" id="lv4-ln-hjf"/>
+                            <constraint firstItem="4gI-ZU-n76" firstAttribute="leading" secondItem="EmZ-Sl-2fp" secondAttribute="leading" constant="22" id="m9I-mf-bRa"/>
+                            <constraint firstItem="4gI-ZU-n76" firstAttribute="centerY" secondItem="Mbt-cS-9yt" secondAttribute="centerY" id="nMq-Ml-72A"/>
+                            <constraint firstItem="4gI-ZU-n76" firstAttribute="centerX" secondItem="Mbt-cS-9yt" secondAttribute="centerX" id="uWR-sU-oSw"/>
+                            <constraint firstItem="EmZ-Sl-2fp" firstAttribute="trailing" secondItem="pVv-FA-qK1" secondAttribute="trailing" constant="22" id="wUX-cH-zhw"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="Xnv-Cp-ZxX"/>
+                    <connections>
+                        <outlet property="name" destination="4gI-ZU-n76" id="FAh-pW-ceS"/>
+                        <outlet property="pwd" destination="7zi-Wg-fdU" id="jxk-OC-bwZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WcU-G2-eqR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="486.95652173913049" y="-429.24107142857139"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1792.753623188406" y="-115.17857142857142"/>
+        </scene>
+        <!--WelcomeVC-->
+        <scene sceneID="8ay-ZE-qOp">
+            <objects>
+                <viewController storyboardIdentifier="WelcomeVC" id="eEi-OI-s4b" customClass="WelcomeVC" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="abx-Go-XWT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyk-Ak-Zk1">
+                                <rect key="frame" x="22" y="430.5" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="FCT-2m-9Z0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="BgG-zI-UZr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FD-SK-5ES">
+                                <rect key="frame" x="22" y="498.5" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="t1s-bh-yGo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Restore Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="restoreWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="73p-bR-pi0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="WDB-qa-fiX"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="6FD-SK-5ES" firstAttribute="top" secondItem="Pyk-Ak-Zk1" secondAttribute="bottom" constant="33" id="3gA-e8-b7h"/>
+                            <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="centerX" secondItem="abx-Go-XWT" secondAttribute="centerX" id="SBE-uM-Ub5"/>
+                            <constraint firstItem="WDB-qa-fiX" firstAttribute="trailing" secondItem="Pyk-Ak-Zk1" secondAttribute="trailing" constant="22" id="U8m-JR-24A"/>
+                            <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="centerY" secondItem="abx-Go-XWT" secondAttribute="centerY" id="fot-IL-mGO"/>
+                            <constraint firstItem="6FD-SK-5ES" firstAttribute="leading" secondItem="Pyk-Ak-Zk1" secondAttribute="leading" id="jAQ-UP-1qY"/>
+                            <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="leading" secondItem="WDB-qa-fiX" secondAttribute="leading" constant="22" id="lnR-E4-Mnz"/>
+                            <constraint firstItem="6FD-SK-5ES" firstAttribute="trailing" secondItem="Pyk-Ak-Zk1" secondAttribute="trailing" id="w6A-WM-Fzs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="g7Z-XY-ujn"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RUk-uZ-rUz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271.01449275362319" y="-429.24107142857139"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="I0i-5h-Q8c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="vj9-EV-ieF" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item 1" id="G3n-sg-Tys"/>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d1C-SH-tvh">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="eEi-OI-s4b" kind="relationship" relationship="rootViewController" id="cHn-Kg-Ki4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbD-b7-Fko" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1181.1594202898552" y="-429.24107142857139"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
