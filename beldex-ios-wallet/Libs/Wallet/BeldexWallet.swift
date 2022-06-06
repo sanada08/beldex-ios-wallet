@@ -75,5 +75,8 @@ extension BDXWallet {
         let sentence = walletWrapper.getSeedString(language)
         return Seed(sentence: sentence!)
     }
+    public var publicViewKey: String {
+        return walletWrapper.publicViewKey
+    }
 
 }

@@ -98,4 +98,13 @@ using namespace std;
     }
     return objc_str_dup(address);
 }
+
+- (NSString *)publicViewKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->publicViewKey();
+    }
+    return objc_str_dup(key);
+}
+
 @end
