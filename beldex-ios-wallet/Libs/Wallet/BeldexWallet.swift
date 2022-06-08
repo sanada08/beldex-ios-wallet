@@ -81,5 +81,7 @@ extension BDXWallet {
     public var publicSpendKey: String {
         return walletWrapper.publicSpendKey
     }
-
+    public var secretViewKey: String {
+        return walletWrapper.secretViewKey
+    }
 }

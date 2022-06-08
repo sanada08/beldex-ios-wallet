@@ -114,5 +114,11 @@ using namespace std;
     }
     return objc_str_dup(key);
 }
-
+- (NSString *)secretViewKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->secretViewKey();
+    }
+    return objc_str_dup(key);
+}
 @end
