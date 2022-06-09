@@ -34,6 +34,10 @@ class WalletService {
                 print("result wallet . publicaddress ---->", result_wallet.publicAddress)
                 print("result_wallet . seed ----->", result_wallet.seed!)
             print("result_wallet . sentence ----->", result_wallet.seed?.sentence)
+            print("publicviewkey --->\(result_wallet.publicViewKey)")
+            print("secretViewKey --->\(result_wallet.secretViewKey)")
+            print("publicSpentKey -->\(result_wallet.publicSpendKey)")
+            print("secretSpentKey -->\(result_wallet.secretSpendKey)")
             
             
             case .recovery(let data, let recover):
@@ -59,6 +63,10 @@ class WalletService {
                         print("name --->\(result_wallet?.walletName)")
                         print(" address----> \(result_wallet?.publicAddress)")
                         print("recoverseed ----->\(result_wallet?.seed)")
+                        print("publicviewkey --->\(result_wallet.publicViewKey)")
+                        print("secretViewKey --->\(result_wallet.secretViewKey)")
+                        print("publicSpentKey -->\(result_wallet.publicSpendKey)")
+                        print("secretSpentKey -->\(result_wallet.secretSpendKey)")
                 }
                 case .keys:
                     print("case Keys")
