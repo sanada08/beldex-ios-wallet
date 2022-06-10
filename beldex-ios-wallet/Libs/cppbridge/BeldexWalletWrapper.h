@@ -39,4 +39,5 @@
 - (BOOL)connectToDaemon:(NSString *)daemonAddress;
 
 - (NSString *)getSeedString:(NSString *)language;
++ (NSString *)displayAmount:(uint64_t)amount;
 @end

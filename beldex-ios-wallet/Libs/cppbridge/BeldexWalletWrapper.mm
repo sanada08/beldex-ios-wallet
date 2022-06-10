@@ -128,4 +128,11 @@ using namespace std;
     }
     return objc_str_dup(key);
 }
+
+- (uint64_t)balance {
+    if (beldex_wallet) {
+        return beldex_wallet->balance();
+    }
+    return 0;
+}
 @end

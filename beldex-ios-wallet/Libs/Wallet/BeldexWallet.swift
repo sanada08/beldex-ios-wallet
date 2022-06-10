@@ -87,4 +87,10 @@ extension BDXWallet {
     public var secretSpendKey: String {
         return walletWrapper.secretSpendKey
     }
+    public var balance: String {
+        return displayAmount(walletWrapper.balance)
+    }
+    public func displayAmount(_ value: UInt64) -> String {
+        return BeldexWalletWrapper.displayAmount(value)
+    }
 }
