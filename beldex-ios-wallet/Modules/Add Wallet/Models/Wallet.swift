@@ -10,7 +10,7 @@ public enum CreateWalletStyle {
 }
 
 public struct NewWallet {
-    var name: String = ""
+    var name: String = "1"
     var pwd: String = ""
     var pwdTips: String?
     

@@ -1,5 +1,5 @@
 //
-//  ImportWalletViewController2.swift
+//  ImportWalletViewController.swift
 //  beldex-ios-wallet
 //
 //  Created by Mac on 6/2/22.
@@ -10,7 +10,7 @@
 
 import UIKit
 
-class ImportWalletViewController2: UIViewController {
+class ImportWalletViewController: UIViewController {
 
     @IBOutlet weak var txtseed:UITextView!
     

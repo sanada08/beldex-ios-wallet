@@ -63,10 +63,10 @@ class WalletService {
                         print("name --->\(result_wallet?.walletName)")
                         print(" address----> \(result_wallet?.publicAddress)")
                         print("recoverseed ----->\(result_wallet?.seed)")
-                        print("publicviewkey --->\(result_wallet.publicViewKey)")
-                        print("secretViewKey --->\(result_wallet.secretViewKey)")
-                        print("publicSpentKey -->\(result_wallet.publicSpendKey)")
-                        print("secretSpentKey -->\(result_wallet.secretSpendKey)")
+//                        print("publicviewkey --->\(result_wallet.publicViewKey)")
+//                        print("secretViewKey --->\(result_wallet.secretViewKey)")
+//                        print("publicSpentKey -->\(result_wallet.publicSpendKey)")
+//                        print("secretSpentKey -->\(result_wallet.secretSpendKey)")
                 }
                 case .keys:
                     print("case Keys")

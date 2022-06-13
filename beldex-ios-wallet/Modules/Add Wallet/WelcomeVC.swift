@@ -23,7 +23,7 @@ class WelcomeVC: UIViewController {
     }
     
     @IBAction func restoreWalletAction(sender:UIButton){
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImportWalletViewController2") as! ImportWalletViewController2
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImportWalletViewController") as! ImportWalletViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
