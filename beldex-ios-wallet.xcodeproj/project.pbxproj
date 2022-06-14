@@ -22,6 +22,7 @@
 		044C63092856FA2E00A76C2E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63082856FA2E00A76C2E /* BaseViewController.swift */; };
 		044C630B2856FA8000A76C2E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630A2856FA8000A76C2E /* NavigationController.swift */; };
 		044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630D2856FAE100A76C2E /* AppTheme.swift */; };
+		044C631028584E5100A76C2E /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630F28584E5100A76C2E /* UIView + Extension.swift */; };
 		0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748528488F7A00D2AF54 /* AppDelegate.swift */; };
 		0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748728488F7A00D2AF54 /* SceneDelegate.swift */; };
 		0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748928488F7A00D2AF54 /* ViewController.swift */; };
@@ -69,6 +70,7 @@
 		044C63082856FA2E00A76C2E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		044C630A2856FA8000A76C2E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		044C630D2856FAE100A76C2E /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
+		044C630F28584E5100A76C2E /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
 		0460748228488F7A00D2AF54 /* beldex-ios-wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beldex-ios-wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0460748528488F7A00D2AF54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0460748728488F7A00D2AF54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				044C62FE2848C61800A76C2E /* Date + Ext.swift */,
+				044C630F28584E5100A76C2E /* UIView + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */,
 				044C63092856FA2E00A76C2E /* BaseViewController.swift in Sources */,
 				044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */,
+				044C631028584E5100A76C2E /* UIView + Extension.swift in Sources */,
 				044C62F92848B36700A76C2E /* Seed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
