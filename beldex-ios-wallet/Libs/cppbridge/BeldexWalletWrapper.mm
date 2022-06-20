@@ -64,6 +64,25 @@ using namespace std;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
++ (BeldexWalletWrapper *)recoverFromKeysWithPath:(NSString *)path
+                                        password:(NSString *)password
+                                        language:(NSString *)language
+                                   restoreHeight:(uint64_t)restoreHeight
+                                         address:(NSString *)address
+                                         viewKey:(NSString *)viewKey
+                                        spendKey:(NSString *)spendKey {
+    struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
+    string utf8Path = [path UTF8String];
+    string utf8Pwd = [password UTF8String];
+    string utf8Language = [language UTF8String];
+    string utf8Address = [address UTF8String];
+    string utf8ViewKey = [viewKey UTF8String];
+    string utf8SpendKey = [spendKey UTF8String];
+    Wallet::Wallet* beldex_wallet = walletManager->createWalletFromKeys(utf8Path, utf8Pwd, utf8Language, netType, restoreHeight, utf8Address, utf8ViewKey, utf8SpendKey);
+    return [self init_beldex_wallet:beldex_wallet];
+}
+
+
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
     
     if (!beldex_wallet) return NO;
@@ -135,4 +154,10 @@ using namespace std;
     }
     return 0;
 }
+
++ (NSString *)displayAmount:(uint64_t)amount {
+    string amountStr = Wallet::Wallet::displayAmount(amount);
+    return objc_str_dup(amountStr);
+}
+
 @end
