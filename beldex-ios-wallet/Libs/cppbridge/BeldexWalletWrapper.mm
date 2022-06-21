@@ -82,6 +82,14 @@ using namespace std;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
++ (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
+                                     password:(NSString *)password {
+    struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
+    string utf8Path = [path UTF8String];
+    string utf8Pwd = [password UTF8String];
+    Wallet::Wallet* beldex_wallet = walletManager->openWallet(utf8Path, utf8Pwd, netType);
+    return [self init_beldex_wallet:beldex_wallet];
+}
 
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
     
