@@ -118,6 +118,18 @@ using namespace std;
     return name;
 }
 
+- (void)startRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->startRefresh();
+    }
+}
+
+- (void)pauseRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->pauseRefresh();
+    }
+}
+
 - (NSString *)publicAddress {
     string address  = "";
     if (beldex_wallet) {
