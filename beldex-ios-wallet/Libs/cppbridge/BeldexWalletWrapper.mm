@@ -180,4 +180,9 @@ using namespace std;
     return objc_str_dup(amountStr);
 }
 
++ (NSString *)generatePaymentId {
+    string payment_id = Wallet::Wallet::genPaymentId();
+    return objc_str_dup(payment_id);
+}
+
 @end
