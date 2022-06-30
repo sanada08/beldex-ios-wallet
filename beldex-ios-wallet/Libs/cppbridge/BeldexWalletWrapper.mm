@@ -185,4 +185,11 @@ using namespace std;
     return objc_str_dup(payment_id);
 }
 
++ (NSString *)paymentIdFromAddress:(NSString *)address {
+    string utf8Address = [address UTF8String];
+    string payment_id = Wallet::Wallet::paymentIdFromAddress(utf8Address, netType);
+    return objc_str_dup(payment_id);
+}
+
+
 @end
