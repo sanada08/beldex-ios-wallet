@@ -191,5 +191,11 @@ using namespace std;
     return objc_str_dup(payment_id);
 }
 
+- (BOOL)setNewPassword:(NSString *)password {
+    if (beldex_wallet) {
+        return beldex_wallet->setPassword([password UTF8String]);
+    }
+    return NO;
+}
 
 @end
