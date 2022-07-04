@@ -197,5 +197,12 @@ using namespace std;
     }
     return NO;
 }
+- (NSString *)generateIntegartedAddress:(NSString *)paymentId {
+    string integratedAddress = "";
+    if (beldex_wallet) {
+        integratedAddress = beldex_wallet->integratedAddress([paymentId UTF8String]);
+    }
+    return objc_str_dup(integratedAddress);
+}
 
 @end
