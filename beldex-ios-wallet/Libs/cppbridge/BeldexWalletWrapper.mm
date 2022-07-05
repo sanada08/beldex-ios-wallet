@@ -205,4 +205,13 @@ using namespace std;
     return objc_str_dup(integratedAddress);
 }
 
+#pragma mark - SubAddress
+
+- (BOOL)addSubAddress:(NSString *)label accountIndex:(uint32_t)index {
+    if (beldex_wallet) {
+        beldex_wallet->addSubaddress(index, [label UTF8String]);
+        return YES;
+    }
+    return NO;
+}
 @end
