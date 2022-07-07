@@ -214,4 +214,11 @@ using namespace std;
     }
     return NO;
 }
+- (BOOL)setSubAddress:(NSString *)label addressIndex:(uint32_t)addressIndex accountIndex:(uint32_t)accountIndex {
+    if (beldex_wallet) {
+        beldex_wallet->setSubaddressLabel(accountIndex, addressIndex, [label UTF8String]);
+        return YES;
+    }
+    return NO;
+}
 @end
