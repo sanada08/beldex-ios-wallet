@@ -23,6 +23,8 @@
 		044C630B2856FA8000A76C2E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630A2856FA8000A76C2E /* NavigationController.swift */; };
 		044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630D2856FAE100A76C2E /* AppTheme.swift */; };
 		044C631028584E5100A76C2E /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630F28584E5100A76C2E /* UIView + Extension.swift */; };
+		044C6313288574CF00A76C2E /* BeldexSubAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 044C6312288574CF00A76C2E /* BeldexSubAddress.m */; };
+		044C63152885761300A76C2E /* SubAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63142885761300A76C2E /* SubAddress.swift */; };
 		0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748528488F7A00D2AF54 /* AppDelegate.swift */; };
 		0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748728488F7A00D2AF54 /* SceneDelegate.swift */; };
 		0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0460748928488F7A00D2AF54 /* ViewController.swift */; };
@@ -71,6 +73,9 @@
 		044C630A2856FA8000A76C2E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		044C630D2856FAE100A76C2E /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		044C630F28584E5100A76C2E /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		044C63112885740300A76C2E /* BeldexSubAddress.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeldexSubAddress.h; sourceTree = "<group>"; };
+		044C6312288574CF00A76C2E /* BeldexSubAddress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeldexSubAddress.m; sourceTree = "<group>"; };
+		044C63142885761300A76C2E /* SubAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubAddress.swift; sourceTree = "<group>"; };
 		0460748228488F7A00D2AF54 /* beldex-ios-wallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "beldex-ios-wallet.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0460748528488F7A00D2AF54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0460748728488F7A00D2AF54 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +173,7 @@
 			children = (
 				044C62F82848B36700A76C2E /* Seed.swift */,
 				044C63002848C7F300A76C2E /* Keys.swift */,
+				044C63142885761300A76C2E /* SubAddress.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -288,6 +294,8 @@
 				046074BC284892A800D2AF54 /* BeldexConfig.h */,
 				040BCE612848942500C43958 /* BeldexWalletWrapper.mm */,
 				040BCE632848949600C43958 /* BeldexWalletWrapper.h */,
+				044C63112885740300A76C2E /* BeldexSubAddress.h */,
+				044C6312288574CF00A76C2E /* BeldexSubAddress.m */,
 			);
 			path = cppbridge;
 			sourceTree = "<group>";
@@ -436,9 +444,11 @@
 				044C63062848D11C00A76C2E /* ImportWalletViewController.swift in Sources */,
 				044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */,
 				044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */,
+				044C6313288574CF00A76C2E /* BeldexSubAddress.m in Sources */,
 				040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */,
 				044C630B2856FA8000A76C2E /* NavigationController.swift in Sources */,
 				044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */,
+				044C63152885761300A76C2E /* SubAddress.swift in Sources */,
 				040BCE6728489DAA00C43958 /* CreateWalletViewController.swift in Sources */,
 				0460748A28488F7A00D2AF54 /* ViewController.swift in Sources */,
 				0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */,

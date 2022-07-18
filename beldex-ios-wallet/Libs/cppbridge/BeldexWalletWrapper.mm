@@ -221,4 +221,24 @@ using namespace std;
     }
     return NO;
 }
+
+- (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index {
+    NSMutableArray<BeldexSubAddress *> *result = [NSMutableArray array];
+    if (beldex_wallet) {
+        Wallet::Subaddress * subAddress = beldex_wallet->subaddress();
+        if (subAddress) {
+            subAddress->refresh(index);
+            std::vector<Wallet::SubaddressRow *> all = subAddress->getAll();
+            std::size_t allCount = all.size();
+            for (std::size_t i = 0; i < allCount; ++i) {
+                Wallet::SubaddressRow *item = all[i];
+                [result addObject:[[BeldexSubAddress alloc] initWithRowId:item->getRowId()
+                                                                  address:objc_str_dup(item->getAddress())
+                                                                    label:objc_str_dup(item->getLabel())]];
+            }
+        }
+    }
+    return result;
+}
+
 @end
