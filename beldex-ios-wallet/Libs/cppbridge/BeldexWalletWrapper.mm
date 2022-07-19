@@ -241,4 +241,25 @@ using namespace std;
     return result;
 }
 
+#pragma mark - Transaction
+
+- (BOOL)createTransactionToAddress:(NSString *)address paymentId:(NSString *)paymentId amount:(NSString *)amount mixinCount:(uint32_t)mixinCount priority:(PendingTransactionPriority)priority {
+    if (!beldex_wallet) return NO;
+    [self disposeTransaction];
+    Monero::optional<uint64_t> _amount;
+    if (![amount isEqualToString:@"sweep"]) {
+        _amount = Wallet::Wallet::amountFromString([amount UTF8String]);
+    }
+    beldex_pendingTransaction = beldex_wallet->createTransaction([address UTF8String],
+                                                                 [paymentId UTF8String],
+                                                                 _amount,
+                                                                 mixinCount,
+                                                                 (Wallet::PendingTransaction::Priority)priority);
+    if (!beldex_pendingTransaction) return NO;
+    if (beldex_pendingTransaction->status() != Status_Ok) {
+        NSLog(@"beldex createTransaction fail reason: %@", [self transactionErrorMessage]);
+        return NO;
+    }
+    return YES;
+}
 @end
