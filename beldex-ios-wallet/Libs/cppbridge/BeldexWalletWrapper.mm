@@ -262,4 +262,9 @@ using namespace std;
     }
     return YES;
 }
+
+- (BOOL)createSweepTransactionToAddress:(NSString *)address paymentId:(NSString *)paymentId mixinCount:(uint32_t)mixinCount priority:(PendingTransactionPriority)priority {
+    return [self createTransactionToAddress:address paymentId:paymentId amount:@"sweep" mixinCount:mixinCount priority:priority];
+}
+
 @end
