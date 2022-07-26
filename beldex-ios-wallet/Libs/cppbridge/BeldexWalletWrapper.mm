@@ -267,4 +267,11 @@ using namespace std;
     return [self createTransactionToAddress:address paymentId:paymentId amount:@"sweep" mixinCount:mixinCount priority:priority];
 }
 
+- (BOOL)commitPendingTransaction {
+    if (beldex_pendingTransaction) {
+        return beldex_pendingTransaction->commit();
+    }
+    return NO;
+}
+
 @end
