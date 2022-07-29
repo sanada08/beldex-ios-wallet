@@ -274,4 +274,18 @@ using namespace std;
     return NO;
 }
 
+- (void)disposeTransaction {
+    if (monero_wallet && monero_pendingTransaction) {
+        monero_wallet->disposeTransaction(monero_pendingTransaction);
+        monero_pendingTransaction = NULL;
+    }
+}
+
+- (int64_t)transactionFee {
+    if (monero_pendingTransaction) {
+        return monero_pendingTransaction->fee();
+    }
+    return -1;
+}
+
 @end
