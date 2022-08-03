@@ -288,4 +288,42 @@ using namespace std;
     return -1;
 }
 
+- (NSString *)transactionErrorMessage {
+    string errorStr = "";
+    if (beldex_pendingTransaction) {
+        errorStr = beldex_pendingTransaction->errorString();
+    }
+    return objc_str_dup(errorStr);
+}
+
+- (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory {
+    NSMutableArray<BeldexTrxHistory *> *result = [NSMutableArray array];
+    if (beldex_wallet) {
+        Wallet::TransactionHistory *history = beldex_wallet->history();
+        if (history) {
+            history->refresh();
+            std::vector<Wallet::TransactionInfo *> allTransactionInfo = history->getAll();
+            for (std::size_t i = 0; i < history->count(); ++i) {
+                Wallet::TransactionInfo *transactionInfo = allTransactionInfo[i];
+                MoneroTrxHistory * trx = [[BeldexTrxHistory alloc] init];
+                trx.direction = (TrxDirection)transactionInfo->direction();
+                trx.isPending = transactionInfo->isPending();
+                trx.isFailed = transactionInfo->isFailed();
+                trx.amount = transactionInfo->amount();
+                trx.fee = transactionInfo->fee();
+                trx.confirmations = transactionInfo->confirmations();
+                trx.timestamp = transactionInfo->timestamp();
+                trx.blockHeight = transactionInfo->blockHeight();
+                trx.hashValue = objc_str_dup(transactionInfo->hash());
+                trx.label = objc_str_dup(transactionInfo->label());
+                trx.paymentId = objc_str_dup(transactionInfo->paymentId());
+                trx.unlockTime = transactionInfo->unlockTime();
+                [result addObject:trx];
+            }
+        }
+    }
+    return result;
+}
+
+
 @end
