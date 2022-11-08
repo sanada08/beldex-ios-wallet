@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +30,6 @@
                                 </state>
                                 <connections>
                                     <action selector="BackActionWithSender:" destination="iDU-jN-oQI" eventType="touchUpInside" id="9zB-z0-RsV"/>
-                                    <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="j8T-Iy-tIa"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aAd-PJ-p7v">
@@ -79,7 +79,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x3P-hX-7sZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486.95652173913049" y="231.69642857142856"/>
+            <point key="canvasLocation" x="1010" y="-429"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="Pb8-vL-vJh">
@@ -89,7 +89,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gI-ZU-n76">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4gI-ZU-n76">
                                 <rect key="frame" x="22" y="428" width="370" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="9Nl-W6-qXa"/>
@@ -97,7 +97,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7zi-Wg-fdU">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7zi-Wg-fdU">
                                 <rect key="frame" x="22" y="498" width="370" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="KyY-c8-vi2"/>
@@ -133,7 +133,6 @@
                                 </state>
                                 <connections>
                                     <action selector="BackActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="pz6-k8-TdM"/>
-                                    <action selector="createWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="J5l-vf-ImV"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -162,22 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WcU-G2-eqR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="486.95652173913049" y="-429.24107142857139"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
-            <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1792.753623188406" y="-115.17857142857142"/>
+            <point key="canvasLocation" x="368" y="-429"/>
         </scene>
         <!--WelcomeVC-->
         <scene sceneID="8ay-ZE-qOp">
@@ -188,7 +172,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pyk-Ak-Zk1">
-                                <rect key="frame" x="22" y="430.5" width="370" height="35"/>
+                                <rect key="frame" x="22" y="89" width="370" height="35"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="FCT-2m-9Z0"/>
@@ -203,7 +187,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FD-SK-5ES">
-                                <rect key="frame" x="22" y="498.5" width="370" height="35"/>
+                                <rect key="frame" x="22" y="146" width="370" height="35"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="t1s-bh-yGo"/>
@@ -217,16 +201,34 @@
                                     <action selector="restoreWalletActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="73p-bR-pi0"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6n-gC-pmj">
+                                <rect key="frame" x="22" y="203" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="eEE-wp-M0l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Node List">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="NodeActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="hHr-uj-teY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WDB-qa-fiX"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="6FD-SK-5ES" firstAttribute="top" secondItem="Pyk-Ak-Zk1" secondAttribute="bottom" constant="33" id="3gA-e8-b7h"/>
+                            <constraint firstItem="6FD-SK-5ES" firstAttribute="top" secondItem="Pyk-Ak-Zk1" secondAttribute="bottom" constant="22" id="3gA-e8-b7h"/>
+                            <constraint firstItem="O6n-gC-pmj" firstAttribute="trailing" secondItem="6FD-SK-5ES" secondAttribute="trailing" id="Cym-qI-F0u"/>
                             <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="centerX" secondItem="abx-Go-XWT" secondAttribute="centerX" id="SBE-uM-Ub5"/>
                             <constraint firstItem="WDB-qa-fiX" firstAttribute="trailing" secondItem="Pyk-Ak-Zk1" secondAttribute="trailing" constant="22" id="U8m-JR-24A"/>
-                            <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="centerY" secondItem="abx-Go-XWT" secondAttribute="centerY" id="fot-IL-mGO"/>
+                            <constraint firstItem="O6n-gC-pmj" firstAttribute="top" secondItem="6FD-SK-5ES" secondAttribute="bottom" constant="22" id="XZu-vN-RHd"/>
                             <constraint firstItem="6FD-SK-5ES" firstAttribute="leading" secondItem="Pyk-Ak-Zk1" secondAttribute="leading" id="jAQ-UP-1qY"/>
                             <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="leading" secondItem="WDB-qa-fiX" secondAttribute="leading" constant="22" id="lnR-E4-Mnz"/>
+                            <constraint firstItem="O6n-gC-pmj" firstAttribute="leading" secondItem="6FD-SK-5ES" secondAttribute="leading" id="nBo-Xb-BeT"/>
+                            <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="top" secondItem="WDB-qa-fiX" secondAttribute="top" constant="45" id="oU0-Fz-Mvn"/>
                             <constraint firstItem="6FD-SK-5ES" firstAttribute="trailing" secondItem="Pyk-Ak-Zk1" secondAttribute="trailing" id="w6A-WM-Fzs"/>
                         </constraints>
                     </view>
@@ -255,8 +257,87 @@
             </objects>
             <point key="canvasLocation" x="-1181.1594202898552" y="-429.24107142857139"/>
         </scene>
+        <!--Item 1-->
+        <scene sceneID="YgF-o0-jhv">
+            <objects>
+                <viewController storyboardIdentifier="NodeListViewController" id="NdN-Xd-F7k" customClass="NodeListViewController" customModule="beldex_ios_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZeQ-ww-d6I">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kQ-fO-xTp">
+                                <rect key="frame" x="22" y="88" width="44" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="G7G-ZA-8Zf"/>
+                                    <constraint firstAttribute="width" constant="44" id="VTt-I0-Mfq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackActionWithSender:" destination="NdN-Xd-F7k" eventType="touchUpInside" id="BAp-uO-9q8"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dzk-8y-uC2">
+                                <rect key="frame" x="0.0" y="132" width="414" height="764"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pgZ-rt-lRb">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9Lv-YU-nKk">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="fTE-QE-E0B">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-Wy-vx0">
+                                <rect key="frame" x="370" y="88" width="22" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="Rub-It-l1r"/>
+                                    <constraint firstAttribute="width" constant="22" id="oga-hp-S85"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="icons8-app-store-24"/>
+                                <connections>
+                                    <action selector="Plus_ActionWithSender:" destination="NdN-Xd-F7k" eventType="touchUpInside" id="0ed-Ih-o7H"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="bQ3-g6-SwG"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                        <constraints>
+                            <constraint firstItem="bQ3-g6-SwG" firstAttribute="trailing" secondItem="NNo-Wy-vx0" secondAttribute="trailing" constant="22" id="4Ep-n4-vL5"/>
+                            <constraint firstItem="dzk-8y-uC2" firstAttribute="top" secondItem="5kQ-fO-xTp" secondAttribute="bottom" constant="22" id="Jv8-Fb-9GV"/>
+                            <constraint firstItem="NNo-Wy-vx0" firstAttribute="centerY" secondItem="5kQ-fO-xTp" secondAttribute="centerY" id="Ujq-et-LxV"/>
+                            <constraint firstAttribute="bottom" secondItem="dzk-8y-uC2" secondAttribute="bottom" id="XSu-RZ-0O9"/>
+                            <constraint firstItem="5kQ-fO-xTp" firstAttribute="top" secondItem="bQ3-g6-SwG" secondAttribute="top" constant="44" id="Xnt-Eh-JMR"/>
+                            <constraint firstItem="5kQ-fO-xTp" firstAttribute="leading" secondItem="ZeQ-ww-d6I" secondAttribute="leading" constant="22" id="YOU-ke-ulI"/>
+                            <constraint firstItem="dzk-8y-uC2" firstAttribute="leading" secondItem="bQ3-g6-SwG" secondAttribute="leading" id="alg-wf-det"/>
+                            <constraint firstItem="dzk-8y-uC2" firstAttribute="trailing" secondItem="bQ3-g6-SwG" secondAttribute="trailing" id="wy1-78-PhI"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="eIi-Hj-26g"/>
+                    <connections>
+                        <outlet property="collectionView" destination="dzk-8y-uC2" id="jjE-CW-5jp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vIN-TO-hOs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-271.01449275362319" y="222.99107142857142"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="icons8-app-store-24" width="24" height="24"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

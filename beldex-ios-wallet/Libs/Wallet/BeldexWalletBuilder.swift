@@ -31,7 +31,7 @@ public struct BDXWalletBuilder {
     public func fromSeed(_ seed: Seed) -> BDXWalletBuilder {
         var builder = self
         builder.mode = .fromSeed(seed: seed)
-        print("builder.mode ----> \(seed)")
+       // print("builder.mode ----> \(seed)")
         return builder
     }
 
@@ -42,7 +42,7 @@ public struct BDXWalletBuilder {
             case .fromScratch:
                 wrapper = self.createWalletFromScratch()
             case .fromSeed(let seed):
-                print("------ inside case ----->")
+               // print("------ inside case ----->")
                 wrapper = self.recoverWalletFromSeed(seed)
             }
         }
