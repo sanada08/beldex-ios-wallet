@@ -31,6 +31,12 @@ class WelcomeVC: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func TabBarAction(sender:UIButton){
+        
+    }
+    
+    
+    
    
     /*
     // MARK: - Navigation

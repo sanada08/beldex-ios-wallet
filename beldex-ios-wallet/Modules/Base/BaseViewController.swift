@@ -1,9 +1,6 @@
 //
 //  BaseViewController.swift
-//  beldex-ios-wallet
-//
-//  Created by Sanada Yukimura on 6/13/22.
-//
+
 
 import UIKit
 
@@ -119,4 +116,3 @@ class BaseViewController: UIViewController {
     
     
 }
-

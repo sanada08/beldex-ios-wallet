@@ -62,6 +62,10 @@
 		603808E029153380001186C0 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808DF2915337F001186C0 /* UIViewController + Alert.swift */; };
 		603808E2291533B8001186C0 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808E1291533B7001186C0 /* UIViewController + Ext.swift */; };
 		603808E429153400001186C0 /* Character + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808E329153400001186C0 /* Character + Ext.swift */; };
+		60754422291B7BF30026B028 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754421291B7BF30026B028 /* BaseButton.swift */; };
+		60754424291B7C330026B028 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754423291B7C330026B028 /* TabBarController.swift */; };
+		60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754425291B7C7F0026B028 /* SettingsViewController.swift */; };
+		60754429291BA2280026B028 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754428291BA2280026B028 /* VisualEffectView.swift */; };
 		60B512132913CBB80005F44F /* NodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512122913CBB80005F44F /* NodeListViewController.swift */; };
 		60B512162913D3130005F44F /* MyWalletNodeXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */; };
 		60B512182913D3170005F44F /* MyWalletNodeXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */; };
@@ -158,6 +162,10 @@
 		603808DF2915337F001186C0 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		603808E1291533B7001186C0 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		603808E329153400001186C0 /* Character + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character + Ext.swift"; sourceTree = "<group>"; };
+		60754421291B7BF30026B028 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		60754423291B7C330026B028 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		60754425291B7C7F0026B028 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		60754428291BA2280026B028 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
 		60B512122913CBB80005F44F /* NodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListViewController.swift; sourceTree = "<group>"; };
 		60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletNodeXibCell.swift; sourceTree = "<group>"; };
 		60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWalletNodeXibCell.xib; sourceTree = "<group>"; };
@@ -215,6 +223,7 @@
 				60B512192913E0AE0005F44F /* NodeList */,
 				044C63072856FA0D00A76C2E /* Base */,
 				040BCE6F2848A28800C43958 /* Services */,
+				60754427291BA1F60026B028 /* Components */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -279,6 +288,8 @@
 		044C63072856FA0D00A76C2E /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				60754423291B7C330026B028 /* TabBarController.swift */,
+				60754421291B7BF30026B028 /* BaseButton.swift */,
 				044C63082856FA2E00A76C2E /* BaseViewController.swift */,
 				044C630A2856FA8000A76C2E /* NavigationController.swift */,
 			);
@@ -334,7 +345,6 @@
 				60B512142913CC470005F44F /* XIBCells */,
 				040BCE6828489DB000C43958 /* Modules */,
 				603808B0291525ED001186C0 /* Resource */,
-				0460748928488F7A00D2AF54 /* ViewController.swift */,
 				0460748B28488F7A00D2AF54 /* Main.storyboard */,
 			);
 			path = "beldex-ios-wallet";
@@ -401,6 +411,7 @@
 		603808B0291525ED001186C0 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				0460748928488F7A00D2AF54 /* ViewController.swift */,
 				603808B329152696001186C0 /* InfoPlist.strings */,
 				603808B129152657001186C0 /* Localizable.strings */,
 				0460749028488F7B00D2AF54 /* LaunchScreen.storyboard */,
@@ -425,6 +436,14 @@
 			path = RestoreWallet;
 			sourceTree = "<group>";
 		};
+		60754427291BA1F60026B028 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				60754428291BA2280026B028 /* VisualEffectView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		60B512142913CC470005F44F /* XIBCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -439,6 +458,7 @@
 			children = (
 				603808962914F0FB001186C0 /* Node.swift */,
 				60B512122913CBB80005F44F /* NodeListViewController.swift */,
+				60754425291B7C7F0026B028 /* SettingsViewController.swift */,
 			);
 			path = NodeList;
 			sourceTree = "<group>";
@@ -742,15 +762,18 @@
 				603808CA29152E89001186C0 /* NSMutableString + Ext.swift in Sources */,
 				603808DD29153324001186C0 /* UIView + Extension.swift in Sources */,
 				603808A5291522E2001186C0 /* AppManager.swift in Sources */,
+				60754424291B7C330026B028 /* TabBarController.swift in Sources */,
 				60B512372913E6170005F44F /* Postable.swift in Sources */,
 				044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */,
 				603808AE29152528001186C0 /* RSA.swift in Sources */,
+				60754429291BA2280026B028 /* VisualEffectView.swift in Sources */,
 				603808C829152E41001186C0 /* NSAttributedString + Ext.swift in Sources */,
 				044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */,
 				040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */,
 				603808D42915310C001186C0 /* UIImage + Ext.swift in Sources */,
 				603808A82915237A001186C0 /* Debug + Log.swift in Sources */,
 				60B5121D2913E1240005F44F /* AppLanguage.swift in Sources */,
+				60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */,
 				603808C229152CC6001186C0 /* Decimal + Ext.swift in Sources */,
 				603808E429153400001186C0 /* Character + Ext.swift in Sources */,
 				603808DE29153324001186C0 /* WKActivityIndicatorView.swift in Sources */,
@@ -769,6 +792,7 @@
 				040BCE622848942500C43958 /* BeldexWalletWrapper.mm in Sources */,
 				60B512212913E2560005F44F /* Observer.swift in Sources */,
 				603808C429152D5E001186C0 /* String + Ext.swift in Sources */,
+				60754422291B7BF30026B028 /* BaseButton.swift in Sources */,
 				60B5121F2913E1FE0005F44F /* Observable.swift in Sources */,
 				040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */,
 				603808D8291531BA001186C0 /* UITextField + Placeholder.swift in Sources */,
