@@ -21,7 +21,7 @@ class WalletDetailsViewController: UIViewController {
         print("--Wallet-publicAddress--> \(WalletpublicAddress!)")
         
         self.lbladdress.text = WalletpublicAddress!
-        self.lblnode.text = "Node : \(WalletDefaults.shared.node)"
+        self.lblnode.text = "\(WalletDefaults.shared.node)"
         
     }
     
