@@ -17,7 +17,7 @@ class NodeListViewController: UIViewController {
         }
     }
     
-    var arrlist = ["node.imonero.org:18081","node.moneroworld.com:18089","opennode.xmr-tw.org:18089","uwillrunanodesoon.moneroworld.com:18089"]
+    var arrlist = ["publicnode2.rpcnode.stream:443","node.moneroworld.com:18089","opennode.xmr-tw.org:18089","uwillrunanodesoon.moneroworld.com:18089"]
     private var selectedIndex: Int?
     private var fpsCaches = [String: Int]()
     private var nodeList = [NodeOption](){
@@ -38,23 +38,6 @@ class NodeListViewController: UIViewController {
         
         
     }
-//    private func postDataSource() {
-//        DispatchQueue.global().async {
-//             let sections = [self.nodeList.map({
-//                var model = $0
-//                model.fps = self.fpsCaches[$0.node]
-//                self.pingNode($0.node)
-//                return
-//            })]
-//            DispatchQueue.main.async {
-//               // self.dataSourceOb.newState(sections)
-//            }
-//        }
-//    }
-//    private func pingNode(_ url: String) {
-//
-//    }
-    
     
     @IBAction func Plus_Action(sender:UIButton){
         let alertController = UIAlertController(title: "Add Node", message: "", preferredStyle: UIAlertController.Style.alert)
@@ -91,6 +74,10 @@ extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyWalletNodeXibCell.identifier, for: indexPath) as! MyWalletNodeXibCell
         
         cell.lblmyaddress.text = arrlist[indexPath.item]
+        if indexPath.item == 0 {
+            WalletDefaults.shared.node = arrlist[indexPath.item]
+            print("---Default---> \(WalletDefaults.shared.node)")
+        }
         
         return cell
     }
@@ -103,21 +90,9 @@ extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDe
         if let cell = collectionView.cellForItem(at: indexPath) as? MyWalletNodeXibCell {
             cell.viewcolour.layer.backgroundColor = UIColor.green.cgColor
             cell.viewcolour.layer.borderColor = UIColor.white.cgColor
-            
-
+            WalletDefaults.shared.node = arrlist[indexPath.item]
+            print("---Select Time Node---> \(WalletDefaults.shared.node)")
         }
-        
-//        guard indexPath.item != selectedIndex else {
-//            return
-//        }
-//        var nodeList = self.nodeList
-//        nodeList[indexPath.item].isSelected = true
-//        if let index = selectedIndex {
-//            nodeList[index].isSelected = false
-//            if index >= arrlist.count {
-//                print("--IOS--> \(index)")
-//            }
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

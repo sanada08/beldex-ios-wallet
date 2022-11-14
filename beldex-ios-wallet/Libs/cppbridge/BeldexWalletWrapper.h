@@ -5,7 +5,7 @@
 //  Created by Sanada Yukimura on 6/2/22.
 //
 #import <Foundation/Foundation.h>
-
+#import "BeldexSubAddress.h"
 @class BeldexWalletWrapper;
 
 
@@ -40,4 +40,6 @@
 
 - (NSString *)getSeedString:(NSString *)language;
 + (NSString *)displayAmount:(uint64_t)amount;
+- (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index;
+
 @end

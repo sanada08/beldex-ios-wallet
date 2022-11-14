@@ -418,13 +418,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dow-sd-l3f">
+                                <rect key="frame" x="22" y="212" width="370" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mQ5-o3-i84"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="ubT-R5-lZo" firstAttribute="top" secondItem="o4a-LW-7P6" secondAttribute="bottom" constant="22" id="2lf-Gq-BC2"/>
                             <constraint firstItem="ypk-Rl-lgv" firstAttribute="top" secondItem="mQ5-o3-i84" secondAttribute="top" constant="44" id="6DT-Ec-TGP"/>
+                            <constraint firstItem="dow-sd-l3f" firstAttribute="trailing" secondItem="ubT-R5-lZo" secondAttribute="trailing" id="JXX-7X-45W"/>
+                            <constraint firstItem="dow-sd-l3f" firstAttribute="leading" secondItem="ubT-R5-lZo" secondAttribute="leading" id="R8p-IY-2L6"/>
                             <constraint firstItem="mQ5-o3-i84" firstAttribute="trailing" secondItem="o4a-LW-7P6" secondAttribute="trailing" constant="22" id="aN9-dh-Kat"/>
+                            <constraint firstItem="dow-sd-l3f" firstAttribute="top" secondItem="ubT-R5-lZo" secondAttribute="bottom" constant="22" id="gll-Tu-DXs"/>
                             <constraint firstItem="ypk-Rl-lgv" firstAttribute="leading" secondItem="AkE-ac-puw" secondAttribute="leading" constant="22" id="huU-6I-Wx1"/>
                             <constraint firstItem="ubT-R5-lZo" firstAttribute="trailing" secondItem="o4a-LW-7P6" secondAttribute="trailing" id="mtM-mr-WqY"/>
                             <constraint firstItem="ubT-R5-lZo" firstAttribute="leading" secondItem="o4a-LW-7P6" secondAttribute="leading" id="pL2-lY-ScH"/>
@@ -434,8 +443,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="XpU-kV-KXb"/>
                     <connections>
-                        <outlet property="lbladdress" destination="o4a-LW-7P6" id="HwH-aW-PMo"/>
-                        <outlet property="lblsync" destination="ubT-R5-lZo" id="y9R-gT-aDq"/>
+                        <outlet property="lbladdress" destination="o4a-LW-7P6" id="zPo-hp-kM5"/>
+                        <outlet property="lblnode" destination="ubT-R5-lZo" id="IrL-Vi-utp"/>
+                        <outlet property="lblsync" destination="dow-sd-l3f" id="2f9-5k-9Sk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEH-Ms-HO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
