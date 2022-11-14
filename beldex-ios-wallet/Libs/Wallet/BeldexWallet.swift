@@ -63,6 +63,15 @@ public class BDXWallet {
     public func connectToDaemon(address: String,result: @escaping (Bool) -> Void) {
         result(self.walletWrapper.connect(toDaemon: address))
     }
+    
+    public func pasue() {
+        walletWrapper.pauseRefresh()
+    }
+    
+    public func start() {
+        walletWrapper.startRefresh()
+    }
+    
 }
 
 extension BDXWallet {

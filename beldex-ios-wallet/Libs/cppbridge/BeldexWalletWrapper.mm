@@ -135,4 +135,19 @@ using namespace std;
     }
     return 0;
 }
+
+- (void)startRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->startRefresh();
+    }
+}
+
+- (void)pauseRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->pauseRefresh();
+    }
+}
+
+
+
 @end

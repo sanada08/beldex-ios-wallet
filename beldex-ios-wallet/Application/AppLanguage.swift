@@ -12,10 +12,10 @@ private struct LProjPath {
 public func LocalizedString(key: String, comment: String) -> String {
     let path: String?
     switch AppLanguage.manager.current {
-    case .zh:
-        path = LProjPath.zh_Hans
     case .en:
         path = LProjPath.en
+    case .zh:
+        path = LProjPath.zh_Hans
     }
     guard
         let _path = path,

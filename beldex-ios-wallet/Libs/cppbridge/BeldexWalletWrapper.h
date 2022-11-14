@@ -11,7 +11,8 @@
 
 @interface BeldexWalletWrapper : NSObject
 @property (nonatomic, copy, readonly) NSString * name;
-
+- (void)startRefresh;
+- (void)pauseRefresh;
 
 @property (nonatomic, assign, readonly) BOOL isSynchronized;
 @property (nonatomic, assign, readonly) int status;

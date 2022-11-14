@@ -32,7 +32,8 @@ class WelcomeVC: UIViewController {
     }
     
     @IBAction func TabBarAction(sender:UIButton){
-        
+        let registerVC = TabBarController()
+        navigationController!.pushViewController(registerVC, animated: true)
     }
     
     

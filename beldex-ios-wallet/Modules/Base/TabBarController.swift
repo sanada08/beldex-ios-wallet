@@ -14,9 +14,9 @@ class TabBarController: UITabBarController {
             get {
                 switch self {
                 case .assets:
-                    return LocalizedString(key: "assets", comment: "资产")
+                    return LocalizedString(key: "assets", comment: "Assets")
                 case .settings:
-                    return LocalizedString(key: "settings", comment: "设置")
+                    return LocalizedString(key: "settings", comment: "Settings")
                 }
             }
         }
@@ -69,11 +69,11 @@ class TabBarController: UITabBarController {
         
         /// TabBar
         do {
-            self.tabBar.layer.shadowColor = UIColor.green.cgColor
+            self.tabBar.layer.shadowColor = UIColor.white.cgColor
             self.tabBar.layer.shadowOffset = CGSize(width: 0, height: -3)
             self.tabBar.layer.shadowRadius = 3
             self.tabBar.layer.shadowOpacity = 0.3
-            self.tabBar.backgroundColor = UIColor.red
+            self.tabBar.backgroundColor = UIColor.systemGreen
             self.tabBar.tintColor = UIColor.yellow
             if #available(iOS 13, *) {
                 let standardAppearance = self.tabBar.standardAppearance

@@ -16,8 +16,15 @@ class NodeListViewController: UIViewController {
             collectionView.register(MyWalletNodeXibCell.nib, forCellWithReuseIdentifier: MyWalletNodeXibCell.identifier)
         }
     }
+    private var wallet: BDXWallet?
+    lazy var refreshState = { return Observable<Bool>(false) }()
+    lazy var reciveState = { return Observable<Bool>(false) }()
+    lazy var conncetingState = { return Observable<Bool>(false) }()
+    private var connecting: Bool { return conncetingState.value }
     
-    var arrlist = ["node.imonero.org:18081","node.moneroworld.com:18089","opennode.xmr-tw.org:18089","uwillrunanodesoon.moneroworld.com:18089"]
+    private var listening = false
+    
+    var arrlist = ["publicnode2.rpcnode.stream:443","node.moneroworld.com:18089","opennode.xmr-tw.org:18089","uwillrunanodesoon.moneroworld.com:18089"]
     private var selectedIndex: Int?
     private var fpsCaches = [String: Int]()
     private var nodeList = [NodeOption](){
@@ -35,25 +42,24 @@ class NodeListViewController: UIViewController {
         layout.scrollDirection = .vertical //depending upon direction of collection view
         self.collectionView?.setCollectionViewLayout(layout, animated: true)
      
-        
+        self.refresh()
         
     }
-//    private func postDataSource() {
-//        DispatchQueue.global().async {
-//             let sections = [self.nodeList.map({
-//                var model = $0
-//                model.fps = self.fpsCaches[$0.node]
-//                self.pingNode($0.node)
-//                return
-//            })]
-//            DispatchQueue.main.async {
-//               // self.dataSourceOb.newState(sections)
-//            }
-//        }
-//    }
-//    private func pingNode(_ url: String) {
-//
-//    }
+    
+    
+    func refresh() {
+        refreshState.value = false
+        if let wallet = self.wallet {
+            if listening {
+                wallet.pasue()
+                wallet.start()
+            } else {
+                connect(wallet: wallet)
+            }
+        } else {
+            init_wallet()
+        }
+    }
     
     
     @IBAction func Plus_Action(sender:UIButton){
@@ -77,6 +83,16 @@ class NodeListViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    
+    
+    private func connect(wallet: BDXWallet) {
+        
+    }
+    
+    private func init_wallet() {
+        
+    }
+    
 }
 extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -91,6 +107,10 @@ extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyWalletNodeXibCell.identifier, for: indexPath) as! MyWalletNodeXibCell
         
         cell.lblmyaddress.text = arrlist[indexPath.item]
+        if indexPath.item == 0 {
+            // this is default node add to userdefault
+            WalletDefaults.shared.node = arrlist[indexPath.item]
+        }
         
         return cell
     }
@@ -103,21 +123,8 @@ extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDe
         if let cell = collectionView.cellForItem(at: indexPath) as? MyWalletNodeXibCell {
             cell.viewcolour.layer.backgroundColor = UIColor.green.cgColor
             cell.viewcolour.layer.borderColor = UIColor.white.cgColor
-            
 
         }
-        
-//        guard indexPath.item != selectedIndex else {
-//            return
-//        }
-//        var nodeList = self.nodeList
-//        nodeList[indexPath.item].isSelected = true
-//        if let index = selectedIndex {
-//            nodeList[index].isSelected = false
-//            if index >= arrlist.count {
-//                print("--IOS--> \(index)")
-//            }
-//        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

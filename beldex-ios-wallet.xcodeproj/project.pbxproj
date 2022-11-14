@@ -66,6 +66,23 @@
 		60754424291B7C330026B028 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754423291B7C330026B028 /* TabBarController.swift */; };
 		60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754425291B7C7F0026B028 /* SettingsViewController.swift */; };
 		60754429291BA2280026B028 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754428291BA2280026B028 /* VisualEffectView.swift */; };
+		6075442D291BB1810026B028 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075442C291BB1810026B028 /* BaseTableViewController.swift */; };
+		60754430291BB2130026B028 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075442F291BB2130026B028 /* SettingsViewModel.swift */; };
+		60754433291BB2770026B028 /* SettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754432291BB2770026B028 /* SettingsViewCell.swift */; };
+		60754435291BB31B0026B028 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754434291BB31B0026B028 /* BaseTableViewCell.swift */; };
+		60754437291BB4660026B028 /* TableViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754436291BB4660026B028 /* TableViewable.swift */; };
+		60754439291BB50C0026B028 /* TableViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754438291BB50C0026B028 /* TableViewPlaceholder.swift */; };
+		6075443C291BB5C10026B028 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075443B291BB5C10026B028 /* SettingsItem.swift */; };
+		6075443E291BB6CA0026B028 /* UITableView + Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075443D291BB6CA0026B028 /* UITableView + Reusable.swift */; };
+		60754440291BB7340026B028 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075443F291BB7340026B028 /* Reusable.swift */; };
+		60754442291BC2030026B028 /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754441291BC2030026B028 /* NodeSettingsViewController.swift */; };
+		60754444291BC2570026B028 /* NodeSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754443291BC2570026B028 /* NodeSettingsViewModel.swift */; };
+		60754446291BC2A70026B028 /* NodeSettingsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754445291BC2A70026B028 /* NodeSettingsViewCell.swift */; };
+		6075444A291BC3500026B028 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754448291BC3500026B028 /* KeyChain.swift */; };
+		6075444B291BC3500026B028 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754449291BC3500026B028 /* UserDefaults.swift */; };
+		6075444E291BC3F90026B028 /* LocalAuthOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075444D291BC3F90026B028 /* LocalAuthOptions.swift */; };
+		60754450291BC46D0026B028 /* SubAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6075444F291BC46D0026B028 /* SubAddress.swift */; };
+		60754453291BC6FF0026B028 /* MoneroSubAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 60754452291BC6FF0026B028 /* MoneroSubAddress.m */; };
 		60B512132913CBB80005F44F /* NodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512122913CBB80005F44F /* NodeListViewController.swift */; };
 		60B512162913D3130005F44F /* MyWalletNodeXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */; };
 		60B512182913D3170005F44F /* MyWalletNodeXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */; };
@@ -166,6 +183,24 @@
 		60754423291B7C330026B028 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		60754425291B7C7F0026B028 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		60754428291BA2280026B028 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		6075442C291BB1810026B028 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		6075442F291BB2130026B028 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		60754432291BB2770026B028 /* SettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewCell.swift; sourceTree = "<group>"; };
+		60754434291BB31B0026B028 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		60754436291BB4660026B028 /* TableViewable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewable.swift; sourceTree = "<group>"; };
+		60754438291BB50C0026B028 /* TableViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewPlaceholder.swift; sourceTree = "<group>"; };
+		6075443B291BB5C10026B028 /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		6075443D291BB6CA0026B028 /* UITableView + Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView + Reusable.swift"; sourceTree = "<group>"; };
+		6075443F291BB7340026B028 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		60754441291BC2030026B028 /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
+		60754443291BC2570026B028 /* NodeSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewModel.swift; sourceTree = "<group>"; };
+		60754445291BC2A70026B028 /* NodeSettingsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewCell.swift; sourceTree = "<group>"; };
+		60754448291BC3500026B028 /* KeyChain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
+		60754449291BC3500026B028 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		6075444D291BC3F90026B028 /* LocalAuthOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalAuthOptions.swift; sourceTree = "<group>"; };
+		6075444F291BC46D0026B028 /* SubAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubAddress.swift; sourceTree = "<group>"; };
+		60754451291BC6FF0026B028 /* MoneroSubAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MoneroSubAddress.h; sourceTree = "<group>"; };
+		60754452291BC6FF0026B028 /* MoneroSubAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MoneroSubAddress.m; sourceTree = "<group>"; };
 		60B512122913CBB80005F44F /* NodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListViewController.swift; sourceTree = "<group>"; };
 		60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletNodeXibCell.swift; sourceTree = "<group>"; };
 		60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWalletNodeXibCell.xib; sourceTree = "<group>"; };
@@ -215,6 +250,7 @@
 		040BCE6828489DB000C43958 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				60754447291BC3500026B028 /* Storage */,
 				044C62FA2848B61A00A76C2E /* WelcomeVC.swift */,
 				044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */,
 				040BCE6D2848A0AE00C43958 /* Wallet.swift */,
@@ -224,6 +260,7 @@
 				044C63072856FA0D00A76C2E /* Base */,
 				040BCE6F2848A28800C43958 /* Services */,
 				60754427291BA1F60026B028 /* Components */,
+				6075442A291BB0D30026B028 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -249,6 +286,7 @@
 		044C62F72848B34E00A76C2E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6075444F291BC46D0026B028 /* SubAddress.swift */,
 				044C62F82848B36700A76C2E /* Seed.swift */,
 				044C63002848C7F300A76C2E /* Keys.swift */,
 			);
@@ -389,6 +427,8 @@
 		046074BA2848921E00D2AF54 /* cppbridge */ = {
 			isa = PBXGroup;
 			children = (
+				60754451291BC6FF0026B028 /* MoneroSubAddress.h */,
+				60754452291BC6FF0026B028 /* MoneroSubAddress.m */,
 				040BCE602848942400C43958 /* beldex-ios-wallet-Bridging-Header.h */,
 				046074BC284892A800D2AF54 /* BeldexConfig.h */,
 				040BCE612848942500C43958 /* BeldexWalletWrapper.mm */,
@@ -439,9 +479,76 @@
 		60754427291BA1F60026B028 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6075444C291BC3CB0026B028 /* LocalAuth */,
+				6075442B291BB1540026B028 /* TableView */,
 				60754428291BA2280026B028 /* VisualEffectView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		6075442A291BB0D30026B028 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				6075443A291BB5930026B028 /* Models */,
+				60754431291BB2510026B028 /* Views */,
+				6075442E291BB1F00026B028 /* ViewModels */,
+				60754425291B7C7F0026B028 /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		6075442B291BB1540026B028 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				6075443F291BB7340026B028 /* Reusable.swift */,
+				6075443D291BB6CA0026B028 /* UITableView + Reusable.swift */,
+				60754438291BB50C0026B028 /* TableViewPlaceholder.swift */,
+				60754436291BB4660026B028 /* TableViewable.swift */,
+				60754434291BB31B0026B028 /* BaseTableViewCell.swift */,
+				6075442C291BB1810026B028 /* BaseTableViewController.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		6075442E291BB1F00026B028 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6075442F291BB2130026B028 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		60754431291BB2510026B028 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				60754432291BB2770026B028 /* SettingsViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6075443A291BB5930026B028 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6075443B291BB5C10026B028 /* SettingsItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		60754447291BC3500026B028 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				60754448291BC3500026B028 /* KeyChain.swift */,
+				60754449291BC3500026B028 /* UserDefaults.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		6075444C291BC3CB0026B028 /* LocalAuth */ = {
+			isa = PBXGroup;
+			children = (
+				6075444D291BC3F90026B028 /* LocalAuthOptions.swift */,
+			);
+			path = LocalAuth;
 			sourceTree = "<group>";
 		};
 		60B512142913CC470005F44F /* XIBCells */ = {
@@ -456,9 +563,11 @@
 		60B512192913E0AE0005F44F /* NodeList */ = {
 			isa = PBXGroup;
 			children = (
+				60754445291BC2A70026B028 /* NodeSettingsViewCell.swift */,
+				60754443291BC2570026B028 /* NodeSettingsViewModel.swift */,
+				60754441291BC2030026B028 /* NodeSettingsViewController.swift */,
 				603808962914F0FB001186C0 /* Node.swift */,
 				60B512122913CBB80005F44F /* NodeListViewController.swift */,
-				60754425291B7C7F0026B028 /* SettingsViewController.swift */,
 			);
 			path = NodeList;
 			sourceTree = "<group>";
@@ -752,30 +861,41 @@
 				60B512132913CBB80005F44F /* NodeListViewController.swift in Sources */,
 				040BCE762848A5E600C43958 /* BeldexWalletBuilder.swift in Sources */,
 				603808A3291520A8001186C0 /* AppInfo.swift in Sources */,
+				60754430291BB2130026B028 /* SettingsViewModel.swift in Sources */,
 				603808C629152DDD001186C0 /* Dictionary + Ext.swift in Sources */,
 				60B512162913D3130005F44F /* MyWalletNodeXibCell.swift in Sources */,
 				603808CC29152F33001186C0 /* UIApplication + Ext.swift in Sources */,
+				60754439291BB50C0026B028 /* TableViewPlaceholder.swift in Sources */,
 				040BCE712848A2B500C43958 /* WalletService.swift in Sources */,
 				603808D029152FE4001186C0 /* UIFont + Ext.swift in Sources */,
 				044C63062848D11C00A76C2E /* ImportWalletViewController.swift in Sources */,
 				603808972914F0FB001186C0 /* Node.swift in Sources */,
+				60754440291BB7340026B028 /* Reusable.swift in Sources */,
 				603808CA29152E89001186C0 /* NSMutableString + Ext.swift in Sources */,
+				6075443C291BB5C10026B028 /* SettingsItem.swift in Sources */,
 				603808DD29153324001186C0 /* UIView + Extension.swift in Sources */,
 				603808A5291522E2001186C0 /* AppManager.swift in Sources */,
+				60754444291BC2570026B028 /* NodeSettingsViewModel.swift in Sources */,
 				60754424291B7C330026B028 /* TabBarController.swift in Sources */,
 				60B512372913E6170005F44F /* Postable.swift in Sources */,
 				044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */,
+				60754435291BB31B0026B028 /* BaseTableViewCell.swift in Sources */,
 				603808AE29152528001186C0 /* RSA.swift in Sources */,
 				60754429291BA2280026B028 /* VisualEffectView.swift in Sources */,
 				603808C829152E41001186C0 /* NSAttributedString + Ext.swift in Sources */,
 				044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */,
 				040BCE6E2848A0AE00C43958 /* Wallet.swift in Sources */,
+				60754453291BC6FF0026B028 /* MoneroSubAddress.m in Sources */,
 				603808D42915310C001186C0 /* UIImage + Ext.swift in Sources */,
+				6075443E291BB6CA0026B028 /* UITableView + Reusable.swift in Sources */,
 				603808A82915237A001186C0 /* Debug + Log.swift in Sources */,
 				60B5121D2913E1240005F44F /* AppLanguage.swift in Sources */,
+				60754433291BB2770026B028 /* SettingsViewCell.swift in Sources */,
 				60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */,
 				603808C229152CC6001186C0 /* Decimal + Ext.swift in Sources */,
+				6075444E291BC3F90026B028 /* LocalAuthOptions.swift in Sources */,
 				603808E429153400001186C0 /* Character + Ext.swift in Sources */,
+				60754450291BC46D0026B028 /* SubAddress.swift in Sources */,
 				603808DE29153324001186C0 /* WKActivityIndicatorView.swift in Sources */,
 				603808D2291530A9001186C0 /* UIButton + Ext.swift in Sources */,
 				044C630B2856FA8000A76C2E /* NavigationController.swift in Sources */,
@@ -795,17 +915,23 @@
 				60754422291B7BF30026B028 /* BaseButton.swift in Sources */,
 				60B5121F2913E1FE0005F44F /* Observable.swift in Sources */,
 				040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */,
+				6075442D291BB1810026B028 /* BaseTableViewController.swift in Sources */,
 				603808D8291531BA001186C0 /* UITextField + Placeholder.swift in Sources */,
 				044C63012848C7F300A76C2E /* Keys.swift in Sources */,
 				603808D62915316C001186C0 /* UINavigationController + Ext.swift in Sources */,
+				60754437291BB4660026B028 /* TableViewable.swift in Sources */,
 				603808E2291533B8001186C0 /* UIViewController + Ext.swift in Sources */,
 				0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */,
 				044C63092856FA2E00A76C2E /* BaseViewController.swift in Sources */,
+				60754446291BC2A70026B028 /* NodeSettingsViewCell.swift in Sources */,
 				044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */,
 				603808C029152C67001186C0 /* CGSize + Ext.swift in Sources */,
 				603808BA29152A9D001186C0 /* Array + Ext.swift in Sources */,
 				603808AC29152466001186C0 /* DispatchQueuePool.swift in Sources */,
+				6075444A291BC3500026B028 /* KeyChain.swift in Sources */,
 				044C62F92848B36700A76C2E /* Seed.swift in Sources */,
+				60754442291BC2030026B028 /* NodeSettingsViewController.swift in Sources */,
+				6075444B291BC3500026B028 /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
