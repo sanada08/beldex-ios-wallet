@@ -1,9 +1,6 @@
 //
 //  NavigationController.swift
-//  beldex-ios-wallet
-//
-//  Created by Sanada Yukimura on 6/13/22.
-//
+
 
 import UIKit
 
@@ -132,6 +129,8 @@ class NavigationController: UINavigationController {
         if #available(iOS 13.0, *) {
             navigationBar.standardAppearance.shadowImage = UIImage()
             navigationBar.standardAppearance.shadowColor = .clear
+        } else if #available(iOS 11.0, *) {
+            navigationBar.shadowImage = UIImage()
         } else {
             let bottomLine = navigationBar.findView({ $0.height <= 1 })
             bottomLine?.isHidden = true
@@ -173,4 +172,3 @@ extension NavigationController: UINavigationControllerDelegate, UIGestureRecogni
         return true
     }
 }
-
