@@ -10,6 +10,7 @@ import UIKit
 class WalletDetailsViewController: UIViewController {
     
     @IBOutlet weak var lbladdress:UILabel!
+    @IBOutlet weak var lblnode:UILabel!
     @IBOutlet weak var lblsync:UILabel!
 
     override func viewDidLoad() {
@@ -20,6 +21,7 @@ class WalletDetailsViewController: UIViewController {
         print("--Wallet-publicAddress--> \(WalletpublicAddress!)")
         
         self.lbladdress.text = WalletpublicAddress!
+        self.lblnode.text = "Node : \(WalletDefaults.shared.node)"
         
     }
     
