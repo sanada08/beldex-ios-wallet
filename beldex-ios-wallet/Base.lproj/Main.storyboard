@@ -135,15 +135,33 @@
                                     <action selector="BackActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="pz6-k8-TdM"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJK-dF-RRI">
+                                <rect key="frame" x="22" y="332" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="nda-hW-9Od"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Create Wallet">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="nameActionWithSender:" destination="bsD-CF-Jxy" eventType="touchUpInside" id="F4f-2K-CF5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="EmZ-Sl-2fp"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
+                            <constraint firstItem="oJK-dF-RRI" firstAttribute="leading" secondItem="pVv-FA-qK1" secondAttribute="leading" id="40g-2w-on4"/>
                             <constraint firstItem="pVv-FA-qK1" firstAttribute="leading" secondItem="EmZ-Sl-2fp" secondAttribute="leading" constant="22" id="Cpx-Gp-KbA"/>
+                            <constraint firstItem="oJK-dF-RRI" firstAttribute="top" secondItem="pVv-FA-qK1" secondAttribute="bottom" constant="22" id="FBZ-EO-RHq"/>
                             <constraint firstItem="EmZ-Sl-2fp" firstAttribute="trailing" secondItem="4gI-ZU-n76" secondAttribute="trailing" constant="22" id="J8Z-4Y-8kj"/>
                             <constraint firstItem="7zi-Wg-fdU" firstAttribute="top" secondItem="4gI-ZU-n76" secondAttribute="bottom" constant="30" id="JA7-Cp-5vh"/>
                             <constraint firstItem="UiC-TW-g9h" firstAttribute="top" secondItem="EmZ-Sl-2fp" secondAttribute="top" constant="44" id="LBO-5G-Q3e"/>
                             <constraint firstItem="4gI-ZU-n76" firstAttribute="top" secondItem="UiC-TW-g9h" secondAttribute="bottom" constant="22" id="a47-on-z4r"/>
+                            <constraint firstItem="oJK-dF-RRI" firstAttribute="trailing" secondItem="pVv-FA-qK1" secondAttribute="trailing" id="fe4-Jq-OIj"/>
                             <constraint firstItem="7zi-Wg-fdU" firstAttribute="leading" secondItem="4gI-ZU-n76" secondAttribute="leading" id="hjS-rW-bNx"/>
                             <constraint firstItem="pVv-FA-qK1" firstAttribute="top" secondItem="7zi-Wg-fdU" secondAttribute="bottom" constant="33" id="kWw-JO-sEi"/>
                             <constraint firstItem="7zi-Wg-fdU" firstAttribute="trailing" secondItem="4gI-ZU-n76" secondAttribute="trailing" id="lu7-Ft-GEh"/>
@@ -155,6 +173,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="Xnv-Cp-ZxX"/>
                     <connections>
+                        <outlet property="btnnName" destination="oJK-dF-RRI" id="H5f-z7-K0H"/>
                         <outlet property="name" destination="4gI-ZU-n76" id="FAh-pW-ceS"/>
                         <outlet property="pwd" destination="7zi-Wg-fdU" id="jxk-OC-bwZ"/>
                     </connections>
