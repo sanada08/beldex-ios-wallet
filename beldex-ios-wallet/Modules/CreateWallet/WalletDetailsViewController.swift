@@ -24,7 +24,7 @@ class WalletDetailsViewController: UIViewController {
 //    private let pwd: String
 //    private let asset: Assets
 //    private let token: TokenWallet
-//    private var wallet: BDXWallet?
+    private var wallet: BDXWallet?
     
     
 //    var pwd: String = ""
@@ -43,7 +43,7 @@ class WalletDetailsViewController: UIViewController {
         self.lblname.text = WalletName!
         
         //Node Connect Process
-       // init_wallet()
+        init_wallet()
         
     }
     
@@ -51,35 +51,36 @@ class WalletDetailsViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
    
-//    func init_wallet() {
-//        sendState.value = false
-//        reciveState.value = false
-//        conncetingState.value = true
-//        lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "")
-//        WalletService.shared.openWallet(token.label, password: pwd) { [weak self] (result) in
-//            DispatchQueue.main.async {
-//                guard let strongSelf = self else { return }
-//                switch result {
-//                case .success(let wallet):
-//                    strongSelf.wallet = wallet
-//                    strongSelf.connect(wallet: wallet)
-//                case .failure(_):
-//                    strongSelf.refreshState.value = true
-//                    strongSelf.conncetingState.value = false
-//                    strongSelf.lblsync.text = LocalizedString(key: "Failed to Connect", comment: "")
-//                }
-//            }
-//        }
-//        loadHistoryFromDB()
-//    }
+    func init_wallet() {
+        sendState.value = false
+        reciveState.value = false
+        conncetingState.value = true
+        lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "")
+        WalletService.shared.openWallet("\(UserDefaults.standard.string(forKey: "WalletName")!)", password: "") { [weak self] (result) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let wallet):
+                    strongSelf.wallet = wallet
+                    strongSelf.connect(wallet: wallet)
+                case .failure(_):
+                    strongSelf.refreshState.value = true
+                    strongSelf.conncetingState.value = false
+                    strongSelf.lblsync.text = LocalizedString(key: "Failed to Connect", comment: "")
+                }
+            }
+        }
+        loadHistoryFromDB()
+    }
     
-//    func connect(wallet: BDXWallet) {
-//
-//    }
-//
-//    func loadHistoryFromDB() {
-//
-//    }
+    func connect(wallet: BDXWallet) {
+        print("inside connect >>>>>>>>>>>\n")
+
+    }
+
+    func loadHistoryFromDB() {
+
+    }
     
 
 }

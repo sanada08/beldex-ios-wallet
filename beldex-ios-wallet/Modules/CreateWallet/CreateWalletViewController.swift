@@ -20,6 +20,10 @@ class CreateWalletViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let WalletName = UserDefaults.standard.string(forKey: "WalletName")
+        self.btnnName.setTitle("\(WalletName!)", for: .normal)
+        
     }
     
 

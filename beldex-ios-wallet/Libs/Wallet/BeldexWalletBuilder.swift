@@ -67,6 +67,7 @@ public struct BDXWalletBuilder {
         let documentDirectory = allPaths[0]
         let documentPath = documentDirectory + "/"
         let pathWithFileName = documentPath + self.name
+        print("pathWithFileName:::::", pathWithFileName)
         return pathWithFileName
     }
     
