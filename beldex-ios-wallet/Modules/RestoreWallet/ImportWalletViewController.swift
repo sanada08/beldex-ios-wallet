@@ -24,7 +24,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         // Do any additional setup after loading the view.
         
         txtseed.delegate = self
-        txtseed.text = "nineteen haunted tirade inkling cupcake tulips nimbly urgent moat haystack sixteen eden cistern agnostic waking puzzled items ripped symptoms ethics umbrella cucumber saxophone shipped eden"
+        txtseed.text = "tavern goodbye girth umbrella website tweezers jubilee elite identity idiom menu refer rumble afraid scrub citadel hatchet affair feel toilet dying cowl hyper jetting tavern"
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)

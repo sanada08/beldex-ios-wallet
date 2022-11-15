@@ -11,9 +11,7 @@ class CreateWalletViewController: UIViewController {
     
     @IBOutlet weak var name:UITextField!
     @IBOutlet weak var pwd:UITextField!
-    @IBOutlet weak var lblseed:UILabel!
-    @IBOutlet weak var lbladdress:UILabel!
-    @IBOutlet weak var lblsync:UILabel!
+    @IBOutlet weak var btnnName:UIButton!
     
     
     private var data = NewWallet()
@@ -47,14 +45,20 @@ class CreateWalletViewController: UIViewController {
         }
         let WalletpublicAddress = UserDefaults.standard.string(forKey: "WalletpublicAddress")
         let WalletSeed = UserDefaults.standard.string(forKey: "WalletSeed")
+        let WalletName = UserDefaults.standard.string(forKey: "WalletName")
         print("--Wallet-publicAddress--> \(WalletpublicAddress!)")
         print("--Wallet-Seed--> \(WalletSeed!)")
-        self.lbladdress.text = WalletpublicAddress!
-        self.lblseed.text = WalletSeed!
+        print("--Wallet-Name--> \(WalletName!)")
+        self.btnnName.setTitle("\(WalletName!)", for: .normal)
         
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletDetailsViewController") as! WalletDetailsViewController
         self.navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    @IBAction func nameAction(sender:UIButton){
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletDetailsViewController") as! WalletDetailsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
 }

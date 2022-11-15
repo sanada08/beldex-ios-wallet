@@ -33,6 +33,7 @@ class WalletService {
                 
                 UserDefaults.standard.set(result_wallet.publicAddress, forKey: "WalletpublicAddress")
                 UserDefaults.standard.set(WalletSeed.sentence, forKey: "WalletSeed")
+                UserDefaults.standard.set(result_wallet.walletName, forKey: "WalletName")
             }else {
                 
             }
@@ -45,7 +46,7 @@ class WalletService {
                     result_wallet = BDXWalletBuilder(name: data.name, password: data.pwd).fromSeed(seed).generate()
                     
                     if result_wallet != nil {
-//                        print("walletName ==> \(result_wallet.walletName)")
+                        print("walletName ==> \(result_wallet.walletName)")
 //                        print("Recovery Seed Address publicAddress ==> \(result_wallet.publicAddress)")
                         
                         let WalletSeed = result_wallet.seed!
