@@ -63,4 +63,18 @@ class WalletService {
             }
         }
     }
+    
+    
+    
+    public func openWallet(_ name: String, password: String, result: GetWalletHandler?) {
+        DispatchQueuePool.shared["BDXWallet:" + name].async {
+            if let wallet = BDXWalletBuilder(name: name, password: password).openExisting() {
+                result?(.success(wallet))
+            } else {
+                result?(.failure(.openFailed))
+            }
+        }
+    }
+    
+    
 }
