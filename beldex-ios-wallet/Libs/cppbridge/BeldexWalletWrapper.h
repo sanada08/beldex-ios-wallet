@@ -42,4 +42,7 @@
 + (NSString *)displayAmount:(uint64_t)amount;
 - (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index;
 
++ (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
+                                     password:(NSString *)password;
+
 @end

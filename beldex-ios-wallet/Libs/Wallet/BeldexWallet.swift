@@ -35,8 +35,7 @@ public class BDXWallet {
     
     private let language: String
     private let walletWrapper: BeldexWalletWrapper
-    
-//    private let safeQueue: DispatchQueue
+    private let safeQueue: DispatchQueue
     
     private var isClosing = false
     private var isSaving = false
@@ -54,6 +53,7 @@ public class BDXWallet {
         self.language = "English"
         self.walletWrapper = walletWrapper
         self.walletName = walletWrapper.name
+        self.safeQueue = DispatchQueuePool.shared["BDXWallet:" + walletName]
     }
     
     public func connectToDaemon(address: String) -> Bool {

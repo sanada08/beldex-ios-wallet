@@ -69,6 +69,18 @@ public struct BDXWalletBuilder {
         let pathWithFileName = documentPath + self.name
         return pathWithFileName
     }
+    
+    public func openExisting() -> BDXWallet? {
+        if let result = openExistingWallet() {
+            return BDXWallet(walletWrapper: result)
+        }
+        return nil
+    }
+    
+    
+    private func openExistingWallet() -> BeldexWalletWrapper? {
+        return BeldexWalletWrapper.openExisting(withPath: pathWithFileName(), password: password)
+    }
 }
 
 extension BDXWalletBuilder {
