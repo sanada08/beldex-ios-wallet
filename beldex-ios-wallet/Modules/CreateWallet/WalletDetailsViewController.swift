@@ -14,23 +14,22 @@ class WalletDetailsViewController: UIViewController {
     @IBOutlet weak var lblsync:UILabel!
     @IBOutlet weak var lblname:UILabel!
     
+    lazy var statusTextState = { return Observable<String>("") }()
     lazy var sendState = { return Observable<Bool>(false) }()
     lazy var reciveState = { return Observable<Bool>(false) }()
     lazy var refreshState = { return Observable<Bool>(false) }()
     lazy var conncetingState = { return Observable<Bool>(false) }()
     
+    private var connecting: Bool { return conncetingState.value}
+    
     // MARK: - Properties (Private)
     
 //    private let pwd: String
 //    private let asset: Assets
-//    private let token: TokenWallet
+    private let token = TokenWallet()
     private var wallet: BDXWallet?
-    
-    
-//    var pwd: String = ""
-//    var asset: Assets
-//    var token: TokenWallet
-//    var wallet: BDXWallet?
+
+    private var listening = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +74,31 @@ class WalletDetailsViewController: UIViewController {
     
     func connect(wallet: BDXWallet) {
         print("inside connect >>>>>>>>>>>\n")
+        self.reciveState.value = true
+        if !connecting {
+            self.conncetingState.value = true
+            self.statusTextState.value = LocalizedString(key: "assets.connect.ing", comment: "")
+        }
+        print("-----> \(WalletDefaults.shared.node)")
+        wallet.connectToDaemon(address: WalletDefaults.shared.node) { [weak self] (isConnected) in
+            guard let `self` = self else { return }
+            if isConnected {
+                if let wallet = self.wallet {
+                    if let restoreHeight = self.token.restoreHeight {
+                        wallet.restoreHeight = restoreHeight
+                    }
+                    wallet.start()
+                }
+                self.listening = true
+            } else {
+                DispatchQueue.main.async {
+                    self.statusTextState.value = LocalizedString(key: "assets.connect.failure", comment: "")
+                    self.conncetingState.value = false
+                    self.refreshState.value = true
+                    self.listening = false
+                }
+            }
+        }
 
     }
 

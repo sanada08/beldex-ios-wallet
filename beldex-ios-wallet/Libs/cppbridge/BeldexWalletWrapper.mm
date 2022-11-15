@@ -69,13 +69,14 @@ using namespace std;
     struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
     string utf8Path = [path UTF8String];
     string utf8Pwd = [password UTF8String];
-    Wallet::Wallet* monero_wallet = walletManager->openWallet(utf8Path, utf8Pwd, netType);
-    return [self init_beldex_wallet:monero_wallet];
+    Wallet::Wallet* beldex_wallet = walletManager->openWallet(utf8Path, utf8Pwd, netType);
+    return [self init_beldex_wallet:beldex_wallet];
 }
 
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
     
     if (!beldex_wallet) return NO;
+    
     return beldex_wallet->init([daemonAddress UTF8String]);
 }
 
@@ -163,6 +164,17 @@ using namespace std;
     }
     return result;
 }
+- (uint64_t)restoreHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->getRefreshFromBlockHeight();
+    }
+    return 0;
+}
 
+- (void)startRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->startRefresh();
+    }
+}
 
 @end

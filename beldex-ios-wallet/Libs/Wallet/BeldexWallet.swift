@@ -63,6 +63,9 @@ public class BDXWallet {
     public func connectToDaemon(address: String,result: @escaping (Bool) -> Void) {
         result(self.walletWrapper.connect(toDaemon: address))
     }
+    public func start() {
+        walletWrapper.startRefresh()
+    }
 }
 
 extension BDXWallet {
@@ -92,5 +95,11 @@ extension BDXWallet {
     }
     public func displayAmount(_ value: UInt64) -> String {
         return BeldexWalletWrapper.displayAmount(value)
+    }
+    public var restoreHeight: UInt64 {
+        get { return walletWrapper.restoreHeight }
+        set {
+            walletWrapper.restoreHeight = newValue
+        }
     }
 }

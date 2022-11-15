@@ -45,4 +45,6 @@
 + (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
                                      password:(NSString *)password;
 
+- (void)startRefresh;
+
 @end
