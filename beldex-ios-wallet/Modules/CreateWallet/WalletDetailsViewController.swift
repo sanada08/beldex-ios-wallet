@@ -12,6 +12,7 @@ class WalletDetailsViewController: UIViewController {
     @IBOutlet weak var lbladdress:UILabel!
     @IBOutlet weak var lblnode:UILabel!
     @IBOutlet weak var lblsync:UILabel!
+    @IBOutlet weak var lblname:UILabel!
     
     lazy var sendState = { return Observable<Bool>(false) }()
     lazy var reciveState = { return Observable<Bool>(false) }()
@@ -36,9 +37,10 @@ class WalletDetailsViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         let WalletpublicAddress = UserDefaults.standard.string(forKey: "WalletpublicAddress")
-        
+        let WalletName = UserDefaults.standard.string(forKey: "WalletName")
         self.lbladdress.text = WalletpublicAddress!
         self.lblnode.text = "\(WalletDefaults.shared.node)"
+        self.lblname.text = WalletName!
         
         //Node Connect Process
        // init_wallet()
