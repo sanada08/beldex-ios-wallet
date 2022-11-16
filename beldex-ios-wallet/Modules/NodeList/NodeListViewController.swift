@@ -17,7 +17,7 @@ class NodeListViewController: UIViewController {
         }
     }
     
-    var arrlist = ["publicnode2.rpcnode.stream:29095","node.moneroworld.com:18089","opennode.xmr-tw.org:18089","uwillrunanodesoon.moneroworld.com:18089"]
+    var arrlist = ["38.242.196.72:19095","38.242.196.72:19095","38.242.196.72:19095","38.242.196.72:19095"]
     private var selectedIndex: Int?
     private var fpsCaches = [String: Int]()
     private var nodeList = [NodeOption](){

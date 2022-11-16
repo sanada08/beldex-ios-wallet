@@ -24,7 +24,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         // Do any additional setup after loading the view.
         
         txtseed.delegate = self
-        txtseed.text = "tavern goodbye girth umbrella website tweezers jubilee elite identity idiom menu refer rumble afraid scrub citadel hatchet affair feel toilet dying cowl hyper jetting tavern"
+        txtseed.text = "subtly gyrate dauntless bygones elapse radar justice tail arbitrary inroads website alley ozone aloof rest possible adjust melting oars wolf army envy vowels wobbly inroads"
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -63,6 +63,9 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         let WalletSeed = UserDefaults.standard.string(forKey: "WalletSeed")
         print("--Wallet-publicAddress--> \(WalletpublicAddress!)")
         print("--Wallet-Seed--> \(WalletSeed!)")
+        
+        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletDetailsViewController") as! WalletDetailsViewController
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     

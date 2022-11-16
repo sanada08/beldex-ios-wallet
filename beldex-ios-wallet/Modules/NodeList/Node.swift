@@ -7,11 +7,11 @@ import UIKit
 struct NodeDefaults {
     
     struct Monero {
-        static let default_en = "publicnode2.rpcnode.stream:29095"
-        static let default0 = "node.moneroworld.com:18089"
+        static let default_en = "38.242.196.72:19095"
+        static let default0 = "38.242.196.72:19095"
 //        static let default_zh = "124.160.224.28:18081"
-        static let default1 = "opennode.xmr-tw.org:18089"
-        static let default2 = "uwillrunanodesoon.moneroworld.com:18089"
+        static let default1 = "38.242.196.72:19095"
+        static let default2 = "38.242.196.72:19095"
         
         static var `default`: String {
             switch AppLanguage.manager.current {
