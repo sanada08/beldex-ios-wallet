@@ -84,6 +84,9 @@
 		60B5121F2913E1FE0005F44F /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B5121E2913E1FE0005F44F /* Observable.swift */; };
 		60B512212913E2560005F44F /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512202913E2560005F44F /* Observer.swift */; };
 		60B512372913E6170005F44F /* Postable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512362913E6170005F44F /* Postable.swift */; };
+		60CCAF5F2924ED4C0054ADAC /* TransactionHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CCAF5E2924ED4C0054ADAC /* TransactionHistory.swift */; };
+		60CCAF622924EE540054ADAC /* BeldexTrxHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 60CCAF612924EE540054ADAC /* BeldexTrxHistory.m */; };
+		60CCAF642924EFA20054ADAC /* TransactionDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60CCAF632924EFA20054ADAC /* TransactionDirection.swift */; };
 		60EEB5272913A44A00987A40 /* libwallet_api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60EEB5262913A44800987A40 /* libwallet_api.a */; };
 		84DC9991767E3C72B6992475 /* Pods_beldex_ios_walletTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DC2FF559FD25A8385B1EC98 /* Pods_beldex_ios_walletTests.framework */; };
 		C42825673924594BF7F43D4D /* Pods_beldex_ios_wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F0DD4F4282C5FE8ED95DBF /* Pods_beldex_ios_wallet.framework */; };
@@ -197,6 +200,10 @@
 		60B5121E2913E1FE0005F44F /* Observable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		60B512202913E2560005F44F /* Observer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		60B512362913E6170005F44F /* Postable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Postable.swift; sourceTree = "<group>"; };
+		60CCAF5E2924ED4C0054ADAC /* TransactionHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistory.swift; sourceTree = "<group>"; };
+		60CCAF602924EE540054ADAC /* BeldexTrxHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeldexTrxHistory.h; sourceTree = "<group>"; };
+		60CCAF612924EE540054ADAC /* BeldexTrxHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeldexTrxHistory.m; sourceTree = "<group>"; };
+		60CCAF632924EFA20054ADAC /* TransactionDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDirection.swift; sourceTree = "<group>"; };
 		60EEB5262913A44800987A40 /* libwallet_api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwallet_api.a; sourceTree = "<group>"; };
 		9A73BE352C800A0361545EB8 /* Pods-beldex-ios-walletTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beldex-ios-walletTests.release.xcconfig"; path = "Target Support Files/Pods-beldex-ios-walletTests/Pods-beldex-ios-walletTests.release.xcconfig"; sourceTree = "<group>"; };
 		B0371AA40492A2766CC4EB04 /* Pods-beldex-ios-wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-beldex-ios-wallet.release.xcconfig"; path = "Target Support Files/Pods-beldex-ios-wallet/Pods-beldex-ios-wallet.release.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +289,8 @@
 				601A406C2922620F002763D2 /* SubAddress.swift */,
 				044C62F82848B36700A76C2E /* Seed.swift */,
 				044C63002848C7F300A76C2E /* Keys.swift */,
+				60CCAF5E2924ED4C0054ADAC /* TransactionHistory.swift */,
+				60CCAF632924EFA20054ADAC /* TransactionDirection.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -428,6 +437,8 @@
 				601A40722922633D002763D2 /* BeldexSubAddress.m */,
 				60B293332924B1DA00ED270C /* BeldexWalletListener.h */,
 				60B293342924B1DA00ED270C /* BeldexWalletListener.m */,
+				60CCAF602924EE540054ADAC /* BeldexTrxHistory.h */,
+				60CCAF612924EE540054ADAC /* BeldexTrxHistory.m */,
 			);
 			path = cppbridge;
 			sourceTree = "<group>";
@@ -869,6 +880,7 @@
 				603808D029152FE4001186C0 /* UIFont + Ext.swift in Sources */,
 				044C63062848D11C00A76C2E /* ImportWalletViewController.swift in Sources */,
 				603808972914F0FB001186C0 /* Node.swift in Sources */,
+				60CCAF5F2924ED4C0054ADAC /* TransactionHistory.swift in Sources */,
 				603808CA29152E89001186C0 /* NSMutableString + Ext.swift in Sources */,
 				601A406B292261B5002763D2 /* LocalAuthOptions.swift in Sources */,
 				603808DD29153324001186C0 /* UIView + Extension.swift in Sources */,
@@ -876,6 +888,7 @@
 				603808A5291522E2001186C0 /* AppManager.swift in Sources */,
 				60754424291B7C330026B028 /* TabBarController.swift in Sources */,
 				60B512372913E6170005F44F /* Postable.swift in Sources */,
+				60CCAF642924EFA20054ADAC /* TransactionDirection.swift in Sources */,
 				044C630E2856FAE100A76C2E /* AppTheme.swift in Sources */,
 				603808AE29152528001186C0 /* RSA.swift in Sources */,
 				60754429291BA2280026B028 /* VisualEffectView.swift in Sources */,
@@ -926,6 +939,7 @@
 				601A40812923605F002763D2 /* Macros.swift in Sources */,
 				603808AC29152466001186C0 /* DispatchQueuePool.swift in Sources */,
 				044C62F92848B36700A76C2E /* Seed.swift in Sources */,
+				60CCAF622924EE540054ADAC /* BeldexTrxHistory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,7 +1,7 @@
 //
 //  BDXWallet.swift
 //
-
+import UIKit
 import Foundation
 
 public enum BDXWalletError: Error {
@@ -55,6 +55,19 @@ public class BDXWallet {
         self.walletName = walletWrapper.name
         self.safeQueue = DispatchQueuePool.shared["BDXWallet:" + walletName]
     }
+    
+    public func saveOnTerminate() {
+        guard !needSaveOnTerminate else {
+            return
+        }
+        needSaveOnTerminate = true
+        let saveOnAppTerminateHandler = { [weak self] (notification: Notification) in
+            guard let SELF = self else { return }
+            SELF.save()
+        }
+        didEnterBackground = NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: nil, using: saveOnAppTerminateHandler)
+        willTerminate = NotificationCenter.default.addObserver(forName: UIApplication.willTerminateNotification, object: nil, queue: nil, using: saveOnAppTerminateHandler)
+    }
 
     public func connectToDaemon(address: String, refresh: @escaping BeldexWalletRefreshHandler, newBlock: @escaping BeldexWalletNewBlockHandler) -> Bool {
         return walletWrapper.connect(toDaemon: address, refresh: refresh, newBlock: newBlock)
@@ -68,6 +81,17 @@ public class BDXWallet {
     
     public func start() {
         walletWrapper.startRefresh()
+    }
+    
+    public func save() {
+        guard !isClosing || !isSaving else {
+            return
+        }
+        self.isSaving = true
+        safeQueue.async {
+            self.walletWrapper.save()
+            self.isSaving = false
+        }
     }
     
 }
@@ -105,5 +129,15 @@ extension BDXWallet {
         set {
             walletWrapper.restoreHeight = newValue
         }
+    }
+    
+    public var history: TransactionHistory {
+        return self.getUpdatedHistory()
+    }
+    private func getUpdatedHistory() -> TransactionHistory {
+        let unorderedHistory = walletWrapper.fetchTransactionHistory().map({TransactionItem(model: $0)})
+        // in reverse order: latest to oldest
+        let list = unorderedHistory.sorted{ return $0.timestamp > $1.timestamp }
+        return TransactionHistory(list)
     }
 }
