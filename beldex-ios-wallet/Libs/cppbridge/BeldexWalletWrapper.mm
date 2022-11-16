@@ -10,12 +10,63 @@
 #import "BeldexConfig.h"
 
 using namespace std;
+
+struct WalletListenerImpl: Wallet::WalletListener
+{
+    BeldexWalletListener *_listener = NULL;
+    
+    ~WalletListenerImpl()
+    {
+        _listener = NULL;
+    }
+    
+    void moneySpent(const std::string &txId, uint64_t amount)
+    {
+        // not implemented
+    }
+    
+    void moneyReceived(const std::string &txId, uint64_t amount)
+    {
+        // not implemented
+    }
+    
+    void unconfirmedMoneyReceived(const std::string &txId, uint64_t amount)
+    {
+        // not implemented
+    }
+
+    void newBlock(uint64_t height)
+    {
+        if (_listener && _listener.newBlockHandler) {
+            _listener.newBlockHandler(height);
+        }
+    }
+
+    void updated()
+    {
+        // not implemented
+    }
+
+    void refreshed()
+    {
+        if (_listener && _listener.refreshHandler) {
+            _listener.refreshHandler();
+        }
+    }
+    
+    void registerListener(BeldexWalletListener *listener)
+    {
+        _listener = listener;
+    }
+};
+
+
 #pragma mark - Data
 
 @interface BeldexWalletWrapper ()
 {
     Wallet::Wallet* beldex_wallet;
-    
+    WalletListenerImpl* beldex_walletListener;
 }
 @end
 
@@ -64,6 +115,7 @@ using namespace std;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
+
 + (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
                                      password:(NSString *)password {
     struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
@@ -73,11 +125,46 @@ using namespace std;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
+
+- (void)addListener {
+    if (beldex_walletListener) return;
+    WalletListenerImpl * impl = new WalletListenerImpl();
+    beldex_wallet->setListener(impl);
+    beldex_walletListener = impl;
+}
+
+- (void)setBlocksRefresh:(BeldexWalletRefreshHandler)refresh newBlock:(BeldexWalletNewBlockHandler)newBlock {
+    [self addListener];
+    beldex_walletListener->registerListener(NULL);
+    BeldexWalletListener *listener = [[BeldexWalletListener alloc] init];
+    listener.newBlockHandler = newBlock;
+    listener.refreshHandler = refresh;
+    beldex_walletListener->registerListener(listener);
+}
+- (void)setDelegate:(id<BeldexWalletDelegate>)delegate {
+    __weak typeof(delegate) weakDelegate = delegate;
+    __weak typeof(self) weakSelf = self;
+    [self setBlocksRefresh:^{
+        if (weakSelf && weakDelegate && [weakDelegate respondsToSelector:@selector(beldexWalletRefreshed:)]) {
+            BeldexWalletWrapper * wallet = weakSelf;
+            [weakDelegate beldexWalletRefreshed:(wallet)];
+        }
+    } newBlock:^(uint64_t curreneight) {
+        if (weakSelf && weakDelegate && [weakDelegate respondsToSelector:@selector(beldexWalletNewBlock:currentHeight:)]) {
+            BeldexWalletWrapper * wallet = weakSelf;
+            [weakDelegate beldexWalletNewBlock:wallet currentHeight:curreneight];
+        }
+    }];
+}
+
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
-    
     if (!beldex_wallet) return NO;
-    
     return beldex_wallet->init([daemonAddress UTF8String]);
+}
+
+- (BOOL)connectToDaemon:(NSString *)daemonAddress delegate:(id<BeldexWalletDelegate>)delegate {
+    [self setDelegate:delegate];
+    return [self connectToDaemon:daemonAddress];
 }
 
 - (NSString *)getSeedString:(NSString *)language {
@@ -176,5 +263,7 @@ using namespace std;
         beldex_wallet->startRefresh();
     }
 }
+
+
 
 @end

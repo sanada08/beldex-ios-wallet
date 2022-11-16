@@ -6,7 +6,16 @@
 //
 #import <Foundation/Foundation.h>
 #import "BeldexSubAddress.h"
+#import "BeldexWalletListener.h"
+
 @class BeldexWalletWrapper;
+
+@protocol BeldexWalletDelegate <NSObject>
+- (void)beldexWalletRefreshed:(nonnull BeldexWalletWrapper *)wallet;
+- (void)beldexWalletNewBlock:(nonnull BeldexWalletWrapper *)wallet currentHeight:(uint64_t)currentHeight;
+
+@end
+
 
 
 @interface BeldexWalletWrapper : NSObject
@@ -36,7 +45,8 @@
 + (BeldexWalletWrapper *)recoverWithSeed:(NSString *)seed
                                     path:(NSString *)path
                                 password:(NSString *)password;
-- (BOOL)connectToDaemon:(NSString *)daemonAddress;
+- (BOOL)connectToDaemon:(NSString *)daemonAddress delegate:(id<BeldexWalletDelegate>)delegate;
+- (BOOL)connectToDaemon:(NSString *)daemonAddress refresh:(BeldexWalletRefreshHandler)refresh newBlock:(BeldexWalletNewBlockHandler)newBlock;
 
 - (NSString *)getSeedString:(NSString *)language;
 + (NSString *)displayAmount:(uint64_t)amount;

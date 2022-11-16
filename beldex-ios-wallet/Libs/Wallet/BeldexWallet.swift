@@ -55,17 +55,21 @@ public class BDXWallet {
         self.walletName = walletWrapper.name
         self.safeQueue = DispatchQueuePool.shared["BDXWallet:" + walletName]
     }
-    
-    public func connectToDaemon(address: String) -> Bool {
-        return walletWrapper.connect(toDaemon: address)
+
+    public func connectToDaemon(address: String, refresh: @escaping BeldexWalletRefreshHandler, newBlock: @escaping BeldexWalletNewBlockHandler) -> Bool {
+        return walletWrapper.connect(toDaemon: address, refresh: refresh, newBlock: newBlock)
     }
     
-    public func connectToDaemon(address: String,result: @escaping (Bool) -> Void) {
-        result(self.walletWrapper.connect(toDaemon: address))
+    public func connectToDaemon(address: String, delegate: BeldexWalletDelegate, result: @escaping (Bool) -> Void) {
+        safeQueue.async {
+            result(self.walletWrapper.connect(toDaemon: address, delegate: delegate))
+        }
     }
+    
     public func start() {
         walletWrapper.startRefresh()
     }
+    
 }
 
 extension BDXWallet {

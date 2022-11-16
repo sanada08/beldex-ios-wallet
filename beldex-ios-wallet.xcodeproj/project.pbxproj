@@ -76,6 +76,7 @@
 		60754424291B7C330026B028 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754423291B7C330026B028 /* TabBarController.swift */; };
 		60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754425291B7C7F0026B028 /* SettingsViewController.swift */; };
 		60754429291BA2280026B028 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754428291BA2280026B028 /* VisualEffectView.swift */; };
+		60B293352924B1DA00ED270C /* BeldexWalletListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B293342924B1DA00ED270C /* BeldexWalletListener.m */; };
 		60B512132913CBB80005F44F /* NodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512122913CBB80005F44F /* NodeListViewController.swift */; };
 		60B512162913D3130005F44F /* MyWalletNodeXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */; };
 		60B512182913D3170005F44F /* MyWalletNodeXibCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */; };
@@ -187,6 +188,8 @@
 		60754423291B7C330026B028 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		60754425291B7C7F0026B028 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		60754428291BA2280026B028 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		60B293332924B1DA00ED270C /* BeldexWalletListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeldexWalletListener.h; sourceTree = "<group>"; };
+		60B293342924B1DA00ED270C /* BeldexWalletListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeldexWalletListener.m; sourceTree = "<group>"; };
 		60B512122913CBB80005F44F /* NodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListViewController.swift; sourceTree = "<group>"; };
 		60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWalletNodeXibCell.swift; sourceTree = "<group>"; };
 		60B512172913D3170005F44F /* MyWalletNodeXibCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyWalletNodeXibCell.xib; sourceTree = "<group>"; };
@@ -423,6 +426,8 @@
 				040BCE632848949600C43958 /* BeldexWalletWrapper.h */,
 				601A40712922633D002763D2 /* BeldexSubAddress.h */,
 				601A40722922633D002763D2 /* BeldexSubAddress.m */,
+				60B293332924B1DA00ED270C /* BeldexWalletListener.h */,
+				60B293342924B1DA00ED270C /* BeldexWalletListener.m */,
 			);
 			path = cppbridge;
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				603808CE29152F8E001186C0 /* UIBarButtonItem + Ext.swift in Sources */,
 				0460748628488F7A00D2AF54 /* AppDelegate.swift in Sources */,
 				040BCE622848942500C43958 /* BeldexWalletWrapper.mm in Sources */,
+				60B293352924B1DA00ED270C /* BeldexWalletListener.m in Sources */,
 				60B512212913E2560005F44F /* Observer.swift in Sources */,
 				603808C429152D5E001186C0 /* String + Ext.swift in Sources */,
 				60754422291B7BF30026B028 /* BaseButton.swift in Sources */,
