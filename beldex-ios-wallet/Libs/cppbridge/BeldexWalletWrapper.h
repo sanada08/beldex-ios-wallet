@@ -7,7 +7,7 @@
 #import <Foundation/Foundation.h>
 #import "BeldexSubAddress.h"
 #import "BeldexWalletListener.h"
-
+#import "BeldexTrxHistory.h"
 @class BeldexWalletWrapper;
 
 @protocol BeldexWalletDelegate <NSObject>
@@ -37,7 +37,7 @@
 @property (nonatomic, assign, readonly) uint64_t blockChainHeight;
 @property (nonatomic, assign, readonly) uint64_t daemonBlockChainHeight;
 @property (nonatomic, assign, readwrite) uint64_t restoreHeight;
-
+- (BOOL)save;
 
 + (BeldexWalletWrapper *)generateWithPath:(NSString *)path
                                  password:(NSString *)password
@@ -56,5 +56,5 @@
                                      password:(NSString *)password;
 
 - (void)startRefresh;
-
+- (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory;
 @end

@@ -402,33 +402,41 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubT-R5-lZo">
-                                <rect key="frame" x="22" y="172" width="370" height="18"/>
+                                <rect key="frame" x="22" y="198" width="370" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dow-sd-l3f">
-                                <rect key="frame" x="22" y="212" width="370" height="18"/>
+                                <rect key="frame" x="22" y="238" width="370" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nhg-li-3fK">
-                                <rect key="frame" x="22" y="252" width="370" height="18"/>
+                                <rect key="frame" x="22" y="278" width="370" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.10000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="N0m-Uu-xd2">
+                                <rect key="frame" x="22" y="172" width="370" height="4"/>
+                                <color key="progressTintColor" systemColor="tintColor"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </progressView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mQ5-o3-i84"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstItem="ubT-R5-lZo" firstAttribute="top" secondItem="o4a-LW-7P6" secondAttribute="bottom" constant="22" id="2lf-Gq-BC2"/>
+                            <constraint firstItem="N0m-Uu-xd2" firstAttribute="leading" secondItem="o4a-LW-7P6" secondAttribute="leading" id="0qO-MS-3QQ"/>
                             <constraint firstItem="ypk-Rl-lgv" firstAttribute="top" secondItem="mQ5-o3-i84" secondAttribute="top" constant="44" id="6DT-Ec-TGP"/>
+                            <constraint firstItem="ubT-R5-lZo" firstAttribute="top" secondItem="N0m-Uu-xd2" secondAttribute="bottom" constant="22" id="AVH-jV-zFw"/>
                             <constraint firstItem="dow-sd-l3f" firstAttribute="trailing" secondItem="ubT-R5-lZo" secondAttribute="trailing" id="JXX-7X-45W"/>
                             <constraint firstItem="Nhg-li-3fK" firstAttribute="top" secondItem="dow-sd-l3f" secondAttribute="bottom" constant="22" id="MgG-Mv-d12"/>
                             <constraint firstItem="dow-sd-l3f" firstAttribute="leading" secondItem="ubT-R5-lZo" secondAttribute="leading" id="R8p-IY-2L6"/>
+                            <constraint firstItem="N0m-Uu-xd2" firstAttribute="trailing" secondItem="o4a-LW-7P6" secondAttribute="trailing" id="Zkx-cf-XUN"/>
                             <constraint firstItem="mQ5-o3-i84" firstAttribute="trailing" secondItem="o4a-LW-7P6" secondAttribute="trailing" constant="22" id="aN9-dh-Kat"/>
+                            <constraint firstItem="N0m-Uu-xd2" firstAttribute="top" secondItem="o4a-LW-7P6" secondAttribute="bottom" constant="22" id="gbD-5n-vnB"/>
                             <constraint firstItem="dow-sd-l3f" firstAttribute="top" secondItem="ubT-R5-lZo" secondAttribute="bottom" constant="22" id="gll-Tu-DXs"/>
                             <constraint firstItem="ypk-Rl-lgv" firstAttribute="leading" secondItem="AkE-ac-puw" secondAttribute="leading" constant="22" id="huU-6I-Wx1"/>
                             <constraint firstItem="Nhg-li-3fK" firstAttribute="leading" secondItem="dow-sd-l3f" secondAttribute="leading" id="laZ-D2-zyI"/>
@@ -445,6 +453,7 @@
                         <outlet property="lblname" destination="dow-sd-l3f" id="rvv-iu-qMw"/>
                         <outlet property="lblnode" destination="Nhg-li-3fK" id="cV1-0X-ga6"/>
                         <outlet property="lblsync" destination="o4a-LW-7P6" id="zoS-6x-nqu"/>
+                        <outlet property="progressView" destination="N0m-Uu-xd2" id="0e5-l7-CEx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xEH-Ms-HO1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -468,6 +477,9 @@
         </systemColor>
         <systemColor name="systemPinkColor">
             <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tintColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

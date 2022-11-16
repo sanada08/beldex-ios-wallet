@@ -13,6 +13,7 @@ class WalletDetailsViewController: UIViewController {
     @IBOutlet weak var lblnode:UILabel!
     @IBOutlet weak var lblsync:UILabel!
     @IBOutlet weak var lblname:UILabel!
+    @IBOutlet var progressView: UIProgressView!
     
     lazy var statusTextState = { return Observable<String>("") }()
     lazy var sendState = { return Observable<Bool>(false) }()
@@ -21,7 +22,17 @@ class WalletDetailsViewController: UIViewController {
     lazy var conncetingState = { return Observable<Bool>(false) }()
     
     private var connecting: Bool { return conncetingState.value}
-    
+    private var currentBlockChainHeight: UInt64 = 0
+    private var daemonBlockChainHeight: UInt64 = 0
+    private var needSynchronized = false {
+        didSet {
+            guard needSynchronized, !oldValue,
+                let wallet = self.wallet else { return }
+            wallet.saveOnTerminate()
+        }
+    }
+    private lazy var taskQueue = DispatchQueue(label: "beldex.wallet.task")
+    lazy var progressState = { return Observable<CGFloat>(0) }()
     // MARK: - Properties (Private)
     
 //    private let pwd: String
@@ -30,6 +41,24 @@ class WalletDetailsViewController: UIViewController {
     private var wallet: BDXWallet?
 
     private var listening = false
+    private var isSyncingUI = false {
+        didSet {
+            guard oldValue != isSyncingUI else { return }
+            if isSyncingUI {
+                RunLoop.main.add(timer, forMode: .common)
+            } else {
+                timer.invalidate()
+            }
+        }
+    }
+    private lazy var timer: Timer = {
+        Timer.init(timeInterval: 0.5, repeats: true) { [weak self] (_) in
+            guard let `self` = self else { return }
+            self.updateSyncingProgress()
+        }
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +72,7 @@ class WalletDetailsViewController: UIViewController {
         
         //Node Connect Process
         init_wallet()
+        
         
     }
     
@@ -104,15 +134,78 @@ class WalletDetailsViewController: UIViewController {
 
     }
     
+    private func updateSyncingProgress() {
+        taskQueue.async {
+            let (current, total) = (self.currentBlockChainHeight, self.daemonBlockChainHeight)
+            guard total != current else { return }
+            let difference = total.subtractingReportingOverflow(current)
+            var progress = CGFloat(current) / CGFloat(total)
+            let leftBlocks: String
+            if difference.overflow || difference.partialValue <= 1 {
+                leftBlocks = "1"
+                progress = 1
+            } else {
+                leftBlocks = String(difference.partialValue)
+            }
+            
+            let statusText = LocalizedString(key: "Syncing, blocks remaining:", comment: "Syncing, blocks remaining:") + leftBlocks
+            DispatchQueue.main.async {
+                if self.conncetingState.value {
+                    self.conncetingState.value = false
+                }
+                //sree536
+              //  self.progressState.update(progress)
+              //  self.statusTextState.update(statusText)
+                print("progressView value----> \(progress)")
+                self.progressView.progress = Float(progress)
+                self.lblsync.text = statusText
+            }
+        }
+    }
+    
+    private func synchronizedUI() {
+        //progressState.value = 1
+        progressView.progress = 1
+        sendState.value = true
+        self.lblsync.text = LocalizedString(key: "Synced", comment: "Synced")
+    }
+    
 
 }
 
 
 extension WalletDetailsViewController: BeldexWalletDelegate {
     func beldexWalletRefreshed(_ wallet: BeldexWalletWrapper) {
-        
+        dPrint("beldexWalletRefreshed -> \(wallet.blockChainHeight), \(wallet.daemonBlockChainHeight)")
+        self.isSyncingUI = false
+        if self.needSynchronized {
+            self.needSynchronized = !wallet.save()
+        }
+        taskQueue.async {
+            guard let wallet = self.wallet else { return }
+            let (balance, history) = (wallet.balance, wallet.history)
+            print("---->Bls: \(balance),---his: \(history)")
+            //sree536
+//            self.storeToDB(balance: balance, history: history)
+//            self.postData(balance: balance, history: history)
+        }
+        if daemonBlockChainHeight != 0 {
+            /// 计算节点区块高度是否与钱包刷新回调的一致，不一致则表示并非同步完成
+            let difference = wallet.daemonBlockChainHeight.subtractingReportingOverflow(daemonBlockChainHeight)
+            guard !difference.overflow else { return }
+        }
+        DispatchQueue.main.async {
+            if self.conncetingState.value {
+                self.conncetingState.value = false
+            }
+            self.synchronizedUI()
+        }
     }
     func beldexWalletNewBlock(_ wallet: BeldexWalletWrapper, currentHeight: UInt64) {
-        
+        dPrint("newBlock --------------------------------------------> \(currentHeight)---\(wallet.daemonBlockChainHeight)")
+        self.currentBlockChainHeight = currentHeight
+        self.daemonBlockChainHeight = wallet.daemonBlockChainHeight
+        self.needSynchronized = true
+        self.isSyncingUI = true
     }
 }
