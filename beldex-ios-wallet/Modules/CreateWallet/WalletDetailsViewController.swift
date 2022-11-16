@@ -54,7 +54,7 @@ class WalletDetailsViewController: UIViewController {
         sendState.value = false
         reciveState.value = false
         conncetingState.value = true
-        lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "")
+        lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "Connecting, it may take 5 minutes")
         WalletService.shared.openWallet("\(UserDefaults.standard.string(forKey: "WalletName")!)", password: "") { [weak self] (result) in
             DispatchQueue.main.async {
                 guard let strongSelf = self else { return }
@@ -65,7 +65,7 @@ class WalletDetailsViewController: UIViewController {
                 case .failure(_):
                     strongSelf.refreshState.value = true
                     strongSelf.conncetingState.value = false
-                    strongSelf.lblsync.text = LocalizedString(key: "Failed to Connect", comment: "")
+                    strongSelf.lblsync.text = LocalizedString(key: "Failed to Connect", comment: "Failed to Connect")
                 }
             }
         }
@@ -77,10 +77,9 @@ class WalletDetailsViewController: UIViewController {
         self.reciveState.value = true
         if !connecting {
             self.conncetingState.value = true
-            self.statusTextState.value = LocalizedString(key: "assets.connect.ing", comment: "")
+            lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "Connecting, it may take 5 minutes")
         }
-        print("-----> \(WalletDefaults.shared.node)")
-        wallet.connectToDaemon(address: WalletDefaults.shared.node) { [weak self] (isConnected) in
+        wallet.connectToDaemon(address: WalletDefaults.shared.node, delegate: self) { [weak self] (isConnected) in
             guard let `self` = self else { return }
             if isConnected {
                 if let wallet = self.wallet {
@@ -92,14 +91,13 @@ class WalletDetailsViewController: UIViewController {
                 self.listening = true
             } else {
                 DispatchQueue.main.async {
-                    self.statusTextState.value = LocalizedString(key: "assets.connect.failure", comment: "")
+                    self.lblsync.text = LocalizedString(key: "Failed to Connect", comment: "Failed to Connect")
                     self.conncetingState.value = false
                     self.refreshState.value = true
                     self.listening = false
                 }
             }
         }
-
     }
 
     func loadHistoryFromDB() {
@@ -107,4 +105,14 @@ class WalletDetailsViewController: UIViewController {
     }
     
 
+}
+
+
+extension WalletDetailsViewController: BeldexWalletDelegate {
+    func beldexWalletRefreshed(_ wallet: BeldexWalletWrapper) {
+        
+    }
+    func beldexWalletNewBlock(_ wallet: BeldexWalletWrapper, currentHeight: UInt64) {
+        
+    }
 }
