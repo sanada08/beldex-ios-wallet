@@ -13,6 +13,7 @@ class WalletDetailsViewController: UIViewController {
     @IBOutlet weak var lblnode:UILabel!
     @IBOutlet weak var lblsync:UILabel!
     @IBOutlet weak var lblname:UILabel!
+    @IBOutlet var progressView: UIProgressView!
     
     lazy var statusTextState = { return Observable<String>("") }()
     lazy var sendState = { return Observable<Bool>(false) }()
@@ -43,6 +44,7 @@ class WalletDetailsViewController: UIViewController {
         
         //Node Connect Process
         init_wallet()
+        progressView.progress = 0.2
         
     }
     
