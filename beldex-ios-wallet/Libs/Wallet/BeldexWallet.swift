@@ -121,6 +121,16 @@ extension BDXWallet {
     public var balance: String {
         return displayAmount(walletWrapper.balance)
     }
+    public var unlockedBalance: String {
+        return displayAmount(walletWrapper.unlockedBalance)
+    }
+    public func getTransactionFee() -> String? {
+        let fee = walletWrapper.transactionFee()
+        if fee < 0 {
+            return nil
+        }
+        return BeldexWalletWrapper.displayAmount(UInt64(fee))
+    }
     public func displayAmount(_ value: UInt64) -> String {
         return BeldexWalletWrapper.displayAmount(value)
     }

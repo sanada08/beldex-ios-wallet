@@ -67,6 +67,7 @@ struct WalletListenerImpl: Wallet::WalletListener
 {
     Wallet::Wallet* beldex_wallet;
     WalletListenerImpl* beldex_walletListener;
+    Wallet::PendingTransaction* beldex_pendingTransaction;
 }
 @end
 
@@ -175,6 +176,11 @@ struct WalletListenerImpl: Wallet::WalletListener
     return NO;
 }
 
++ (NSString *)displayAmount:(uint64_t)amount {
+    string amountStr = Wallet::Wallet::displayAmount(amount);
+    return objc_str_dup(amountStr);
+}
+
 - (NSString *)getSeedString:(NSString *)language {
     string seed = "";
     if (beldex_wallet) {
@@ -271,6 +277,14 @@ struct WalletListenerImpl: Wallet::WalletListener
         beldex_wallet->startRefresh();
     }
 }
+
+- (int64_t)transactionFee {
+    if (beldex_pendingTransaction) {
+        return beldex_pendingTransaction->fee();
+    }
+    return -1;
+}
+
 
 - (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory {
     NSMutableArray<BeldexTrxHistory *> *result = [NSMutableArray array];

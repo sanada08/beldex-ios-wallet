@@ -55,6 +55,7 @@
 + (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
                                      password:(NSString *)password;
 
+- (int64_t)transactionFee;
 - (void)startRefresh;
 - (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory;
 @end

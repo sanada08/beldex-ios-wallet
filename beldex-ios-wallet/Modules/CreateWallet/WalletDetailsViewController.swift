@@ -176,7 +176,7 @@ class WalletDetailsViewController: UIViewController {
 
 extension WalletDetailsViewController: BeldexWalletDelegate {
     func beldexWalletRefreshed(_ wallet: BeldexWalletWrapper) {
-        dPrint("beldexWalletRefreshed -> \(wallet.blockChainHeight), \(wallet.daemonBlockChainHeight)")
+        dPrint("beldexWalletRefreshed ---> \(wallet.blockChainHeight) -->, \(wallet.daemonBlockChainHeight)")
         self.isSyncingUI = false
         if self.needSynchronized {
             self.needSynchronized = !wallet.save()
@@ -184,7 +184,7 @@ extension WalletDetailsViewController: BeldexWalletDelegate {
         taskQueue.async {
             guard let wallet = self.wallet else { return }
             let (balance, history) = (wallet.balance, wallet.history)
-            print("---->Bls: \(balance),---his: \(history)")
+            print("---->Balance: \(balance),--->History: \(history)")
             //sree536
 //            self.storeToDB(balance: balance, history: history)
 //            self.postData(balance: balance, history: history)
@@ -202,7 +202,7 @@ extension WalletDetailsViewController: BeldexWalletDelegate {
         }
     }
     func beldexWalletNewBlock(_ wallet: BeldexWalletWrapper, currentHeight: UInt64) {
-        dPrint("newBlock --------------------------------------------> \(currentHeight)---\(wallet.daemonBlockChainHeight)")
+        dPrint("newBlock ----> \(currentHeight)---\(wallet.daemonBlockChainHeight)")
         self.currentBlockChainHeight = currentHeight
         self.daemonBlockChainHeight = wallet.daemonBlockChainHeight
         self.needSynchronized = true
