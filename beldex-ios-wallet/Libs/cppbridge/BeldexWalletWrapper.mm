@@ -247,6 +247,20 @@ struct WalletListenerImpl: Wallet::WalletListener
     return 0;
 }
 
+- (uint64_t)blockChainHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->blockChainHeight();
+    }
+    return 0;
+}
+
+- (uint64_t)daemonBlockChainHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->daemonBlockChainHeight();
+    }
+    return 0;
+}
+
 - (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index {
     NSMutableArray<BeldexSubAddress *> *result = [NSMutableArray array];
     if (beldex_wallet) {
