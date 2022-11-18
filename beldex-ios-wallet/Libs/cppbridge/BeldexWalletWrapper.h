@@ -38,7 +38,8 @@
 @property (nonatomic, assign, readonly) uint64_t daemonBlockChainHeight;
 @property (nonatomic, assign, readwrite) uint64_t restoreHeight;
 - (BOOL)save;
-
+- (BOOL)close;
+- (BOOL)setSubAddress:(NSString *)label addressIndex:(uint32_t)addressIndex accountIndex:(uint32_t)accountIndex;
 + (BeldexWalletWrapper *)generateWithPath:(NSString *)path
                                  password:(NSString *)password
                                  language:(NSString *)language;

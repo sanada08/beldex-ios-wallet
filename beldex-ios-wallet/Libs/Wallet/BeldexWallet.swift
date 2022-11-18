@@ -83,6 +83,25 @@ public class BDXWallet {
         walletWrapper.startRefresh()
     }
     
+    public func close() {
+        guard !isClosed else {
+            return
+        }
+        if needSaveOnTerminate {
+            self.save()
+        }
+        self.isClosing = true
+        safeQueue.async {
+            if self.walletWrapper.close() {
+                self.isClosing = false
+                self.isClosed = true
+            } else {
+                Thread.sleep(forTimeInterval: 0.2)
+                self.close()
+            }
+        }
+    }
+    
     public func save() {
         guard !isClosing || !isSaving else {
             return
@@ -144,6 +163,12 @@ extension BDXWallet {
         get { return walletWrapper.restoreHeight }
         set {
             walletWrapper.restoreHeight = newValue
+        }
+    }
+    
+    public func setSubAddress(_ label: String, rowId: Int, result: ((Bool) -> Void)?) {
+        safeQueue.async {
+            result?(self.walletWrapper.setSubAddress(label, addressIndex: UInt32(rowId), accountIndex: 0))
         }
     }
     
