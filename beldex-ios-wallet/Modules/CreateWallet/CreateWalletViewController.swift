@@ -22,7 +22,9 @@ class CreateWalletViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let WalletName = UserDefaults.standard.string(forKey: "WalletName")
-        self.btnnName.setTitle("\(WalletName!)", for: .normal)
+        if WalletName != nil {
+            self.btnnName.setTitle("\(WalletName!)", for: .normal)
+        }
         
     }
     
