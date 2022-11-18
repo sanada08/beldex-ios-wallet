@@ -9,22 +9,31 @@
 // eldest jogger potato greater erase nail mural western kangaroo alchemy touchy kettle absorb saved virtual kennel hold biology bawled kernels yellow misery swagger tirade tirade
 
 import UIKit
+import Foundation
 
 class ImportWalletViewController: UIViewController,UITextViewDelegate {
 
     @IBOutlet weak var txtseed:UITextView!
+    @IBOutlet weak var txtName:UITextField!
+    @IBOutlet weak var txtHeight:UITextField!
     
     private var data = NewWallet()
     private var recovery_seed = RecoverWallet(from: .seed)
-
+    
+    
+    // MARK: - Life Cycles
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        
         txtseed.delegate = self
-        txtseed.text = "subtly gyrate dauntless bygones elapse radar justice tail arbitrary inroads website alley ozone aloof rest possible adjust melting oars wolf army envy vowels wobbly inroads"
+        txtseed.text = "ajar yacht heron galaxy wonders buzzer whipped unquoted dented paddles dagger alarms erase algebra southern width motherly inline zippers vaults donuts hoax either farming buzzer"
+//        txtName.text = "eedd"
+//        txtHeight.text = "7563"
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -35,6 +44,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
     @objc private func dismissKeyboard() {
         txtseed.resignFirstResponder()
     }
+   
     
     @IBAction func BackAction(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
@@ -48,11 +58,13 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         let seedvalue = txtseed.text!.lowercased()
         UserDefaults.standard.set(seedvalue, forKey: "helloKey")
         recovery_seed.seed = seedvalue
-        data.name = "dede"
+        recovery_seed.block = txtHeight.text!
+        data.name = txtName.text!
 //        data.pwd = ""
         WalletService.shared.createWallet(with: .recovery(data: data, recover: recover)) { (result) in
             switch result {
             case .success(let wallet):
+                wallet.close()
                 print("sucecs in import")
                 print("wallet ---> \(wallet.publicAddress)")
             case .failure(_):
@@ -61,16 +73,14 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         }
         let WalletpublicAddress = UserDefaults.standard.string(forKey: "WalletpublicAddress")
         let WalletSeed = UserDefaults.standard.string(forKey: "WalletSeed")
+        let WalletName = UserDefaults.standard.string(forKey: "WalletName")
         print("--Wallet-publicAddress--> \(WalletpublicAddress!)")
         print("--Wallet-Seed--> \(WalletSeed!)")
+        print("--Wallet-Name--> \(WalletName!)")
         
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "WalletDetailsViewController") as! WalletDetailsViewController
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
-    
-    
     
 
 }

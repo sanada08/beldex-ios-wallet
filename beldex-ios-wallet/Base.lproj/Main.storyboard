@@ -43,7 +43,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GD4-FH-bmr">
-                                <rect key="frame" x="22" y="331" width="370" height="35"/>
+                                <rect key="frame" x="22" y="444" width="370" height="35"/>
                                 <color key="backgroundColor" systemColor="systemPinkColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="Nyr-6K-rGE"/>
@@ -57,23 +57,47 @@
                                     <action selector="importActionWithSender:" destination="iDU-jN-oQI" eventType="touchUpInside" id="i8f-yz-ATD"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name Enter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="S8R-5q-Oea">
+                                <rect key="frame" x="22" y="320" width="370" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oOI-Nx-dOP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Hight Enter" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="C9g-SU-4oz">
+                                <rect key="frame" x="22" y="382" width="370" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="yh2-P3-tgD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="E9B-Us-hFb"/>
                         <color key="backgroundColor" systemColor="systemIndigoColor"/>
                         <constraints>
                             <constraint firstItem="GD4-FH-bmr" firstAttribute="trailing" secondItem="aAd-PJ-p7v" secondAttribute="trailing" id="252-JS-Kl2"/>
+                            <constraint firstItem="GD4-FH-bmr" firstAttribute="top" secondItem="C9g-SU-4oz" secondAttribute="bottom" constant="22" id="5us-g9-LkP"/>
                             <constraint firstItem="nMM-2I-RCc" firstAttribute="leading" secondItem="E9B-Us-hFb" secondAttribute="leading" constant="22" id="8qh-Gx-5oQ"/>
+                            <constraint firstItem="C9g-SU-4oz" firstAttribute="top" secondItem="S8R-5q-Oea" secondAttribute="bottom" constant="22" id="9FP-sQ-K8n"/>
                             <constraint firstItem="aAd-PJ-p7v" firstAttribute="leading" secondItem="E9B-Us-hFb" secondAttribute="leading" constant="22" id="Cvr-eT-1gh"/>
-                            <constraint firstItem="GD4-FH-bmr" firstAttribute="top" secondItem="aAd-PJ-p7v" secondAttribute="bottom" constant="33" id="GiB-fI-c1S"/>
+                            <constraint firstItem="C9g-SU-4oz" firstAttribute="trailing" secondItem="S8R-5q-Oea" secondAttribute="trailing" id="Ki6-pj-dnf"/>
+                            <constraint firstItem="S8R-5q-Oea" firstAttribute="trailing" secondItem="aAd-PJ-p7v" secondAttribute="trailing" id="KwJ-Wj-bj0"/>
                             <constraint firstItem="E9B-Us-hFb" firstAttribute="trailing" secondItem="aAd-PJ-p7v" secondAttribute="trailing" constant="22" id="LtI-FZ-eWG"/>
+                            <constraint firstItem="S8R-5q-Oea" firstAttribute="leading" secondItem="aAd-PJ-p7v" secondAttribute="leading" id="McW-dZ-4kW"/>
                             <constraint firstItem="aAd-PJ-p7v" firstAttribute="centerX" secondItem="lh6-xj-3Eb" secondAttribute="centerX" id="SKm-hh-vmM"/>
+                            <constraint firstItem="C9g-SU-4oz" firstAttribute="leading" secondItem="S8R-5q-Oea" secondAttribute="leading" id="gLJ-nw-irz"/>
                             <constraint firstItem="nMM-2I-RCc" firstAttribute="top" secondItem="E9B-Us-hFb" secondAttribute="top" constant="44" id="lVL-Nd-Z4v"/>
                             <constraint firstItem="aAd-PJ-p7v" firstAttribute="centerY" secondItem="lh6-xj-3Eb" secondAttribute="centerY" constant="-200" id="pCA-vM-OQ6"/>
+                            <constraint firstItem="S8R-5q-Oea" firstAttribute="top" secondItem="aAd-PJ-p7v" secondAttribute="bottom" constant="22" id="rSA-eb-LE1"/>
                             <constraint firstItem="GD4-FH-bmr" firstAttribute="leading" secondItem="aAd-PJ-p7v" secondAttribute="leading" id="z0H-e7-scI"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="G27-tH-owb"/>
                     <connections>
+                        <outlet property="txtHeight" destination="C9g-SU-4oz" id="w4e-fQ-zxQ"/>
+                        <outlet property="txtName" destination="S8R-5q-Oea" id="02o-3b-rLi"/>
                         <outlet property="txtseed" destination="aAd-PJ-p7v" id="77S-Xv-4TC"/>
                     </connections>
                 </viewController>

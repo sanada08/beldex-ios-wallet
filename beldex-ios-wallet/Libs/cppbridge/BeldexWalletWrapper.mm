@@ -176,6 +176,20 @@ struct WalletListenerImpl: Wallet::WalletListener
     return NO;
 }
 
+- (BOOL)close {
+    BOOL success = YES;
+    if (beldex_wallet) {
+        beldex_wallet->pauseRefresh();
+        beldex_wallet->setListener(nullptr);
+        struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
+        if (!walletManager->closeWallet(beldex_wallet)) {
+            NSLog(@"close wallet fail: %@", [self errorMessage]);
+            success = NO;
+        }
+    }
+    return success;
+}
+
 + (NSString *)displayAmount:(uint64_t)amount {
     string amountStr = Wallet::Wallet::displayAmount(amount);
     return objc_str_dup(amountStr);
@@ -260,6 +274,15 @@ struct WalletListenerImpl: Wallet::WalletListener
     }
     return 0;
 }
+
+- (BOOL)setSubAddress:(NSString *)label addressIndex:(uint32_t)addressIndex accountIndex:(uint32_t)accountIndex {
+    if (beldex_wallet) {
+        beldex_wallet->setSubaddressLabel(accountIndex, addressIndex, [label UTF8String]);
+        return YES;
+    }
+    return NO;
+}
+
 
 - (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index {
     NSMutableArray<BeldexSubAddress *> *result = [NSMutableArray array];
