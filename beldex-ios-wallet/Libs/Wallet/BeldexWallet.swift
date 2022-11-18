@@ -134,6 +134,12 @@ extension BDXWallet {
     public func displayAmount(_ value: UInt64) -> String {
         return BeldexWalletWrapper.displayAmount(value)
     }
+    public var blockChainHeight: UInt64 {
+        return walletWrapper.blockChainHeight
+    }
+    public var daemonBlockChainHeight: UInt64 {
+        return walletWrapper.daemonBlockChainHeight
+    }
     public var restoreHeight: UInt64 {
         get { return walletWrapper.restoreHeight }
         set {

@@ -68,7 +68,9 @@ class WalletDetailsViewController: UIViewController {
         let WalletName = UserDefaults.standard.string(forKey: "WalletName")
         self.lbladdress.text = WalletpublicAddress!
         self.lblnode.text = "\(WalletDefaults.shared.node)"
-        self.lblname.text = WalletName!
+        if WalletName != nil {
+            self.lblname.text = WalletName!
+        }
         
         //Node Connect Process
         init_wallet()
@@ -156,7 +158,6 @@ class WalletDetailsViewController: UIViewController {
                 //sree536
               //  self.progressState.update(progress)
               //  self.statusTextState.update(statusText)
-                print("progressView value----> \(progress)")
                 self.progressView.progress = Float(progress)
                 self.lblsync.text = statusText
             }
@@ -176,7 +177,7 @@ class WalletDetailsViewController: UIViewController {
 
 extension WalletDetailsViewController: BeldexWalletDelegate {
     func beldexWalletRefreshed(_ wallet: BeldexWalletWrapper) {
-        dPrint("beldexWalletRefreshed ---> \(wallet.blockChainHeight) -->, \(wallet.daemonBlockChainHeight)")
+        dPrint("Refreshed---------->blockChainHeight-->\(wallet.blockChainHeight) ---------->daemonBlockChainHeight-->, \(wallet.daemonBlockChainHeight)")
         self.isSyncingUI = false
         if self.needSynchronized {
             self.needSynchronized = !wallet.save()
@@ -184,10 +185,10 @@ extension WalletDetailsViewController: BeldexWalletDelegate {
         taskQueue.async {
             guard let wallet = self.wallet else { return }
             let (balance, history) = (wallet.balance, wallet.history)
-            print("---->Balance: \(balance),--->History: \(history)")
+            print("---------->Balance: \(balance),---------->History: \(history)")
             //sree536
 //            self.storeToDB(balance: balance, history: history)
-//            self.postData(balance: balance, history: history)
+            self.postData(balance: balance, history: history)
         }
         if daemonBlockChainHeight != 0 {
             /// 计算节点区块高度是否与钱包刷新回调的一致，不一致则表示并非同步完成
@@ -202,10 +203,38 @@ extension WalletDetailsViewController: BeldexWalletDelegate {
         }
     }
     func beldexWalletNewBlock(_ wallet: BeldexWalletWrapper, currentHeight: UInt64) {
-        dPrint("newBlock ----> \(currentHeight)---\(wallet.daemonBlockChainHeight)")
+        dPrint("-----------currentHeight ----> \(currentHeight)---DaemonBlockHeight---->\(wallet.daemonBlockChainHeight)")
         self.currentBlockChainHeight = currentHeight
         self.daemonBlockChainHeight = wallet.daemonBlockChainHeight
         self.needSynchronized = true
         self.isSyncingUI = true
     }
+    
+    private func postData(balance: String, history: TransactionHistory) {
+        let balance_modify = Helper.displayDigitsAmount(balance)
+        print("---------->balance_modify \(balance_modify)")
+        print("---------->All Transation list----------> \(history.all)")
+        print("---------->Send list----------> \(history.send)")
+        print("---------->Recive list----------> \(history.receive)")
+//        /// 数据转换
+//        let itemMapToRow = { (item: TransactionItem) -> TableViewRow in
+//            let model = Transaction.init(item: item)
+//            var row = TransactionListCellFrame.toTableViewRow(model)
+//            row.didSelectedAction = {
+//                [unowned self] _ in
+//                self.pushToTransaction(model)
+//            }
+//            return row
+//        }
+//
+//        let allData = [TableViewSection(history.all.map(itemMapToRow))]
+//        let receiveData = [TableViewSection(history.receive.map(itemMapToRow))]
+//        let sendData = [TableViewSection(history.send.map(itemMapToRow))]
+//
+//        DispatchQueue.main.async {
+//            self.balanceState.value = balance_modify
+//            self.historyState.newState([allData, receiveData, sendData])
+//        }
+    }
+    
 }
