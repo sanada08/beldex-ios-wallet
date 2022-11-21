@@ -101,8 +101,8 @@ struct WalletListenerImpl: Wallet::WalletListener
     string utf8Path = [path UTF8String];
     string utf8Pwd = [password UTF8String];
     string utf8Lg = [language UTF8String];
-    Wallet::Wallet* monero_wallet = walletManager->createWallet(utf8Path, utf8Pwd, utf8Lg, netType);
-    return [self init_beldex_wallet:monero_wallet];
+    Wallet::Wallet* beldex_wallet = walletManager->createWallet(utf8Path, utf8Pwd, utf8Lg, netType);
+    return [self init_beldex_wallet:beldex_wallet];
 }
 
 + (BeldexWalletWrapper *)recoverWithSeed:(NSString *)seed
@@ -112,8 +112,8 @@ struct WalletListenerImpl: Wallet::WalletListener
     string utf8Path = [path UTF8String];
     string utf8Pwd = [password UTF8String];
     string utf8Seed = [seed UTF8String];
-    Wallet::Wallet* monero_wallet = walletManager->recoveryWallet(utf8Path, utf8Pwd, utf8Seed, netType, 0, 1);
-    return [self init_beldex_wallet:monero_wallet];
+    Wallet::Wallet* beldex_wallet = walletManager->recoveryWallet(utf8Path, utf8Pwd, utf8Seed, netType, 0, 1);
+    return [self init_beldex_wallet:beldex_wallet];
 }
 
 + (BeldexWalletWrapper *)recoverFromKeysWithPath:(NSString *)path
@@ -130,8 +130,8 @@ struct WalletListenerImpl: Wallet::WalletListener
     string utf8Address = [address UTF8String];
     string utf8ViewKey = [viewKey UTF8String];
     string utf8SpendKey = [spendKey UTF8String];
-    Wallet::Wallet* monero_wallet = walletManager->createWalletFromKeys(utf8Path, utf8Pwd, utf8Language, netType, restoreHeight, utf8Address, utf8ViewKey, utf8SpendKey);
-    return [self init_beldex_wallet:monero_wallet];
+    Wallet::Wallet* beldex_wallet = walletManager->createWalletFromKeys(utf8Path, utf8Pwd, utf8Language, netType, restoreHeight, utf8Address, utf8ViewKey, utf8SpendKey);
+    return [self init_beldex_wallet:beldex_wallet];
 }
 
 + (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
@@ -139,8 +139,8 @@ struct WalletListenerImpl: Wallet::WalletListener
     struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
     string utf8Path = [path UTF8String];
     string utf8Pwd = [password UTF8String];
-    Wallet::Wallet* monero_wallet = walletManager->openWallet(utf8Path, utf8Pwd, netType);
-    return [self init_beldex_wallet:monero_wallet];
+    Wallet::Wallet* beldex_wallet = walletManager->openWallet(utf8Path, utf8Pwd, netType);
+    return [self init_beldex_wallet:beldex_wallet];
 }
 
 #pragma mark ___listener
