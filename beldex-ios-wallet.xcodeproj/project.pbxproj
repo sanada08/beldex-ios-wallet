@@ -72,6 +72,7 @@
 		603808E029153380001186C0 /* UIViewController + Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808DF2915337F001186C0 /* UIViewController + Alert.swift */; };
 		603808E2291533B8001186C0 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808E1291533B7001186C0 /* UIViewController + Ext.swift */; };
 		603808E429153400001186C0 /* Character + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603808E329153400001186C0 /* Character + Ext.swift */; };
+		6049D361292BACDF00F08DF0 /* InteropConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6049D360292BACDF00F08DF0 /* InteropConverter.swift */; };
 		60754422291B7BF30026B028 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754421291B7BF30026B028 /* BaseButton.swift */; };
 		60754424291B7C330026B028 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754423291B7C330026B028 /* TabBarController.swift */; };
 		60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754425291B7C7F0026B028 /* SettingsViewController.swift */; };
@@ -187,6 +188,7 @@
 		603808DF2915337F001186C0 /* UIViewController + Alert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alert.swift"; sourceTree = "<group>"; };
 		603808E1291533B7001186C0 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		603808E329153400001186C0 /* Character + Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Character + Ext.swift"; sourceTree = "<group>"; };
+		6049D360292BACDF00F08DF0 /* InteropConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteropConverter.swift; sourceTree = "<group>"; };
 		60754421291B7BF30026B028 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
 		60754423291B7C330026B028 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		60754425291B7C7F0026B028 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 		044C62F72848B34E00A76C2E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				6049D360292BACDF00F08DF0 /* InteropConverter.swift */,
 				601A406C2922620F002763D2 /* SubAddress.swift */,
 				044C62F82848B36700A76C2E /* Seed.swift */,
 				044C63002848C7F300A76C2E /* Keys.swift */,
@@ -927,6 +930,7 @@
 				040BCE742848A3EA00C43958 /* BeldexWallet.swift in Sources */,
 				603808D8291531BA001186C0 /* UITextField + Placeholder.swift in Sources */,
 				044C63012848C7F300A76C2E /* Keys.swift in Sources */,
+				6049D361292BACDF00F08DF0 /* InteropConverter.swift in Sources */,
 				601A406D2922620F002763D2 /* SubAddress.swift in Sources */,
 				603808D62915316C001186C0 /* UINavigationController + Ext.swift in Sources */,
 				603808E2291533B8001186C0 /* UIViewController + Ext.swift in Sources */,
