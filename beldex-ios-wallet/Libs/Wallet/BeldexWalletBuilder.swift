@@ -34,22 +34,32 @@ public struct BDXWalletBuilder {
        // print("builder.mode ----> \(seed)")
         return builder
     }
+    
+    public func fromKeys(_ keys: Keys) -> BDXWalletBuilder {
+        var builder = self
+        builder.mode = .fromKeys(keys: keys)
+        return builder
+    }
+    
+    public func isValidatePassword() -> Bool {
+        return BeldexWalletWrapper.verifyPassword(password, path: pathWithFileName() + ".keys")
+    }
 
     func generate() -> BDXWallet? {
         var wrapper: BeldexWalletWrapper?
         if let mode = self.mode {
             switch mode {
+            case .openExisting:
+                wrapper = self.openExistingWallet()
             case .fromScratch:
                 wrapper = self.createWalletFromScratch()
             case .fromSeed(let seed):
-               // print("------ inside case ----->")
                 wrapper = self.recoverWalletFromSeed(seed)
+            case .fromKeys(let keys):
+                wrapper = self.recoverWalletFromKeys(keys: keys)
             }
         }
-        guard let result = wrapper else {
-            return nil
-            
-        }
+        guard let result = wrapper else { return nil }
         return BDXWallet(walletWrapper: result)
     }
     
@@ -60,6 +70,10 @@ public struct BDXWalletBuilder {
     }
     private func recoverWalletFromSeed(_ seed: Seed) -> BeldexWalletWrapper? {
         return BeldexWalletWrapper.recover(withSeed: seed.sentence, path: pathWithFileName(), password: password)
+    }
+    
+    private func recoverWalletFromKeys(keys:Keys) -> BeldexWalletWrapper? {
+        return BeldexWalletWrapper.recoverFromKeys(withPath: pathWithFileName(), password: password, language: language, restoreHeight: keys.restoreHeight, address: keys.addressString, viewKey: keys.viewKeyString, spendKey: keys.spendKeyString)
     }
 
     private func pathWithFileName() -> String {
@@ -88,5 +102,7 @@ extension BDXWalletBuilder {
     private enum Mode {
         case fromScratch
         case fromSeed(seed: Seed)
+        case fromKeys(keys: Keys)
+        case openExisting
     }
 }

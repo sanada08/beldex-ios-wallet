@@ -76,6 +76,7 @@ struct WalletListenerImpl: Wallet::WalletListener
 - (instancetype)init {
     if (self = [super init]) {
         beldex_wallet = nullptr;
+        beldex_walletListener = nullptr;
     }
     return self;
 }
@@ -101,7 +102,6 @@ struct WalletListenerImpl: Wallet::WalletListener
     string utf8Pwd = [password UTF8String];
     string utf8Lg = [language UTF8String];
     Wallet::Wallet* beldex_wallet = walletManager->createWallet(utf8Path, utf8Pwd, utf8Lg, netType);
-    cout<<"beldex_wallet---->"<< &beldex_wallet << endl;
     return [self init_beldex_wallet:beldex_wallet];
 }
 
@@ -116,6 +116,23 @@ struct WalletListenerImpl: Wallet::WalletListener
     return [self init_beldex_wallet:beldex_wallet];
 }
 
++ (BeldexWalletWrapper *)recoverFromKeysWithPath:(NSString *)path
+                                        password:(NSString *)password
+                                        language:(NSString *)language
+                                   restoreHeight:(uint64_t)restoreHeight
+                                         address:(NSString *)address
+                                         viewKey:(NSString *)viewKey
+                                        spendKey:(NSString *)spendKey {
+    struct Wallet::WalletManagerBase *walletManager = Wallet::WalletManagerFactory::getWalletManager();
+    string utf8Path = [path UTF8String];
+    string utf8Pwd = [password UTF8String];
+    string utf8Language = [language UTF8String];
+    string utf8Address = [address UTF8String];
+    string utf8ViewKey = [viewKey UTF8String];
+    string utf8SpendKey = [spendKey UTF8String];
+    Wallet::Wallet* beldex_wallet = walletManager->createWalletFromKeys(utf8Path, utf8Pwd, utf8Language, netType, restoreHeight, utf8Address, utf8ViewKey, utf8SpendKey);
+    return [self init_beldex_wallet:beldex_wallet];
+}
 
 + (BeldexWalletWrapper *)openExistingWithPath:(NSString *)path
                                      password:(NSString *)password {
@@ -126,6 +143,7 @@ struct WalletListenerImpl: Wallet::WalletListener
     return [self init_beldex_wallet:beldex_wallet];
 }
 
+#pragma mark ___listener
 
 - (void)addListener {
     if (beldex_walletListener) return;
@@ -142,6 +160,7 @@ struct WalletListenerImpl: Wallet::WalletListener
     listener.refreshHandler = refresh;
     beldex_walletListener->registerListener(listener);
 }
+
 - (void)setDelegate:(id<BeldexWalletDelegate>)delegate {
     __weak typeof(delegate) weakDelegate = delegate;
     __weak typeof(self) weakSelf = self;
@@ -158,6 +177,19 @@ struct WalletListenerImpl: Wallet::WalletListener
     }];
 }
 
+#pragma mark ___deinit
+
+//-(void)dealloc {
+//    if (beldex_walletListener) {
+//        beldex_walletListener->registerListener(NULL);
+//        delete beldex_walletListener;
+//        beldex_walletListener = nullptr;
+//    }
+//}
+
+
+#pragma mark - Data
+
 - (BOOL)connectToDaemon:(NSString *)daemonAddress {
     if (!beldex_wallet) return NO;
     return beldex_wallet->init([daemonAddress UTF8String]);
@@ -168,6 +200,22 @@ struct WalletListenerImpl: Wallet::WalletListener
     return [self connectToDaemon:daemonAddress];
 }
 
+- (BOOL)connectToDaemon:(NSString *)daemonAddress refresh:(BeldexWalletRefreshHandler)refresh newBlock:(BeldexWalletNewBlockHandler)newBlock {
+    [self setBlocksRefresh:refresh newBlock:newBlock];
+    return [self connectToDaemon:daemonAddress];
+}
+
+- (void)startRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->startRefresh();
+    }
+}
+
+- (void)pauseRefresh {
+    if (beldex_wallet) {
+        beldex_wallet->pauseRefresh();
+    }
+}
 
 - (BOOL)save {
     if (beldex_wallet) {
@@ -190,10 +238,40 @@ struct WalletListenerImpl: Wallet::WalletListener
     return success;
 }
 
+
+#pragma mark - Utils
+
+#pragma mark ___class
+
++ (BOOL)validAddress:(NSString *)address {
+    return Wallet::Wallet::addressValid([address UTF8String], netType);
+}
+
++ (BOOL)verifyPassword:(NSString *)password path:(NSString *)path {
+    Wallet::Wallet::Device device_type;
+    string utf8Path = [path UTF8String];
+    string utf8Pwd = [password UTF8String];
+    return Wallet::WalletManagerFactory::getWalletManager()->queryWalletDevice(device_type, utf8Path, utf8Pwd);
+}
+
 + (NSString *)displayAmount:(uint64_t)amount {
     string amountStr = Wallet::Wallet::displayAmount(amount);
     return objc_str_dup(amountStr);
 }
+
++ (NSString *)generatePaymentId {
+    string payment_id = Wallet::Wallet::genPaymentId();
+    return objc_str_dup(payment_id);
+}
+
++ (NSString *)paymentIdFromAddress:(NSString *)address {
+    string utf8Address = [address UTF8String];
+    string payment_id = Wallet::Wallet::paymentIdFromAddress(utf8Address, netType);
+    return objc_str_dup(payment_id);
+}
+
+
+#pragma mark ___object
 
 - (NSString *)getSeedString:(NSString *)language {
     string seed = "";
@@ -204,75 +282,30 @@ struct WalletListenerImpl: Wallet::WalletListener
     return objc_str_dup(seed);
 }
 
-- (NSString *)name {
-    NSString *name = @"";
+- (BOOL)setNewPassword:(NSString *)password {
     if (beldex_wallet) {
-        NSString *filename = objc_str_dup(beldex_wallet->filename());
-        NSString *lastItem = [[filename componentsSeparatedByString:@"/"] lastObject];
-        if (lastItem) {
-            name = lastItem;
-        }
+        return beldex_wallet->setPassword([password UTF8String]);
     }
-    return name;
+    return NO;
 }
 
-- (NSString *)publicAddress {
-    string address  = "";
+- (NSString *)generateIntegartedAddress:(NSString *)paymentId {
+    string integratedAddress = "";
     if (beldex_wallet) {
-        address = beldex_wallet->address();
+        integratedAddress = beldex_wallet->integratedAddress([paymentId UTF8String]);
     }
-    return objc_str_dup(address);
+    return objc_str_dup(integratedAddress);
 }
 
-- (NSString *)publicViewKey {
-    string key  = "";
-    if (beldex_wallet) {
-        key = beldex_wallet->publicViewKey();
-    }
-    return objc_str_dup(key);
-}
 
-- (NSString *)publicSpendKey {
-    string key  = "";
-    if (beldex_wallet) {
-        key = beldex_wallet->publicSpendKey();
-    }
-    return objc_str_dup(key);
-}
-- (NSString *)secretViewKey {
-    string key  = "";
-    if (beldex_wallet) {
-        key = beldex_wallet->secretViewKey();
-    }
-    return objc_str_dup(key);
-}
-- (NSString *)secretSpendKey {
-    string key  = "";
-    if (beldex_wallet) {
-        key = beldex_wallet->secretSpendKey();
-    }
-    return objc_str_dup(key);
-}
+#pragma mark - SubAddress
 
-- (uint64_t)balance {
+- (BOOL)addSubAddress:(NSString *)label accountIndex:(uint32_t)index {
     if (beldex_wallet) {
-        return beldex_wallet->balance();
+        beldex_wallet->addSubaddress(index, [label UTF8String]);
+        return YES;
     }
-    return 0;
-}
-
-- (uint64_t)blockChainHeight {
-    if (beldex_wallet) {
-        return beldex_wallet->blockChainHeight();
-    }
-    return 0;
-}
-
-- (uint64_t)daemonBlockChainHeight {
-    if (beldex_wallet) {
-        return beldex_wallet->daemonBlockChainHeight();
-    }
-    return 0;
+    return NO;
 }
 
 - (BOOL)setSubAddress:(NSString *)label addressIndex:(uint32_t)addressIndex accountIndex:(uint32_t)accountIndex {
@@ -282,7 +315,6 @@ struct WalletListenerImpl: Wallet::WalletListener
     }
     return NO;
 }
-
 
 - (NSArray<BeldexSubAddress *> *)fetchSubAddressWithAccountIndex:(uint32_t)index {
     NSMutableArray<BeldexSubAddress *> *result = [NSMutableArray array];
@@ -302,16 +334,45 @@ struct WalletListenerImpl: Wallet::WalletListener
     }
     return result;
 }
-- (uint64_t)restoreHeight {
-    if (beldex_wallet) {
-        return beldex_wallet->getRefreshFromBlockHeight();
-    }
-    return 0;
+
+
+#pragma mark - Transaction
+
+//- (BOOL)createTransactionToAddress:(NSString *)address paymentId:(NSString *)paymentId amount:(NSString *)amount mixinCount:(uint32_t)mixinCount priority:(PendingTransactionPriority)priority {
+//    if (!beldex_wallet) return NO;
+//    [self disposeTransaction];
+//    Wallet::optional<uint64_t> _amount;
+//    if (![amount isEqualToString:@"sweep"]) {
+//        _amount = Wallet::Wallet::amountFromString([amount UTF8String]);
+//    }
+//    beldex_pendingTransaction = beldex_wallet->createTransaction([address UTF8String],
+//                                                                 [paymentId UTF8String],
+//                                                                 _amount,
+//                                                                 mixinCount,
+//                                                                 (Wallet::PendingTransaction::Priority)priority);
+//    if (!beldex_pendingTransaction) return NO;
+//    if (beldex_pendingTransaction->status() != Status_Ok) {
+//        NSLog(@"monero createTransaction fail reason: %@", [self transactionErrorMessage]);
+//        return NO;
+//    }
+//    return YES;
+//}
+
+- (BOOL)createSweepTransactionToAddress:(NSString *)address paymentId:(NSString *)paymentId mixinCount:(uint32_t)mixinCount priority:(PendingTransactionPriority)priority {
+    return [self createTransactionToAddress:address paymentId:paymentId amount:@"sweep" mixinCount:mixinCount priority:priority];
 }
 
-- (void)startRefresh {
-    if (beldex_wallet) {
-        beldex_wallet->startRefresh();
+- (BOOL)commitPendingTransaction {
+    if (beldex_pendingTransaction) {
+        return beldex_pendingTransaction->commit();
+    }
+    return NO;
+}
+
+- (void)disposeTransaction {
+    if (beldex_wallet && beldex_pendingTransaction) {
+        beldex_wallet->disposeTransaction(beldex_pendingTransaction);
+        beldex_pendingTransaction = NULL;
     }
 }
 
@@ -322,6 +383,13 @@ struct WalletListenerImpl: Wallet::WalletListener
     return -1;
 }
 
+//- (NSString *)transactionErrorMessage {
+//    string errorStr = "";
+//    if (beldex_pendingTransaction) {
+//        errorStr = beldex_pendingTransaction->errorString();
+//    }
+//    return objc_str_dup(errorStr);
+//}
 
 - (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory {
     NSMutableArray<BeldexTrxHistory *> *result = [NSMutableArray array];
@@ -352,6 +420,123 @@ struct WalletListenerImpl: Wallet::WalletListener
     return result;
 }
 
+
+#pragma mark - Properties
+
+#pragma mark ___setter
+
+- (void)setRestoreHeight:(uint64_t)restoreHeight {
+    if (beldex_wallet) {
+        beldex_wallet->setRefreshFromBlockHeight(restoreHeight);
+    }
+}
+
+#pragma mark ___getter
+
+- (NSString *)name {
+    NSString *name = @"";
+    if (beldex_wallet) {
+        NSString *filename = objc_str_dup(beldex_wallet->filename());
+        NSString *lastItem = [[filename componentsSeparatedByString:@"/"] lastObject];
+        if (lastItem) {
+            name = lastItem;
+        }
+    }
+    return name;
+}
+
+- (BOOL)isSynchronized {
+    if (!beldex_wallet) return NO;
+    return beldex_wallet->synchronized();
+}
+
+//- (int)status {
+//    if (!beldex_wallet) return 0;
+//    return beldex_wallet->status();
+//}
+
+//- (NSString *)errorMessage {
+//    string errorString = "";
+//    if (beldex_wallet) {
+//        errorString = beldex_wallet->errorString();
+//    }
+//    return objc_str_dup(errorString);
+//}
+
+- (NSString *)publicViewKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->publicViewKey();
+    }
+    return objc_str_dup(key);
+}
+
+- (NSString *)publicSpendKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->publicSpendKey();
+    }
+    return objc_str_dup(key);
+}
+
+- (NSString *)secretViewKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->secretViewKey();
+    }
+    return objc_str_dup(key);
+}
+
+- (NSString *)secretSpendKey {
+    string key  = "";
+    if (beldex_wallet) {
+        key = beldex_wallet->secretSpendKey();
+    }
+    return objc_str_dup(key);
+}
+
+- (NSString *)publicAddress {
+    string address  = "";
+    if (beldex_wallet) {
+        address = beldex_wallet->address();
+    }
+    return objc_str_dup(address);
+}
+
+- (uint64_t)balance {
+    if (beldex_wallet) {
+        return beldex_wallet->balance();
+    }
+    return 0;
+}
+
+- (uint64_t)unlockedBalance {
+    if (beldex_wallet) {
+        return beldex_wallet->unlockedBalance();
+    }
+    return 0;
+}
+
+- (uint64_t)blockChainHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->blockChainHeight();
+    }
+    return 0;
+}
+
+- (uint64_t)daemonBlockChainHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->daemonBlockChainHeight();
+    }
+    return 0;
+}
+
+- (uint64_t)restoreHeight {
+    if (beldex_wallet) {
+        return beldex_wallet->getRefreshFromBlockHeight();
+    }
+    return 0;
+}
 
 
 @end
