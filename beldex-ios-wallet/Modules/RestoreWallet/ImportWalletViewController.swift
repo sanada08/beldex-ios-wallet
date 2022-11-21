@@ -31,7 +31,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         
         
         txtseed.delegate = self
-        txtseed.text = "spout cobra moisture wallets hippo academy tawny ulcers mammal tudor jive reunion buckets lids react kidneys geometry claim vipers zodiac ignore gnome silk stacking kidneys"
+        txtseed.text = "stacking domestic feast each ramped aphid slackens arena girth hydrogen tutor lettuce going sniff pigment sugar gained often push upgrade gourmet poker knife meeting hydrogen"
 //        txtName.text = "eedd"
 //        txtHeight.text = "7563"
         
