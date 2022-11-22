@@ -61,6 +61,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         recovery_seed.seed = seedvalue
         recovery_seed.block = txtHeight.text!
         data.name = txtName.text!
+        UserDefaults.standard.set(txtName.text!, forKey: "WalletName")
 //        data.pwd = ""
         WalletService.shared.createWallet(with: .recovery(data: data, recover: recover)) { (result) in
             switch result {
