@@ -40,6 +40,7 @@ class CreateWalletViewController: UIViewController {
     @IBAction func createWalletAction(sender:UIButton){
         data.name = name.text!
        // data.pwd = pwd.text!
+        UserDefaults.standard.set(name.text!, forKey: "WalletName")
         WalletService.shared.createWallet(with: .new(data: data)) { (result) in
             switch result {
             case .success(let wallet):
