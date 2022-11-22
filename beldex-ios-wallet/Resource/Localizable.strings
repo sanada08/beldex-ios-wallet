@@ -70,7 +70,7 @@
 "wallet.add.create" = "Create Wallet";
 "wallet.add.import" = "Restore Wallet";
 "wallet.add.slogen" = "For Privacy";
-"wallet.add.tips" = "When using Monero Wallet you must first create a new wallet or restore an existing one.";
+"wallet.add.tips" = "When using Beldex Wallet you must first create a new wallet or restore an existing one.";
 "wallet.create.tip1" = "For the security and safety of your assets, please set a password used for authorization of your private key and transactions";
 "wallet.create.tip2" = "WooKey will not save your password, nor will you be able to recover the password, please keep it secure";
 "wallet.create.tip3" = "8 characters or more, a mixture of lower and upper case letters and characters and symbols is recommended.";

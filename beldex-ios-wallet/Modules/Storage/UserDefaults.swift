@@ -64,7 +64,7 @@ public class WalletDefaults: UserDefaults {
     
     
     public var node: String {
-        get { return string(forKey: KeyPath.node_current) ?? NodeDefaults.Monero.default }
+        get { return string(forKey: KeyPath.node_current) ?? NodeDefaults.Beldex.default }
         set {
             set(newValue, forKey: KeyPath.node_current)
         }
