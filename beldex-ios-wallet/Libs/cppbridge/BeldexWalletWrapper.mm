@@ -82,16 +82,25 @@ struct WalletListenerImpl: Wallet::WalletListener
 }
 
 + (BeldexWalletWrapper *)init_beldex_wallet:(Wallet::Wallet *)beldex_wallet {
-    auto stat = beldex_wallet->status();
-    
-    if (stat.first != Wallet::Wallet::Status_Ok) return NULL;
-#if DEBUG
-    Wallet::WalletManagerFactory::setLogLevel(Wallet::WalletManagerFactory::LogLevel_Max);
-#endif
+//    auto stat = beldex_wallet->status();
+//
+//    if (stat.first != Wallet::Wallet::Status_Ok) return NULL;
+//#if DEBUG
+//    Wallet::WalletManagerFactory::setLogLevel(Wallet::WalletManagerFactory::LogLevel_Max);
+//#endif
+//    BeldexWalletWrapper *walletWrapper = [[BeldexWalletWrapper alloc] init];
+//    walletWrapper->beldex_wallet = beldex_wallet;
+//    cout<<"beldex_wallet<><> init_Wallet---->"<< &beldex_wallet<< endl;
+//    return walletWrapper;
+//
+    if (beldex_wallet->status().first != Wallet::Wallet::Status_Ok) return NULL;
+    #if DEBUG
+      Wallet::WalletManagerFactory::setLogLevel(Wallet::WalletManagerFactory::LogLevel_Max);
+    #endif
+      
     BeldexWalletWrapper *walletWrapper = [[BeldexWalletWrapper alloc] init];
-    walletWrapper->beldex_wallet = beldex_wallet;
-    cout<<"beldex_wallet<><> init_Wallet---->"<< &beldex_wallet<< endl;
-    return walletWrapper;
+      walletWrapper->beldex_wallet = beldex_wallet;
+      return walletWrapper;
 }
 
 + (BeldexWalletWrapper *)generateWithPath:(NSString *)path
@@ -450,18 +459,18 @@ struct WalletListenerImpl: Wallet::WalletListener
     return beldex_wallet->synchronized();
 }
 
-//- (int)status {
-//    if (!beldex_wallet) return 0;
-//    return beldex_wallet->status();
-//}
+- (int)status {
+    if (!beldex_wallet) return 0;
+    return beldex_wallet->status().first;
+}
 
-//- (NSString *)errorMessage {
-//    string errorString = "";
-//    if (beldex_wallet) {
-//        errorString = beldex_wallet->errorString();
-//    }
-//    return objc_str_dup(errorString);
-//}
+- (NSString *)errorMessage {
+    string errorString = "";
+    if (beldex_wallet) {
+        errorString = beldex_wallet->status().second;
+    }
+    return objc_str_dup(errorString);
+}
 
 - (NSString *)publicViewKey {
     string key  = "";
