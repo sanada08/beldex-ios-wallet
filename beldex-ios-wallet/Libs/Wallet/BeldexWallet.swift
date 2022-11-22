@@ -79,6 +79,14 @@ public class BDXWallet {
         }
     }
     
+    public func setDelegate(_ delegate: BeldexWalletDelegate) {
+        walletWrapper.setDelegate(delegate)
+    }
+    
+    public func pasue() {
+        walletWrapper.pauseRefresh()
+    }
+    
     public func start() {
         walletWrapper.startRefresh()
     }
@@ -113,45 +121,32 @@ public class BDXWallet {
         }
     }
     
+    public func createPendingTransaction(_ dstAddress: String, paymentId: String, amount: String) -> Bool {
+        return walletWrapper.createTransaction(toAddress: dstAddress, paymentId: paymentId, amount: amount, mixinCount: 10, priority: .default)
+    }
+    
+    public func createSweepTransaction(_ dstAddress: String, paymentId: String) -> Bool {
+        return walletWrapper.createSweepTransaction(toAddress: dstAddress, paymentId: paymentId, mixinCount: 10, priority: .default)
+    }
+
+    public func commitPendingTransaction() -> Bool {
+        return walletWrapper.commitPendingTransaction()
+    }
+    
+    public func commitPendingTransactionError() -> String {
+        return walletWrapper.transactionErrorMessage()
+    }
+    
+    public func disposeTransaction() {
+        walletWrapper.disposeTransaction()
+    }
+    
 }
 
 extension BDXWallet {
 
-    public var publicAddress: String {
-        return walletWrapper.publicAddress
-    }
-    
-    public var seed: Seed? {
-        let sentence = walletWrapper.getSeedString(language)
-        return Seed(sentence: sentence!)
-    }
-    public var publicViewKey: String {
-        return walletWrapper.publicViewKey
-    }
-    public var publicSpendKey: String {
-        return walletWrapper.publicSpendKey
-    }
-    public var secretViewKey: String {
-        return walletWrapper.secretViewKey
-    }
-    public var secretSpendKey: String {
-        return walletWrapper.secretSpendKey
-    }
-    public var balance: String {
-        return displayAmount(walletWrapper.balance)
-    }
-    public var unlockedBalance: String {
-        return displayAmount(walletWrapper.unlockedBalance)
-    }
-    public func getTransactionFee() -> String? {
-        let fee = walletWrapper.transactionFee()
-        if fee < 0 {
-            return nil
-        }
-        return BeldexWalletWrapper.displayAmount(UInt64(fee))
-    }
-    public func displayAmount(_ value: UInt64) -> String {
-        return BeldexWalletWrapper.displayAmount(value)
+    public func setNewPassword(_ password: String) {
+        walletWrapper.setNewPassword(password)
     }
     public var blockChainHeight: UInt64 {
         return walletWrapper.blockChainHeight
@@ -165,6 +160,52 @@ extension BDXWallet {
             walletWrapper.restoreHeight = newValue
         }
     }
+    public var secretViewKey: String {
+        return walletWrapper.secretViewKey
+    }
+    public var secretSpendKey: String {
+        return walletWrapper.secretSpendKey
+    }
+    public var publicViewKey: String {
+        return walletWrapper.publicViewKey
+    }
+    public var publicSpendKey: String {
+        return walletWrapper.publicSpendKey
+    }
+    public var publicAddress: String {
+        return walletWrapper.publicAddress
+    }
+    public var seed: Seed? {
+        let sentence = walletWrapper.getSeedString(language)!
+        return Seed(sentence: sentence)
+    }
+    public var synchronized: Bool {
+        return walletWrapper.isSynchronized
+    }
+    public var balance: String {
+        return displayAmount(walletWrapper.balance)
+    }
+    public var unlockedBalance: String {
+        return displayAmount(walletWrapper.unlockedBalance)
+    }
+    
+    public var history: TransactionHistory {
+        return self.getUpdatedHistory()
+    }
+
+    public func generatePaymentId() -> String {
+        return BeldexWalletWrapper.generatePaymentId()
+    }
+
+    public func generateIntegartedAddress(_ paymentId: String) -> String {
+        return walletWrapper.generateIntegartedAddress(paymentId)
+    }
+    
+    public func addSubAddress(_ label: String, result: ((Bool) -> Void)?) {
+        safeQueue.async {
+            result?(self.walletWrapper.addSubAddress(label, accountIndex: 0))
+        }
+    }
     
     public func setSubAddress(_ label: String, rowId: Int, result: ((Bool) -> Void)?) {
         safeQueue.async {
@@ -172,9 +213,24 @@ extension BDXWallet {
         }
     }
     
-    public var history: TransactionHistory {
-        return self.getUpdatedHistory()
+    public func getAllSubAddress() -> [SubAddress] {
+        let list = walletWrapper.fetchSubAddress(withAccountIndex: 0).map({SubAddress.init(model: $0)})
+        dPrint(" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> \(list)")
+        return list
     }
+    
+    public func getTransactionFee() -> String? {
+        let fee = walletWrapper.transactionFee()
+        if fee < 0 {
+            return nil
+        }
+        return BeldexWalletWrapper.displayAmount(UInt64(fee))
+    }
+
+    public func displayAmount(_ value: UInt64) -> String {
+        return BeldexWalletWrapper.displayAmount(value)
+    }
+    
     private func getUpdatedHistory() -> TransactionHistory {
         let unorderedHistory = walletWrapper.fetchTransactionHistory().map({TransactionItem(model: $0)})
         // in reverse order: latest to oldest

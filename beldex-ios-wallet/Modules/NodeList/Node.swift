@@ -6,7 +6,7 @@ import UIKit
 
 struct NodeDefaults {
     
-    struct Monero {
+    struct Beldex {
         static let default_en = "38.242.196.72:19095"
         static let default0 = "38.242.196.72:19095"
 //        static let default_zh = "124.160.224.28:18081"
