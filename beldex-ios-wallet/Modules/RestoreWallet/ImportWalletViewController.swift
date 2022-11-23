@@ -20,7 +20,6 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
     private var data = NewWallet()
     private var recovery_seed = RecoverWallet(from: .seed)
     
-    
     // MARK: - Life Cycles
     
     
@@ -29,12 +28,17 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
 
         // Do any additional setup after loading the view.
         
-        
         txtseed.delegate = self
         txtseed.text = "ajar yacht heron galaxy wonders buzzer whipped unquoted dented paddles dagger alarms erase algebra southern width motherly inline zippers vaults donuts hoax either farming buzzer"
+        
+        let seedvalue = txtseed.text!.lowercased()
+        recovery_seed.seed = seedvalue
+        recovery_seed.block = txtHeight.text!
+        
 //        txtseed.text = "jagged somewhere romance oasis sack biweekly aquarium hexagon dual bias superior kiwi actress eels nobody alchemy five tether lymph raking hitched deepest lied mirror dual"
 //        txtName.text = "eedd"
 //        txtHeight.text = "7563"
+        
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapGestureRecognizer)
@@ -52,17 +56,23 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
     }
     
     @IBAction func importAction(sender:UIButton){
-        self.createWallet(recover: recovery_seed)
+        self.alertWarningIfNeed(recovery_seed)
+    }
+    
+    private func alertWarningIfNeed(_ recover: RecoverWallet) {
+        guard recover.date == nil &&
+            recover.block == nil
+        else {
+            self.createWallet(recover)
+            return
+        }
+        self.createWallet(recover)
     }
   
-    func createWallet(recover:RecoverWallet)  {
-        let seedvalue = txtseed.text!.lowercased()
-        UserDefaults.standard.set(seedvalue, forKey: "helloKey")
-        recovery_seed.seed = seedvalue
-        recovery_seed.block = txtHeight.text!
+    private func createWallet(_ recover: RecoverWallet) {
         data.name = txtName.text!
-        UserDefaults.standard.set(txtName.text!, forKey: "WalletName")
 //        data.pwd = ""
+        UserDefaults.standard.set(txtName.text!, forKey: "WalletName")
         WalletService.shared.createWallet(with: .recovery(data: data, recover: recover)) { (result) in
             switch result {
             case .success(let wallet):

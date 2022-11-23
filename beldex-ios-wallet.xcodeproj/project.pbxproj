@@ -17,7 +17,6 @@
 		044C62FB2848B61A00A76C2E /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FA2848B61A00A76C2E /* WelcomeVC.swift */; };
 		044C62FF2848C61800A76C2E /* Date + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C62FE2848C61800A76C2E /* Date + Ext.swift */; };
 		044C63012848C7F300A76C2E /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63002848C7F300A76C2E /* Keys.swift */; };
-		044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */; };
 		044C63062848D11C00A76C2E /* ImportWalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63052848D11B00A76C2E /* ImportWalletViewController.swift */; };
 		044C63092856FA2E00A76C2E /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C63082856FA2E00A76C2E /* BaseViewController.swift */; };
 		044C630B2856FA8000A76C2E /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044C630A2856FA8000A76C2E /* NavigationController.swift */; };
@@ -124,7 +123,6 @@
 		044C62FA2848B61A00A76C2E /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		044C62FE2848C61800A76C2E /* Date + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Ext.swift"; sourceTree = "<group>"; };
 		044C63002848C7F300A76C2E /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
-		044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewModel.swift; sourceTree = "<group>"; };
 		044C63052848D11B00A76C2E /* ImportWalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportWalletViewController.swift; sourceTree = "<group>"; };
 		044C63082856FA2E00A76C2E /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		044C630A2856FA8000A76C2E /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 				601A407F2923602F002763D2 /* Common */,
 				601A406829226189002763D2 /* LocalAuth */,
 				044C62FA2848B61A00A76C2E /* WelcomeVC.swift */,
-				044C63032848CE9700A76C2E /* ImportWalletViewModel.swift */,
 				040BCE6D2848A0AE00C43958 /* Wallet.swift */,
 				603808B6291527ED001186C0 /* RestoreWallet */,
 				603808B5291527D8001186C0 /* CreateWallet */,
@@ -936,7 +933,6 @@
 				603808E2291533B8001186C0 /* UIViewController + Ext.swift in Sources */,
 				0460748828488F7A00D2AF54 /* SceneDelegate.swift in Sources */,
 				044C63092856FA2E00A76C2E /* BaseViewController.swift in Sources */,
-				044C63042848CE9700A76C2E /* ImportWalletViewModel.swift in Sources */,
 				603808C029152C67001186C0 /* CGSize + Ext.swift in Sources */,
 				601A406729225CAE002763D2 /* UserDefaults.swift in Sources */,
 				603808BA29152A9D001186C0 /* Array + Ext.swift in Sources */,
