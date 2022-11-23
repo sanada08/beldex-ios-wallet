@@ -20,7 +20,7 @@ class WalletService {
     static let shared = { WalletService() }()
     
     public func createWallet(with style: CreateWalletStyle, result: GetWalletHandler?) {
-        DispatchQueuePool.shared["XMRWallet:new"].async {
+    //    DispatchQueuePool.shared["XMRWallet:new"].async {
             var result_wallet: BDXWallet!
             switch style {
             case .new(let data):
@@ -54,7 +54,7 @@ class WalletService {
                     print("case Keys")
                 }
             }
-        }
+     //   }
     }
     
     
