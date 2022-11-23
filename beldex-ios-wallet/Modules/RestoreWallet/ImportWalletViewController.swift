@@ -20,6 +20,7 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
     private var data = NewWallet()
     private var recovery_seed = RecoverWallet(from: .seed)
     
+    
     // MARK: - Life Cycles
     
     
@@ -33,7 +34,9 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         
         let seedvalue = txtseed.text!.lowercased()
         recovery_seed.seed = seedvalue
-        recovery_seed.block = txtHeight.text!
+      //  recovery_seed.block = txtHeight.text!
+     
+        
         
 //        txtseed.text = "jagged somewhere romance oasis sack biweekly aquarium hexagon dual bias superior kiwi actress eels nobody alchemy five tether lymph raking hitched deepest lied mirror dual"
 //        txtName.text = "eedd"
@@ -71,6 +74,8 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
   
     private func createWallet(_ recover: RecoverWallet) {
         data.name = txtName.text!
+//        recovery_seed.block = "12345"
+        UserDefaults.standard.set(txtHeight.text!, forKey: "WalletRestoreHeight")
 //        data.pwd = ""
         UserDefaults.standard.set(txtName.text!, forKey: "WalletName")
         WalletService.shared.createWallet(with: .recovery(data: data, recover: recover)) { (result) in

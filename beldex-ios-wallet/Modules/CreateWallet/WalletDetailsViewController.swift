@@ -115,8 +115,10 @@ class WalletDetailsViewController: UIViewController {
             guard let `self` = self else { return }
             if isConnected {
                 if let wallet = self.wallet {
-                    if let restoreHeight = self.token.restoreHeight {
-                        wallet.restoreHeight = restoreHeight
+                    let WalletRestoreHeight = UserDefaults.standard.string(forKey: "WalletRestoreHeight")
+                    print("=====> \(WalletRestoreHeight)")
+                    if let restoreHeight = WalletRestoreHeight{
+                        wallet.restoreHeight = UInt64(restoreHeight)!
                     }
                     wallet.start()
                 }
