@@ -15,6 +15,17 @@ class WalletDetailsViewController: UIViewController {
     @IBOutlet weak var lblname:UILabel!
     @IBOutlet var progressView: UIProgressView!
     
+    
+    private var address: String = "9u98r2oSvnZ6FZSrfF4YqiejPXVsT4bBPiSm9UcpaEKvdDigDThHWKYYgLz6p36amZ6BPwBnn1gL7B5ZmL6gkKeQ548hnx4"
+    private var amount: String = "10"
+    private var paymentId: String = ""
+    
+    private var sendValid: Bool {
+        return address.count > 0 && amount.count > 0
+    }
+    
+//    private var isAllin: Bool = false
+    
     lazy var statusTextState = { return Observable<String>("") }()
     lazy var sendState = { return Observable<Bool>(false) }()
     lazy var reciveState = { return Observable<Bool>(false) }()
@@ -81,6 +92,43 @@ class WalletDetailsViewController: UIViewController {
     @IBAction func BackAction(sender:UIButton){
         self.navigationController?.popViewController(animated: true)
     }
+    @IBAction func SendAction(sender:UIButton){
+        guard BeldexWalletWrapper.validAddress(address) else {
+//            HUD.showError(LocalizedString(key: "address.validate.fail", comment: ""))
+            return
+        }
+//        HUD.showHUD()
+        DispatchQueue.global().async {
+//            let success: Bool
+//            if self.isAllin {
+//                success = self.wallet.createSweepTransaction(self.address, paymentId: self.paymentId)
+//            } else {
+            var success = ((self.wallet?.createPendingTransaction(self.address, amount: self.amount)) != nil)
+            print("success ----> ", success)
+//            }
+//            DispatchQueue.main.async {
+////                HUD.hideHUD()
+            if success {
+                   let commit_success = self.wallet?.commitPendingTransaction()
+                if commit_success == true {
+                    self.wallet?.disposeTransaction()}
+                }
+//                if commit_success {
+                   
+                    
+//                    if errMsg.count == 0 {
+//                        errMsg = LocalizedString(key: "send.create.failure", comment: "")
+//                    }
+//                    HUD.showError(errMsg)
+                    return
+                }
+//                finish?()
+//            }
+//        }
+        
+        
+    }
+    
    
     func init_wallet() {
         sendState.value = false
