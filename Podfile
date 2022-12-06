@@ -6,13 +6,13 @@ target 'beldex-ios-wallet' do
   use_frameworks!
 
 
-pod 'Schedule'
+  pod 'Schedule'
   pod 'ActiveLabel'
   pod 'EFQRCode'
   pod 'SnapKit'
   pod 'Alamofire'
   pod 'IQKeyboardManagerSwift'
-  pod 'WCDB.swift'
+#  pod 'WCDB.swift', :path => '../../node_modules/@capacitor/ios'
   pod 'SVProgressHUD'
   pod 'SwiftyRSA'
   pod 'Gifu'

@@ -17,7 +17,7 @@ class NodeListViewController: UIViewController {
         }
     }
     
-    var arrlist = ["38.242.196.72:19095","38.242.196.72:19095","38.242.196.72:19095","38.242.196.72:19095"]
+    var arrlist = ["38.242.196.72:19095","publicnode2.rpcnode.stream:29095","explorer.beldex.io:19091","38.242.196.72:19095"]
     private var selectedIndex: Int?
     private var fpsCaches = [String: Int]()
     private var nodeList = [NodeOption](){
@@ -72,6 +72,8 @@ extension NodeListViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MyWalletNodeXibCell.identifier, for: indexPath) as! MyWalletNodeXibCell
+        
+        print("------> \(arrlist[indexPath.item])")
         
         cell.lblmyaddress.text = arrlist[indexPath.item]
         if indexPath.item == 0 {
