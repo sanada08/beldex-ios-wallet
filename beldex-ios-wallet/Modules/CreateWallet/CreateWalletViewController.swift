@@ -13,7 +13,6 @@ class CreateWalletViewController: UIViewController {
     @IBOutlet weak var pwd:UITextField!
     @IBOutlet weak var btnnName:UIButton!
     
-    
     private var data = NewWallet()
 
     override func viewDidLoad() {

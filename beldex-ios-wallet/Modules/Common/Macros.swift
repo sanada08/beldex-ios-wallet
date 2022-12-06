@@ -15,8 +15,8 @@ public enum Token: String {
 
 public enum WooKeyURL: String {
     
-    case serviceBook = "https://wallet.wookey.io/service-docs/app.html"
-    case moreNodes = "https://wallet.wookey.io/monero-nodes/app.html"
+    case serviceBook = "https://wallet.beldex.io/service-docs/app.html"
+    case moreNodes = "https://wallet.beldex.io/beldex-nodes/app.html"
     
     var url: URL {
         return URL(string: rawValue)!

@@ -48,7 +48,7 @@ class WalletDetailsViewController: UIViewController {
     
 //    private let pwd: String
 //    private let asset: Assets
-    private let token = TokenWallet()
+ //   private let token = TokenWallet()
     private var wallet: BDXWallet?
 
     private var listening = false
@@ -154,6 +154,7 @@ class WalletDetailsViewController: UIViewController {
     
     func connect(wallet: BDXWallet) {
         print("inside connect >>>>>>>>>>>\n")
+        print("---Node--->\(WalletDefaults.shared.node)")
         self.reciveState.value = true
         if !connecting {
             self.conncetingState.value = true
@@ -164,7 +165,6 @@ class WalletDetailsViewController: UIViewController {
             if isConnected {
                 if let wallet = self.wallet {
                     let WalletRestoreHeight = UserDefaults.standard.string(forKey: "WalletRestoreHeight")
-                    print("=====> \(WalletRestoreHeight)")
                     if let restoreHeight = WalletRestoreHeight{
                         wallet.restoreHeight = UInt64(restoreHeight)!
                     }

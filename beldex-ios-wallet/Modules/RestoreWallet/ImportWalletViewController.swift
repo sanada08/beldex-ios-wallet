@@ -31,14 +31,12 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
         
         txtseed.delegate = self
         txtseed.text = "ajar yacht heron galaxy wonders buzzer whipped unquoted dented paddles dagger alarms erase algebra southern width motherly inline zippers vaults donuts hoax either farming buzzer"
+      //  txtseed.text = "subtly gyrate dauntless bygones elapse radar justice tail arbitrary inroads website alley ozone aloof rest possible adjust melting oars wolf army envy vowels wobbly inroads"
         
         let seedvalue = txtseed.text!.lowercased()
         recovery_seed.seed = seedvalue
       //  recovery_seed.block = txtHeight.text!
-     
-        
-        
-//        txtseed.text = "jagged somewhere romance oasis sack biweekly aquarium hexagon dual bias superior kiwi actress eels nobody alchemy five tether lymph raking hitched deepest lied mirror dual"
+
 //        txtName.text = "eedd"
 //        txtHeight.text = "7563"
         
@@ -74,7 +72,6 @@ class ImportWalletViewController: UIViewController,UITextViewDelegate {
   
     private func createWallet(_ recover: RecoverWallet) {
         data.name = txtName.text!
-//        recovery_seed.block = "12345"
         UserDefaults.standard.set(txtHeight.text!, forKey: "WalletRestoreHeight")
 //        data.pwd = ""
         UserDefaults.standard.set(txtName.text!, forKey: "WalletName")

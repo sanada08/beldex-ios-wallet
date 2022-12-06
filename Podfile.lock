@@ -7,17 +7,11 @@ PODS:
   - IQKeyboardManagerSwift (6.5.10)
   - Schedule (2.1.0)
   - SnapKit (5.6.0)
-  - SQLiteRepairKit (1.2.2):
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
   - SVProgressHUD (2.2.5)
   - SwiftyRSA (1.7.0):
     - SwiftyRSA/ObjC (= 1.7.0)
   - SwiftyRSA/ObjC (1.7.0)
   - SwipeCellKit (2.7.1)
-  - WCDB.swift (1.0.8.2):
-    - SQLiteRepairKit (~> 1.2.0)
-    - WCDBOptimizedSQLCipher (~> 1.2.0)
-  - WCDBOptimizedSQLCipher (1.2.1)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -30,7 +24,6 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftyRSA
   - SwipeCellKit
-  - WCDB.swift
 
 SPEC REPOS:
   trunk:
@@ -41,12 +34,9 @@ SPEC REPOS:
     - IQKeyboardManagerSwift
     - Schedule
     - SnapKit
-    - SQLiteRepairKit
     - SVProgressHUD
     - SwiftyRSA
     - SwipeCellKit
-    - WCDB.swift
-    - WCDBOptimizedSQLCipher
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
@@ -56,13 +46,10 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
   Schedule: 00e6d7bbdbdb000fd1f51a7d10e9f88a8c451fda
   SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
-  SQLiteRepairKit: 35aaae5a8838adb85f5b1eb4d796055be6060a4b
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyRSA: 8c6dd1ea7db1b8dc4fb517a202f88bb1354bc2c6
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
-  WCDB.swift: 05d509d7a0e60fb6e11c34eb7e4027c0fab5849f
-  WCDBOptimizedSQLCipher: baf44493b0c7a3d49e97bc5b64a3856f6428ddd1
 
-PODFILE CHECKSUM: ef65df8330ec7ce122d45086b57132a98575158b
+PODFILE CHECKSUM: 3540fbd29a3cf42e3107e0a1b79833ba906e5d01
 
 COCOAPODS: 1.11.3
