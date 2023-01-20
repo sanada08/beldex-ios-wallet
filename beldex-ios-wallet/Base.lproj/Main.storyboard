@@ -290,12 +290,28 @@
                                     <action selector="CuurencyarActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="NlQ-xy-kda"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8jH-yq-00w">
+                                <rect key="frame" x="22" y="378" width="370" height="35"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8Rj-xT-8Wv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Node Validation">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="Node_validation_ActionWithSender:" destination="eEi-OI-s4b" eventType="touchUpInside" id="Rqa-wo-fmj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WDB-qa-fiX"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="6FD-SK-5ES" firstAttribute="top" secondItem="Pyk-Ak-Zk1" secondAttribute="bottom" constant="22" id="3gA-e8-b7h"/>
                             <constraint firstItem="O6n-gC-pmj" firstAttribute="trailing" secondItem="6FD-SK-5ES" secondAttribute="trailing" id="Cym-qI-F0u"/>
+                            <constraint firstItem="8jH-yq-00w" firstAttribute="trailing" secondItem="vB7-zW-vXk" secondAttribute="trailing" id="F6P-sM-uyo"/>
                             <constraint firstItem="uuC-eM-zmw" firstAttribute="trailing" secondItem="O6n-gC-pmj" secondAttribute="trailing" id="NlM-qM-L02"/>
                             <constraint firstItem="vB7-zW-vXk" firstAttribute="top" secondItem="uuC-eM-zmw" secondAttribute="bottom" constant="22" id="NwP-0M-rTu"/>
                             <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="centerX" secondItem="abx-Go-XWT" secondAttribute="centerX" id="SBE-uM-Ub5"/>
@@ -303,9 +319,11 @@
                             <constraint firstItem="vB7-zW-vXk" firstAttribute="leading" secondItem="uuC-eM-zmw" secondAttribute="leading" id="WA9-xo-l24"/>
                             <constraint firstItem="O6n-gC-pmj" firstAttribute="top" secondItem="6FD-SK-5ES" secondAttribute="bottom" constant="22" id="XZu-vN-RHd"/>
                             <constraint firstItem="uuC-eM-zmw" firstAttribute="leading" secondItem="O6n-gC-pmj" secondAttribute="leading" id="b2A-Yq-38f"/>
+                            <constraint firstItem="8jH-yq-00w" firstAttribute="leading" secondItem="vB7-zW-vXk" secondAttribute="leading" id="hN0-EX-BVH"/>
                             <constraint firstItem="6FD-SK-5ES" firstAttribute="leading" secondItem="Pyk-Ak-Zk1" secondAttribute="leading" id="jAQ-UP-1qY"/>
                             <constraint firstItem="uuC-eM-zmw" firstAttribute="top" secondItem="O6n-gC-pmj" secondAttribute="bottom" constant="22" id="l0c-d2-Lmc"/>
                             <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="leading" secondItem="WDB-qa-fiX" secondAttribute="leading" constant="22" id="lnR-E4-Mnz"/>
+                            <constraint firstItem="8jH-yq-00w" firstAttribute="top" secondItem="vB7-zW-vXk" secondAttribute="bottom" constant="22" id="mAA-UC-FE5"/>
                             <constraint firstItem="O6n-gC-pmj" firstAttribute="leading" secondItem="6FD-SK-5ES" secondAttribute="leading" id="nBo-Xb-BeT"/>
                             <constraint firstItem="Pyk-Ak-Zk1" firstAttribute="top" secondItem="WDB-qa-fiX" secondAttribute="top" constant="45" id="oU0-Fz-Mvn"/>
                             <constraint firstItem="vB7-zW-vXk" firstAttribute="trailing" secondItem="uuC-eM-zmw" secondAttribute="trailing" id="tg7-08-19L"/>

@@ -81,7 +81,7 @@
 		60754424291B7C330026B028 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754423291B7C330026B028 /* TabBarController.swift */; };
 		60754426291B7C7F0026B028 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754425291B7C7F0026B028 /* SettingsViewController.swift */; };
 		60754429291BA2280026B028 /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60754428291BA2280026B028 /* VisualEffectView.swift */; };
-		608459F8295D70BE007A6D4D /* libwallet_api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 608459F7295D70BE007A6D4D /* libwallet_api.a */; };
+		60A4A6B82977C0290096AB05 /* libwallet_api.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 60A4A6B72977C0290096AB05 /* libwallet_api.a */; };
 		60B293352924B1DA00ED270C /* BeldexWalletListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 60B293342924B1DA00ED270C /* BeldexWalletListener.m */; };
 		60B512132913CBB80005F44F /* NodeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512122913CBB80005F44F /* NodeListViewController.swift */; };
 		60B512162913D3130005F44F /* MyWalletNodeXibCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B512152913D3130005F44F /* MyWalletNodeXibCell.swift */; };
@@ -201,7 +201,7 @@
 		60754423291B7C330026B028 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		60754425291B7C7F0026B028 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		60754428291BA2280026B028 /* VisualEffectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
-		608459F7295D70BE007A6D4D /* libwallet_api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwallet_api.a; sourceTree = "<group>"; };
+		60A4A6B72977C0290096AB05 /* libwallet_api.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libwallet_api.a; sourceTree = "<group>"; };
 		60B293332924B1DA00ED270C /* BeldexWalletListener.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeldexWalletListener.h; sourceTree = "<group>"; };
 		60B293342924B1DA00ED270C /* BeldexWalletListener.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeldexWalletListener.m; sourceTree = "<group>"; };
 		60B512122913CBB80005F44F /* NodeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeListViewController.swift; sourceTree = "<group>"; };
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C42825673924594BF7F43D4D /* Pods_beldex_ios_wallet.framework in Frameworks */,
-				608459F8295D70BE007A6D4D /* libwallet_api.a in Frameworks */,
+				60A4A6B82977C0290096AB05 /* libwallet_api.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,7 +430,7 @@
 		046074B8284891BA00D2AF54 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				608459F7295D70BE007A6D4D /* libwallet_api.a */,
+				60A4A6B72977C0290096AB05 /* libwallet_api.a */,
 				046074B9284891E000D2AF54 /* wallet2_api.h */,
 			);
 			path = include;
