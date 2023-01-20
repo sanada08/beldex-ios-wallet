@@ -147,7 +147,7 @@ class WalletDetailsViewController: UIViewController {
             self.conncetingState.value = true
             lblsync.text = LocalizedString(key: "Connecting, it may take 5 minutes", comment: "Connecting, it may take 5 minutes")
         }
-        wallet.connectToDaemon(address: "explorer.beldex.io:19091", delegate: self) { [weak self] (isConnected) in
+        wallet.connectToDaemon(address: "38.242.196.72:19095", delegate: self) { [weak self] (isConnected) in
             guard let `self` = self else { return }
             if isConnected {
                 if let wallet = self.wallet {
