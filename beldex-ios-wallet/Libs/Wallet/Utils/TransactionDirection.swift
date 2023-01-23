@@ -2,7 +2,7 @@
 //  TransactionDirection.swift
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 16/11/22.
+//  Created by Sanada on 16/11/22.
 //
 
 import Foundation

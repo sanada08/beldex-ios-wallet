@@ -2,7 +2,7 @@
 //  CurrencyViewController.swift
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 09/12/22.
+//  Created by Sanada on 09/12/22.
 //
 
 import UIKit

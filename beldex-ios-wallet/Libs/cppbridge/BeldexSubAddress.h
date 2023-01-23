@@ -2,7 +2,7 @@
 //  BeldexSubAddress.h
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 14/11/22.
+//  Created by Sanada on 14/11/22.
 //
 
 #import <Foundation/Foundation.h>

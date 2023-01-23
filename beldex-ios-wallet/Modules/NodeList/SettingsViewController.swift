@@ -2,7 +2,7 @@
 //  SettingsViewController.swift
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 09/11/22.
+//  Created by Sanada on 09/11/22.
 //
 
 import UIKit

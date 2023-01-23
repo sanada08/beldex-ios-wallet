@@ -2,7 +2,7 @@
 //  TrXibCell.swift
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 06/12/22.
+//  Created by Sanada on 06/12/22.
 //
 
 import UIKit

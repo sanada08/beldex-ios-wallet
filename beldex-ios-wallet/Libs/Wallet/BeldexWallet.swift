@@ -122,6 +122,7 @@ public class BDXWallet {
     }
     
     public func createPendingTransaction(_ dstAddress: String, paymentId: String, amount: String) -> Bool {
+        print("-----> inside createpending transintion=====")
         return walletWrapper.createTransaction(toAddress: dstAddress, paymentId: paymentId, amount: amount, mixinCount: 10, priority: .default)
     }
     

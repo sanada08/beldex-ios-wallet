@@ -2,7 +2,7 @@
 //  NodeListViewController.swift
 //  beldex-ios-wallet
 //
-//  Created by Blockhash on 03/11/22.
+//  Created by Sanada on 03/11/22.
 //
 
 import UIKit
