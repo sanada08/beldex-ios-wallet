@@ -391,13 +391,13 @@ struct WalletListenerImpl: Wallet::WalletListener
     return -1;
 }
 
-//- (NSString *)transactionErrorMessage {
-//    string errorStr = "";
-//    if (beldex_pendingTransaction) {
-//        errorStr = beldex_pendingTransaction->errorString();
-//    }
-//    return objc_str_dup(errorStr);
-//}
+- (NSString *)transactionErrorMessage {
+    string errorStr = "";
+    if (beldex_pendingTransaction) {
+        errorStr = beldex_pendingTransaction->status().second;
+    }
+    return objc_str_dup(errorStr);
+}
 
 - (NSArray<BeldexTrxHistory *> *)fetchTransactionHistory {
     NSMutableArray<BeldexTrxHistory *> *result = [NSMutableArray array];

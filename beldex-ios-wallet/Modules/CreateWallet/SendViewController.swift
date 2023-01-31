@@ -2,7 +2,6 @@
 //  SendViewController.swift
 //  beldex-ios-wallet
 //
-//  Created by Sanada on 15/12/22.
 //
 
 import UIKit
@@ -12,56 +11,28 @@ class SendViewController: UIViewController {
     @IBOutlet weak var txtaddress:UITextField!
     @IBOutlet weak var txtamount:UITextField!
     
-    private var isAllin: Bool = false
-  //  private let wallet: BDXWallet
-   // private var wallet: BDXWallet
-    private var paymentId: String = ""
-    
-    // MARK: - Properties (Private)
-    
-//    private let asset: Assets?
-   // private let token: TokenWallet
-    private var wallet: BDXWallet?
-    
-    
-    private var address: String = ""
-    private var amount: String = ""
-  //  private var paymentId: String = ""
-    
-    private var sendValid: Bool {
-        return address.count > 0 && amount.count > 0
-    }
-    
-  //  private var isAllin: Bool = false
-    
-    
-    // MARK: - Properties (Lazy)
-    
-    lazy var sendState = { return Observable<Bool>(false) }()
-    lazy var addressState = { return Observable<String>("") }()
-    lazy var amountState = { return Observable<String>("") }()
-    lazy var paymentIdState = { return Observable<String>("") }()
-    lazy var paymentIdLenState = { return Observable<String>("0/16") }()
-    
-    
     // MARK: - Life Cycle
-    
-//    init( wallet: BDXWallet) {
-////        self.asset = asset
-//     //   self.token = asset.wallet ?? TokenWallet()
-//        self.wallet = wallet
-//        super.init()
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
+    private var wallet: BDXWallet?
+    private lazy var taskQueue = DispatchQueue(label: "beldex.wallet.task")
+    private var currentBlockChainHeight: UInt64 = 0
+    private var daemonBlockChainHeight: UInt64 = 0
+    lazy var conncetingState = { return Observable<Bool>(false) }()
+    private var needSynchronized = false {
+        didSet {
+            guard needSynchronized, !oldValue,
+                let wallet = self.wallet else { return }
+            wallet.saveOnTerminate()
+        }
+    }
+    var sendflag = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         txtaddress.text = "9u98r2oSvnZ6FZSrfF4YqiejPXVsT4bBPiSm9UcpaEKvdDigDThHWKYYgLz6p36amZ6BPwBnn1gL7B5ZmL6gkKeQ548hnx4"
+        //Node Connect Process
+        sendflag = false
+        sendTransation_wallet()
         
         
     }
@@ -70,54 +41,136 @@ class SendViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    // Reconnect work
     @IBAction func Send_Action(sender:UIButton){
-        print("===================> \(txtaddress.text!)")
-        print("===================> \(txtamount.text!)")
-        
+        sendflag = true
         guard BeldexWalletWrapper.validAddress(txtaddress.text!) else {
-            print("===================> Address Format Error")
+            let alert = UIAlertController(title: "My Title", message: "Address Format Error", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
+        if txtamount.text?.count == 0 {
+            let alert = UIAlertController(title: "My Title", message: "Pls Enter amount", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else {
+            sendTransation_wallet()
+        }
+    }
     
-        
-        guard let wallet = self.wallet else { return }
+    
+    func sendTransation_wallet() {
+        WalletService.shared.openWallet("\(UserDefaults.standard.string(forKey: "WalletName")!)", password: "") { [weak self] (result) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else { return }
+                switch result {
+                case .success(let wallet):
+                    strongSelf.wallet = wallet
+                    strongSelf.connect(wallet: wallet)
+                case .failure(_):
+                    print("===================> Failed to Connect")
+                }
+            }
+        }
+    }
+    func connect(wallet: BDXWallet) {
+        print("---Node--->\(WalletDefaults.shared.node)")
+        wallet.connectToDaemon(address: "38.242.196.72:19095", delegate: self) { [weak self] (isConnected) in
+            guard let `self` = self else { return }
+            if isConnected {
+                if let wallet = self.wallet {
+                    let WalletRestoreHeight = UserDefaults.standard.string(forKey: "WalletRestoreHeight")
+                    if let restoreHeight = WalletRestoreHeight{
+                        wallet.restoreHeight = UInt64(restoreHeight) ?? 0
+                    }
+                    wallet.start()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    print("===================> Failed to Connect")
+                }
+            }
+        }
+        if sendflag == true{
+           // HUD.showHUD()
+            DispatchQueue.global().async {
+                let createPendingTransaction = wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount: self.txtamount.text!)
+                print("---createPendingTransaction result----> \(createPendingTransaction)")
+                let commitPendingTransaction = wallet.commitPendingTransaction()
+                print("---commitPendingTransaction result----\(commitPendingTransaction)")
+                DispatchQueue.main.async {
+                   // HUD.hideHUD()
+                    if createPendingTransaction == true {
+                        if commitPendingTransaction == true {
+                            print("Send Successfully")
+                            let alert = UIAlertController(title: "My Title", message: "Send Successfully", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }else {
+                        var errMsg = wallet.commitPendingTransactionError()
+                        if errMsg.count == 0 {
+                            print("Failed to Package")
+                            let alert = UIAlertController(title: "My Title", message: "Failed to Package", preferredStyle: UIAlertController.Style.alert)
+                            alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+                            self.present(alert, animated: true, completion: nil)
+                        }
+                    }
+                }
+            }
+        }else {
             
-        print (" dsfadfsda balance ------> \(wallet.daemonBlockChainHeight)")
-        let success = tosend(wallet: wallet )
-//        let success = wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount:self.txtamount.text!)
-//        print("------------> \(success)")
-//        } else {
-//            print ("enside iesdjfjiasdjfas")
-//        }
-        
-        
-//        DispatchQueue.global().async {
-//            let success: Bool
-//            if self.isAllin {
-//                success = self.wallet.createSweepTransaction(self.txtaddress.text!, paymentId: "")
-//            } else {
-//                success = self.wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount:self.txtamount.text!)
-//            }
-//            DispatchQueue.main.async {
-//              //  HUD.hideHUD()
-//                guard success else {
-//                    var errMsg = self.wallet.commitPendingTransactionError()
-//                    if errMsg.count == 0 {
-//                        errMsg = LocalizedString(key: "send.create.failure", comment: "")
-//                    }
-//                    print("========errMsg===========> \(errMsg)")
-//                    return
-//                }
-//               // finish?()
-//            }
-//        }
+        }
     }
-    func tosend(wallet: BDXWallet){
-        let success = wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount:self.txtamount.text!)
-        print("------------> \(success)")
+    
+    private func synchronizedUI() {
+        print("===================> Synced")
+       // self.lblsync.text = LocalizedString(key: "Synced", comment: "Synced")
     }
+    
+    
+}
+    
+  
 
-   
-
+extension SendViewController: BeldexWalletDelegate {
+    func beldexWalletRefreshed(_ wallet: BeldexWalletWrapper) {
+//        dPrint("Refreshed---------->blockChainHeight-->\(wallet.blockChainHeight) ---------->daemonBlockChainHeight-->, \(wallet.daemonBlockChainHeight)")
+        if self.needSynchronized {
+            self.needSynchronized = !wallet.save()
+        }
+        taskQueue.async {
+            guard let wallet = self.wallet else { return }
+            let (balance, history) = (wallet.balance, wallet.history)
+            self.postData(balance: balance, history: history)
+        }
+        if daemonBlockChainHeight != 0 {
+            let difference = wallet.daemonBlockChainHeight.subtractingReportingOverflow(daemonBlockChainHeight)
+            guard !difference.overflow else { return }
+        }
+        DispatchQueue.main.async {
+            if self.conncetingState.value {
+                self.conncetingState.value = false
+            }
+            self.synchronizedUI()
+        }
+    }
+    func beldexWalletNewBlock(_ wallet: BeldexWalletWrapper, currentHeight: UInt64) {
+//        dPrint("-----------currentHeight ----> \(currentHeight)---DaemonBlockHeight---->\(wallet.daemonBlockChainHeight)")
+        self.currentBlockChainHeight = currentHeight
+        self.daemonBlockChainHeight = wallet.daemonBlockChainHeight
+    }
+    
+    private func postData(balance: String, history: TransactionHistory) {
+        let balance_modify = Helper.displayDigitsAmount(balance)
+        print("---------->balance_modify \(balance_modify)")
+        print("---------->All Transation list----------> \(history.all)")
+        print("---------->Send list----------> \(history.send)")
+        print("---------->Recive list----------> \(history.receive)")
+        print("---------->Send list count----------> \(history.send.count)")
+        DispatchQueue.main.async {
+          //  self.lblbalance.text = balance_modify
+        }
+    }
+    
 }
