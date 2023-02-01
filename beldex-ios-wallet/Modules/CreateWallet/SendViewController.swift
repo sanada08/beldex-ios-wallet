@@ -29,7 +29,7 @@ class SendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        txtaddress.text = "9u98r2oSvnZ6FZSrfF4YqiejPXVsT4bBPiSm9UcpaEKvdDigDThHWKYYgLz6p36amZ6BPwBnn1gL7B5ZmL6gkKeQ548hnx4"
+        
         //Node Connect Process
         sendflag = false
         sendTransation_wallet()
@@ -75,7 +75,7 @@ class SendViewController: UIViewController {
     }
     func connect(wallet: BDXWallet) {
         print("---Node--->\(WalletDefaults.shared.node)")
-        wallet.connectToDaemon(address: "38.242.196.72:19095", delegate: self) { [weak self] (isConnected) in
+        wallet.connectToDaemon(address: "explorer.beldex.io:19091", delegate: self) { [weak self] (isConnected) in
             guard let `self` = self else { return }
             if isConnected {
                 if let wallet = self.wallet {
@@ -93,15 +93,17 @@ class SendViewController: UIViewController {
         }
         if sendflag == true{
            // HUD.showHUD()
+            let createPendingTransaction = wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount: self.txtamount.text!)
+            print("---createPendingTransaction result----> \(createPendingTransaction)")
             DispatchQueue.global().async {
-                let createPendingTransaction = wallet.createPendingTransaction(self.txtaddress.text!, paymentId: "", amount: self.txtamount.text!)
-                print("---createPendingTransaction result----> \(createPendingTransaction)")
                 let commitPendingTransaction = wallet.commitPendingTransaction()
                 print("---commitPendingTransaction result----\(commitPendingTransaction)")
                 DispatchQueue.main.async {
                    // HUD.hideHUD()
                     if createPendingTransaction == true {
                         if commitPendingTransaction == true {
+                            if commitPendingTransaction { wallet.disposeTransaction() }
+                            print("---disposeTransaction result---> \(commitPendingTransaction)")
                             print("Send Successfully")
                             let alert = UIAlertController(title: "My Title", message: "Send Successfully", preferredStyle: UIAlertController.Style.alert)
                             alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
